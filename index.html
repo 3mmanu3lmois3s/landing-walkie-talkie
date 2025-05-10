@@ -1068,21 +1068,27 @@ document.addEventListener('click', function(event) {
           .classList.remove("bg-slate-700", "text-white");
       }
 
-      // Calculadora de licencias
-      function calculateLicense() {
-        const people = parseInt(document.getElementById("people").value);
-        const type = document.getElementById("entity-type").value;
-        const resultElement = document.getElementById("result");
+// Calculadora de licencias
+// Calculadora de licencias (versión con placeholders dinámicos)
+function calculateLicense() {
+  const people = parseInt(document.getElementById("people").value);
+  const type = document.getElementById("entity-type").value;
+  const resultElement = document.getElementById("result");
 
-        if (type === "school" && people <= 30) {
-          resultElement.textContent =
-            translations[currentLang]["calculator.school_no_license"];
-        } else {
-          const total = people * 1; // 1€ por persona
-          const note = translations[currentLang]["calculator.lifetime_note"];
-          resultElement.textContent = `${translations[currentLang]["calculator.estimated_cost_prefix"]} ${total} €. ${note}`;
-        }
-      }
+  if (type === "school" && people <= 30) {
+    resultElement.textContent =
+      translations[currentLang]["calculator.school_no_license"];
+  } else {
+    const total = people * 1; // 1€ por persona
+    const note = translations[currentLang]["calculator.lifetime_note"];
+    const pattern = translations[currentLang]["calculator.estimated_cost_text"];
+    
+    resultElement.textContent = pattern
+      .replace("{total}", total)
+      .replace("{note}", note);
+  }
+}
+
    
    
    
