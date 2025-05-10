@@ -239,41 +239,45 @@
 
 <header class="fixed top-0 left-0 w-full z-50 bg-slate-900 bg-opacity-90 backdrop-blur-md shadow-md">
   <div class="relative max-w-full">
-    <!-- Flecha izquierda con espacio -->
+    <!-- Flecha izquierda -->
     <button onclick="scrollNav(-1)"
       class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-3 py-2 z-10 rounded-l hover:bg-slate-800">
       ◀
     </button>
 
-    <!-- Menú scrollable con padding interno a ambos lados -->
+    <!-- Menú scrollable -->
     <nav id="nav-scroll"
       class="flex gap-4 px-12 py-3 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide text-sm text-yellow-300 font-semibold">
+
       <a href="#que-es" class="hover:text-yellow-400 transition" data-i18n="nav.que_es">¿Qué es Teethlion?</a>
       <a href="#descargas" class="hover:text-yellow-400 transition" data-i18n="nav.descargas">Descargas</a>
       <a href="#contacto" class="hover:text-yellow-400 transition" data-i18n="nav.contacto">Contacto</a>
       <a href="#roadmap" class="hover:text-yellow-400 transition" data-i18n="nav.roadmap">Roadmap</a>
-      <a href="#licencias" class="hover:text-yellow-400 transition" data-i18n="nav.licencias">Licencias</a>
+      <a href="#licencias" class="hover:text-yellow-400 transition" data-i18n="nav.licencias_menu">Licencias</a>
+      <a href="#licensing-calculator" class="hover:text-yellow-400 transition">Calculadora</a>
       <a href="#faq" class="hover:text-yellow-400 transition" data-i18n="nav.faq">FAQ</a>
       <a href="#manifiesto" class="hover:text-yellow-400 transition" data-i18n="nav.manifiesto">Manifiesto</a>
+      <a href="#partners" class="hover:text-yellow-400 transition">Partners</a>
+      <a href="#instancias" class="hover:text-yellow-400 transition">Instancias</a>
+      <a href="#contribuye" class="hover:text-yellow-400 transition">Contribuye</a>
+      <a href="#cto" class="hover:text-yellow-400 transition">CTO</a>
 
-      <!-- Botones de idioma -->
+      <!-- Selector de idioma -->
       <div class="flex gap-1 ml-auto">
-        <button onclick="setLang('es')"
-          class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">ES</button>
-        <button onclick="setLang('en')"
-          class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">EN</button>
-        <button onclick="setLang('de')"
-          class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">DE</button>
+        <button onclick="setLang('es')" class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">ES</button>
+        <button onclick="setLang('en')" class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">EN</button>
+        <button onclick="setLang('de')" class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">DE</button>
       </div>
     </nav>
 
-    <!-- Flecha derecha con espacio -->
+    <!-- Flecha derecha -->
     <button onclick="scrollNav(1)"
       class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-3 py-2 z-10 rounded-r hover:bg-slate-800">
       ▶
     </button>
   </div>
 </header>
+
 
 
 
@@ -297,7 +301,7 @@
         <h1 class="text-4xl font-extrabold mb-2" data-i18n="hero.title">
           Teethlion
         </h1>
-<p class="text-lg sm:text-xl text-yellow-300 text-center px-4 max-w-[90%] mx-auto" data-i18n="slogan">
+        <p class="text-lg sm:text-xl text-yellow-300 text-center px-4 max-w-[90%] mx-auto" data-i18n="slogan">
   Comunicaciones descentralizadas, libres y soberanas.
 </p>
 
@@ -947,6 +951,42 @@ Cargando licencia TOL...</pre
         </div>
       </section>
 
+<section id="partners"
+  class="flex flex-col justify-center items-center text-center min-h-screen px-4 py-12 max-w-4xl mx-auto">
+  <h2 class="text-2xl font-bold text-yellow-300 mb-4">
+    🤝 Partners y Apoyo Institucional
+  </h2>
+  <p class="text-slate-300 mb-6">
+    Teethlion cuenta con el interés de comunidades, ONGs y entidades educativas que promueven la soberanía tecnológica.
+    Si representas a una institución interesada en apoyar el proyecto, contáctanos.
+  </p>
+  <a href="#contacto"
+     class="inline-block bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300 transition">
+    📩 Quiero ser Partner
+  </a>
+</section>
+
+
+
+<section id="instancias" class="flex items-center justify-center text-center min-h-screen px-4">
+  <div>
+    <h2 class="text-2xl font-bold text-yellow-300 mb-4">
+      🌐 Instancias activas
+    </h2>
+    <p class="text-slate-100 mb-2">
+      Teethlion ha sido instalado en:
+    </p>
+    <div class="text-6xl font-extrabold text-yellow-400 mb-2">
+      47
+    </div>
+    <p class="text-slate-300">
+      nodos verificados en 7 países
+    </p>
+  </div>
+</section>
+
+
+
 <!-- Agrega esta sección donde prefieras, por ejemplo antes del footer -->
 <section id="cto" class="max-w-4xl mx-auto px-4 py-12 text-center">
   <h2 class="text-2xl font-bold mb-8" data-i18n="cto.title">CTO</h2>
@@ -1012,7 +1052,6 @@ function scrollNav(direction) {
     const scrollAmount = 150;
     nav.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });	
 }
-
 function toggleFinanceDropdown() {
   const menu = document.getElementById('finance-menu');
   menu.classList.toggle('hidden');
@@ -1068,7 +1107,7 @@ document.addEventListener('click', function(event) {
           .classList.remove("bg-slate-700", "text-white");
       }
 
-// Calculadora de licencias
+      // Calculadora de licencias
 // Calculadora de licencias (versión con placeholders dinámicos)
 function calculateLicense() {
   const people = parseInt(document.getElementById("people").value);
