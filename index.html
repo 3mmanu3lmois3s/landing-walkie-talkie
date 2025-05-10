@@ -239,15 +239,15 @@
 
 <header class="fixed top-0 left-0 w-full z-50 bg-slate-900 bg-opacity-90 backdrop-blur-md shadow-md">
   <div class="relative max-w-full">
-    <!-- Flecha izquierda -->
+    <!-- Flecha izquierda con espacio -->
     <button onclick="scrollNav(-1)"
-      class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-2 py-1 z-10 rounded-l hover:bg-slate-800">
+      class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-3 py-2 z-10 rounded-l hover:bg-slate-800">
       ◀
     </button>
 
-    <!-- Menú scrollable -->
+    <!-- Menú scrollable con padding interno a ambos lados -->
     <nav id="nav-scroll"
-      class="flex gap-4 px-8 py-3 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide text-sm text-yellow-300 font-semibold">
+      class="flex gap-4 px-12 py-3 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide text-sm text-yellow-300 font-semibold">
       <a href="#que-es" class="hover:text-yellow-400 transition" data-i18n="nav.que_es">¿Qué es Teethlion?</a>
       <a href="#descargas" class="hover:text-yellow-400 transition" data-i18n="nav.descargas">Descargas</a>
       <a href="#contacto" class="hover:text-yellow-400 transition" data-i18n="nav.contacto">Contacto</a>
@@ -267,13 +267,14 @@
       </div>
     </nav>
 
-    <!-- Flecha derecha -->
+    <!-- Flecha derecha con espacio -->
     <button onclick="scrollNav(1)"
-      class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-2 py-1 z-10 rounded-r hover:bg-slate-800">
+      class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-3 py-2 z-10 rounded-r hover:bg-slate-800">
       ▶
     </button>
   </div>
 </header>
+
 
 
 
