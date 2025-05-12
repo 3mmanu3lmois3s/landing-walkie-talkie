@@ -3,772 +3,576 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" 
+    <meta
+      http-equiv="Content-Security-Policy"
       content="default-src 'self' http://localhost:* ws://localhost:*;
-               script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com http://localhost:*;
-               style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
-               img-src 'self' data: https://www.transparenttextures.com http://localhost:*;
-               connect-src 'self' https://formsubmit.co http://localhost:* ws://localhost:*;
-               frame-ancestors 'none'">
-<meta http-equiv="X-XSS-Protection" content="1; mode=block">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
-<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+             script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com http://localhost:*;
+             style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
+             img-src 'self' data: https://www.transparenttextures.com http://localhost:* https://www.paypalobjects.com https://stripe.com;
+             connect-src 'self' https://formsubmit.co http://localhost:* ws://localhost:*;
+             frame-ancestors 'none'"
+    />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta
+      http-equiv="Strict-Transport-Security"
+      content="max-age=63072000; includeSubDomains; preload"
+    />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="geolocation=(), microphone=(), camera=()"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Teethlion</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      html,
-      body {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        height: 100%;
-      }
-      section {
-        scroll-snap-align: start;
-        min-height: 100vh;
-        padding-top: 60px; /* Espacio para el header */
-      }
-
-      .hidden {
-        display: none !important;
-      }
-
-      body {
-        background-color: #0f172a;
-        color: #f8fafc;
-        font-family: "Inter", sans-serif;
-      }
-      .background-nodes {
-        background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-        background-size: cover;
-        opacity: 0.08;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-      }
-      .typewriter {
-        overflow: hidden;
-        border-right: 0.15em solid #facc15;
-        white-space: nowrap;
-        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-      }
-      @keyframes typing {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
-      }
-      @keyframes blink-caret {
-        from,
-        to {
-          border-color: transparent;
-        }
-        50% {
-          border-color: #facc15;
-        }
-      }
-      /* Asegurar que el footer se vea */
-      main {
-        padding-bottom: 60px; /* Espacio para el footer */
-      }
-      footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #0f172a;
-        padding: 15px 0;
-        z-index: 10;
-      }
-
-      /* Mejora el textarea para el mensaje */
-#message-textarea {
-  resize: vertical;
-  transition: all 0.3s ease;
-}
-
-#message-textarea:focus {
-  border-color: #facc15;
-  box-shadow: 0 0 0 1px #facc15;
-}
-
-/* Efecto para el textarea cuando se autocompleta */
-#network-message-textarea[data-autofilled] {
-  border-left: 3px solid #facc15;
-  padding-left: 10px;
-}
-      .license-panel pre {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        font-family: monospace;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 1rem;
-        border-radius: 0.5rem;
-      }
-
-      /* Asegurar consistencia en los inputs */
-      select,
-      input {
-        appearance: none;
-        -webkit-appearance: none;
-        outline: none;
-      }
-
-      /* Mejorar el aspecto del select */
-      select {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23facc15'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 0.5rem center;
-        background-size: 1.5rem;
-      }
-
-      /* Efecto hover para los inputs */
-      select:hover,
-      input:hover {
-        border-color: #facc15;
-      }
-
-      /* Agrega esto en tu <style> si quieres animación */
-#cto img {
-  transition: transform 0.3s ease;
-}
-#cto img:hover {
-  transform: scale(1.05);
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-
-.scroll-snap-x {
-  scroll-snap-type: x mandatory;
-}
-.scroll-snap-start {
-  scroll-snap-align: start;
-}
-    </style>
   </head>
-  <body class="relative">
 
-  <!--  
-    <div class="fixed top-3 right-3 flex gap-2 z-[9999]">
-      <button
-        onclick="setLang('es')"
-        class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700"
-      >
-        ES
-      </button>
-      <button
-        onclick="setLang('en')"
-        class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700"
-      >
-        EN
-      </button>
-      <button
-        onclick="setLang('de')"
-        class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700"
-      >
-        DE
-      </button>
-    </div>
-  
-
-  
-  <header
-      class="fixed top-0 left-0 w-full z-50 bg-slate-900 bg-opacity-90 backdrop-blur-md shadow-md"
-    >
-      <nav
-        class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-4 text-sm text-yellow-300 font-semibold"
-      >
-        <a
-          href="#que-es"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.que_es"
-          >¿Qué es Teethlion?</a
-        >
-        <a
-          href="#descargas"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.descargas"
-          >Descargas</a
-        >
-        <a
-          href="#contacto"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.contacto"
-          >Contacto</a
-        >
-        <a
-          href="#roadmap"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.roadmap"
-          >Roadmap</a
-        >
-        <a
-          href="#licencias"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.licencias"
-          >Licencias</a
-        >
-        <a
-          href="#faq"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.faq"
-          >FAQ</a
-        >
-        <a
-          href="#manifiesto"
-          class="hover:text-yellow-400 transition"
-          data-i18n="nav.manifiesto"
-          >Manifiesto</a
-        >
-      </nav>
-    </header>
-  -->
-
-<header class="fixed top-0 left-0 w-full z-50 bg-slate-900 bg-opacity-90 backdrop-blur-md shadow-md">
-  <div class="relative max-w-full">
-    <!-- Flecha izquierda -->
-    <button onclick="scrollNav(-1)"
-      class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-3 py-2 z-10 rounded-l hover:bg-slate-800">
-      ◀
-    </button>
-
-    <!-- Menú scrollable -->
-    <nav id="nav-scroll"
-      class="flex gap-4 px-12 py-3 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide text-sm text-yellow-300 font-semibold">
-
-      <a href="#que-es" class="hover:text-yellow-400 transition" data-i18n="nav.que_es">¿Qué es Teethlion?</a>
-      <a href="#descargas" class="hover:text-yellow-400 transition" data-i18n="nav.descargas">Descargas</a>
-      <a href="#contacto" class="hover:text-yellow-400 transition" data-i18n="nav.contacto">Contacto</a>
-      <a href="#roadmap" class="hover:text-yellow-400 transition" data-i18n="nav.roadmap">Roadmap</a>
-      <a href="#licencias" class="hover:text-yellow-400 transition" data-i18n="nav.licencias_menu">Licencias</a>
-      <a href="#licensing-calculator" class="hover:text-yellow-400 transition">Calculadora</a>
-      <a href="#faq" class="hover:text-yellow-400 transition" data-i18n="nav.faq">FAQ</a>
-      <a href="#manifiesto" class="hover:text-yellow-400 transition" data-i18n="nav.manifiesto">Manifiesto</a>
-      <a href="#partners" class="hover:text-yellow-400 transition">Partners</a>
-      <a href="#instancias" class="hover:text-yellow-400 transition">Instancias</a>
-      <a href="#contribuye" class="hover:text-yellow-400 transition">Contribuye</a>
-      <a href="#cto" class="hover:text-yellow-400 transition">CTO</a>
-
-      <!-- Selector de idioma -->
-      <div class="flex gap-1 ml-auto">
-        <button onclick="setLang('es')" class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">ES</button>
-        <button onclick="setLang('en')" class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">EN</button>
-        <button onclick="setLang('de')" class="bg-slate-800 text-yellow-300 px-2 py-1 rounded hover:bg-slate-700">DE</button>
-      </div>
-    </nav>
-
-    <!-- Flecha derecha -->
-    <button onclick="scrollNav(1)"
-      class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-slate-900 bg-opacity-80 text-yellow-300 px-3 py-2 z-10 rounded-r hover:bg-slate-800">
-      ▶
-    </button>
-  </div>
-</header>
-
-
-
-
-
+  <body class="bg-black text-white relative">
+    <!-- Fondo de video -->
     <video
       autoplay
       muted
       loop
       playsinline
-      class="fixed top-0 left-0 w-full h-full object-cover opacity-5 -z-10"
+      class="fixed top-0 left-0 w-full h-full object-cover opacity-20 -z-10"
     >
       <source src="video/Futuristic_Digital_Network.mp4" type="video/mp4" />
     </video>
-    <div class="background-nodes"></div>
 
-    <main id="sections">
+    <!-- HEADER + MENU -->
+    <header
+      class="bg-slate-900 text-white flex items-center justify-between px-4 py-3 shadow-md fixed w-full z-50"
+    >
+      <h1 class="text-xl font-bold" data-i18n="hero.title">Teethlion</h1>
+
+      <div class="flex items-center gap-2">
+        <!-- Botones de idioma -->
+        <button
+          onclick="setLang('es')"
+          class="text-xs bg-yellow-400 hover:bg-yellow-300 text-black px-2 py-1 rounded"
+        >
+          ES
+        </button>
+        <button
+          onclick="setLang('en')"
+          class="text-xs bg-yellow-400 hover:bg-yellow-300 text-black px-2 py-1 rounded"
+        >
+          EN
+        </button>
+        <button
+          onclick="setLang('de')"
+          class="text-xs bg-yellow-400 hover:bg-yellow-300 text-black px-2 py-1 rounded"
+        >
+          DE
+        </button>
+
+        <!-- Botón Hamburguesa -->
+        <button
+          id="hamburger"
+          aria-label="Abrir menú"
+          class="focus:outline-none ml-2"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <div
+      id="offcanvas"
+      class="-translate-x-full fixed top-0 left-0 h-full w-64 bg-slate-800 z-50 transition-transform duration-300"
+    >
+      <nav class="flex flex-col space-y-4 p-4 text-white">
+        <button id="close-menu" class="text-white self-end">✖</button>
+        <a href="#que-es" class="hover:text-yellow-400" data-i18n="nav.que_es"
+          >¿Qué es?</a
+        >
+        <a
+          href="#descargas"
+          class="hover:text-yellow-400"
+          data-i18n="nav.descargas"
+          >Descargas</a
+        >
+        <a href="#roadmap" class="hover:text-yellow-400" data-i18n="nav.roadmap"
+          >Roadmap</a
+        >
+        <a
+          href="#licencias"
+          class="hover:text-yellow-400"
+          data-i18n="nav.licencias_menu"
+          >Licencias</a
+        >
+        <a
+          href="#licensing-calculator"
+          class="hover:text-yellow-400"
+          data-i18n="nav.calculadora"
+          >Calculadora</a
+        >
+        <a
+          href="#contribuye"
+          class="hover:text-yellow-400"
+          data-i18n="nav.contribuye"
+          >Contribuye</a
+        >
+        <a href="#faq" class="hover:text-yellow-400" data-i18n="nav.faq">FAQ</a>
+        <a
+          href="#contacto"
+          class="hover:text-yellow-400"
+          data-i18n="nav.contacto"
+          >Contacto</a
+        >
+        <a
+          href="#manifiesto"
+          class="hover:text-yellow-400"
+          data-i18n="nav.manifiesto"
+          >Manifiesto</a
+        >
+        <a
+          href="#partners"
+          class="hover:text-yellow-400"
+          data-i18n="nav.partners"
+          >Partners</a
+        >
+        <a
+          href="#instancias"
+          class="hover:text-yellow-400"
+          data-i18n="nav.instancias"
+          >Instancias</a
+        >
+        <a href="#cto" class="hover:text-yellow-400" data-i18n="nav.cto">CTO</a>
+      </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"
+    ></div>
+
+    <!-- CONTENIDO -->
+
+    <main class="pt-20 space-y-0">
+      <!-- Agregaremos aquí las mismas secciones que ya usas, pero asegurando que cada una tenga: min-h-screen flex justify-center -->
+
       <section
-        id="inicio"
-        class="text-center flex flex-col justify-center items-center px-4"
+        id="hero"
+        class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-12 relative z-10"
       >
-        <h1 class="text-4xl font-extrabold mb-2" data-i18n="hero.title">
-          Teethlion
-        </h1>
-        <p class="text-lg sm:text-xl text-yellow-300 text-center px-4 max-w-[90%] mx-auto" data-i18n="slogan">
-  Comunicaciones descentralizadas, libres y soberanas.
-</p>
-
+        <h1 class="text-4xl font-extrabold text-white mb-4">Teethlion</h1>
+        <p
+          class="text-lg text-yellow-300 max-w-xl typewriter"
+          data-i18n="hero.subtitle"
+        >
+          Comunicaciones descentralizadas, libres y soberanas.
+        </p>
       </section>
 
-      <section
-        id="que-es"
-        class="max-w-4xl mx-auto px-4 py-8 flex flex-col justify-center"
-      >
-        <h2 class="text-2xl font-bold mb-4" data-i18n="what_is.title">
-          ¿Qué es Teethlion?
-        </h2>
-        <p data-i18n="what_is.p1">
-          Teethlion es una red de comunicación local descentralizada que
-          funciona sin Internet. Ideal para hogares, escuelas, instituciones y
-          gobiernos.
-        </p>
-        <p data-i18n="what_is.feature1">
-          - Comunicación de voz en tiempo real sobre LAN y WAN.
-        </p>
-        <p data-i18n="what_is.feature2">
-          - Sin necesidad de servidores centrales.
-        </p>
-        <p data-i18n="what_is.feature3">
-          - Seguridad mediante cifrado de grado militar.
-        </p>
-        <p data-i18n="what_is.feature4">
-          - Ideal para situaciones de emergencia, contingencias de
-          comunicaciones y soberanía tecnológica.
-        </p>
-        <p data-i18n="what_is.feature5">
-          - Software de uso libre para personas y escuelas pequeñas, con
-          licencias especiales para gobiernos e instituciones.
-        </p>
-      </section>
-
-      <section class="max-w-4xl mx-auto px-4 py-8 flex flex-col justify-center">
-        <h2 class="text-2xl font-bold mb-4" data-i18n="licensing_general.title">
-          Licenciamiento
-        </h2>
-        <p data-i18n="licensing_general.p1">
-          Gratis para uso personal y educativo (hasta 5 dispositivos en la misma
-          red LAN). Para escuelas con más de 30 dispositivos o instituciones, se
-          requiere licencia. La licencia incluye funcionalidades adicionales no
-          presentes en la versión libre.
-        </p>
-      </section>
-
-      <section
-        id="descargas"
-        class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center"
-      >
-        <h2 class="text-2xl font-bold mb-4" data-i18n="downloads.title">
-          Descargas
-        </h2>
-        <div class="flex flex-col sm:flex-row gap-4 mb-4">
-          <a
-            href="#"
-            class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700"
-            data-i18n="downloads.linux"
-            >⬇️ Linux</a
-          >
-          <a
-            href="#"
-            class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700"
-            data-i18n="downloads.windows"
-            >⬇️ Windows</a
-          >
-          <a
-            href="#"
-            class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700"
-            data-i18n="downloads.macos"
-            >⬇️ macOS</a
-          >
+      <!-- Ejemplo de cómo aplicar clases para cada seccion individualmente: -->
+      <section id="que-es" class="min-h-screen flex items-center px-4">
+        <div class="max-w-4xl mx-auto py-12 px-4 text-white">
+          <h2 class="text-2xl font-bold mb-4" data-i18n="what_is.title">
+            ¿Qué es Teethlion?
+          </h2>
+          <p class="mb-2" data-i18n="what_is.p1">
+            Teethlion es una red de comunicación local descentralizada que
+            funciona sin Internet. Ideal para hogares, escuelas, instituciones y
+            gobiernos.
+          </p>
+          <ul class="list-disc list-inside space-y-1">
+            <li data-i18n="what_is.feature1">
+              Comunicación de voz en tiempo real sobre LAN, MAN, WAN y GAN.
+            </li>
+            <li data-i18n="what_is.feature2">
+              Sin necesidad de servidores centrales.
+            </li>
+            <li data-i18n="what_is.feature3">
+              Seguridad mediante cifrado de grado militar.
+            </li>
+            <li data-i18n="what_is.feature4">
+              Ideal para emergencias, contingencias y soberanía tecnológica.
+            </li>
+            <li data-i18n="what_is.feature5">
+              Software libre para personas y escuelas, con licencias especiales
+              para gobiernos e instituciones.
+            </li>
+          </ul>
         </div>
-        <p class="text-sm text-slate-400">
-          <span data-i18n="downloads.enterprise_prompt"
-            >¿Necesitas funcionalidades móviles, integración SaaS y dispositivos
-            embebidos?</span
-          ><br />
-          <a href="#contacto" class="underline" data-i18n="downloads.contact_us"
-            >Contáctanos</a
-          >
-          <span data-i18n="downloads.enterprise_version">
-            para la versión empresarial.</span
-          >
-        </p>
+      </section>
+
+      <section id="descargas" class="min-h-screen flex items-center px-4">
+        <div class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center">
+          <h2 class="text-2xl font-bold mb-4" data-i18n="downloads.title">
+            Descargas
+          </h2>
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <a
+              href="#"
+              onclick="showDownloadTooltip(); return false;"
+              class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700 cursor-not-allowed"
+              data-i18n="downloads.linux"
+              >⬇️ Linux</a
+            >
+            <a
+              href="#"
+              onclick="showDownloadTooltip(); return false;"
+              class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700 cursor-not-allowed"
+              data-i18n="downloads.windows"
+              >⬇️ Windows</a
+            >
+            <a
+              href="#"
+              onclick="showDownloadTooltip(); return false;"
+              class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700 cursor-not-allowed"
+              data-i18n="downloads.macos"
+              >⬇️ macOS</a
+            >
+          </div>
+
+          <p class="text-sm text-slate-400">
+            <span data-i18n="downloads.enterprise_prompt">
+              ¿Necesitas funcionalidades móviles, integración SaaS y
+              dispositivos embebidos? </span
+            ><br />
+            <a
+              href="#contacto"
+              class="underline"
+              data-i18n="downloads.contact_us"
+              >Contáctanos</a
+            >
+            <span data-i18n="downloads.enterprise_version">
+              para la versión empresarial.</span
+            >
+          </p>
+        </div>
       </section>
 
       <section
         id="roadmap"
-        class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center"
+        class="min-h-screen flex items-center justify-center px-4 py-16"
       >
-        <h2 class="text-2xl font-bold mb-4" data-i18n="roadmap.title">
-          Roadmap
-        </h2>
-        <div class="space-y-8">
-          <div class="bg-white bg-opacity-5 p-4 rounded-lg">
-            <h3 class="text-lg font-semibold mb-2" data-i18n="roadmap.v1.title">
-              ✅ Versión 1.0
-            </h3>
-            <ul class="list-disc list-inside text-sm">
-              <li data-i18n="roadmap.v1.item1">CLI + SPA Web</li>
-              <li data-i18n="roadmap.v1.item2">Audio en tiempo real en LAN</li>
-              <li data-i18n="roadmap.v1.item3">Chat LAN</li>
-              <li data-i18n="roadmap.v1.item4">Licencia AGPL</li>
-            </ul>
-          </div>
-          <div class="bg-white bg-opacity-5 p-4 rounded-lg">
-            <h3
-              class="text-lg font-semibold mb-2"
-              data-i18n="roadmap.soon.title"
-            >
-              🔜 Próximamente
-            </h3>
-            <ul class="list-disc list-inside text-sm">
-              <li data-i18n="roadmap.soon.item1">Video LAN</li>
-              <li data-i18n="roadmap.soon.item2">Transcripción experimental</li>
-              <li data-i18n="roadmap.soon.item3">Modo visual CLI</li>
-            </ul>
-          </div>
-          <div class="bg-white bg-opacity-5 p-4 rounded-lg">
-            <h3
-              class="text-lg font-semibold mb-2"
-              data-i18n="roadmap.private.title"
-            >
-              🛡️ Privado (TOL)
-            </h3>
-            <p class="text-sm text-slate-300" data-i18n="roadmap.private.desc">
-              Versión extendida para gobiernos y empresas.
-            </p>
+        <div class="max-w-3xl mx-auto px-4 py-12">
+          <!-- contenido roadmap -->
+          <h2 class="text-2xl font-bold mb-4" data-i18n="roadmap.title">
+            Roadmap
+          </h2>
+          <div class="space-y-8">
+            <div class="bg-white bg-opacity-5 p-4 rounded-lg shadow">
+              <h3
+                class="text-lg font-semibold mb-2 text-yellow-300"
+                data-i18n="roadmap.v1.title"
+              >
+                ✅ Versión 1.0
+              </h3>
+              <ul class="list-disc list-inside text-sm text-slate-200">
+                <li data-i18n="roadmap.v1.item1">CLI + SPA Web</li>
+                <li data-i18n="roadmap.v1.item2">
+                  Audio en tiempo real en LAN
+                </li>
+                <li data-i18n="roadmap.v1.item3">Chat LAN</li>
+                <li data-i18n="roadmap.v1.item4">Licencia AGPL</li>
+              </ul>
+            </div>
+
+            <div class="bg-white bg-opacity-5 p-4 rounded-lg shadow">
+              <h3
+                class="text-lg font-semibold mb-2 text-yellow-300"
+                data-i18n="roadmap.soon.title"
+              >
+                🔜 Próximamente
+              </h3>
+              <ul class="list-disc list-inside text-sm text-slate-200">
+                <li data-i18n="roadmap.soon.item1">Video LAN</li>
+                <li data-i18n="roadmap.soon.item2">
+                  Transcripción experimental
+                </li>
+                <li data-i18n="roadmap.soon.item3">Modo visual CLI & SDK</li>
+              </ul>
+            </div>
+
+            <div class="bg-white bg-opacity-5 p-4 rounded-lg shadow">
+              <h3
+                class="text-lg font-semibold mb-2 text-yellow-300"
+                data-i18n="roadmap.private.title"
+              >
+                🛡️ Privado (TOL)
+              </h3>
+              <p
+                class="text-sm text-slate-300"
+                data-i18n="roadmap.private.desc"
+              >
+                Versión extendida para gobiernos y empresas.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
+      <section
+        id="licencias"
+        class="min-h-screen flex items-center justify-center px-4 py-12"
+      >
+        <div class="max-w-4xl mx-auto w-full">
+          <h2
+            class="text-2xl font-bold text-center mb-6"
+            data-i18n="project_licenses.title"
+          >
+            📜 Licencias del Proyecto
+          </h2>
+
+          <div class="flex justify-center space-x-4 mb-4">
+            <button
+              onclick="showLicense('agpl')"
+              id="btn-agpl"
+              class="px-4 py-2 rounded bg-yellow-400 text-black font-semibold"
+              data-i18n="project_licenses.agpl_button"
+            >
+              AGPL v3
+            </button>
+            <button
+              onclick="showLicense('tol')"
+              id="btn-tol"
+              class="px-4 py-2 rounded bg-slate-700 text-white font-semibold"
+              data-i18n="project_licenses.tol_button"
+            >
+              Teethlion Open License (TOL)
+            </button>
+          </div>
+
+          <div
+            id="agpl"
+            class="license-panel bg-white bg-opacity-5 rounded-lg p-4 shadow h-96 overflow-y-scroll"
+          >
+            <h3
+              class="text-lg font-bold text-yellow-300 mb-2"
+              data-i18n="project_licenses.agpl_v3_title_panel"
+            >
+              Licencia AGPL v3
+            </h3>
+            <pre class="text-sm text-slate-100 whitespace-pre-wrap">
+Cargando licencia AGPL v3...</pre
+            >
+          </div>
+
+          <div
+            id="tol"
+            class="license-panel hidden bg-white bg-opacity-5 rounded-lg p-4 shadow h-96 overflow-y-scroll"
+          >
+            <h3
+              class="text-lg font-bold text-yellow-300 mb-2"
+              data-i18n="project_licenses.tol_title_panel"
+            >
+              Teethlion Open License (TOL)
+            </h3>
+            <pre class="text-sm text-slate-100 whitespace-pre-wrap">
+Cargando licencia TOL...</pre
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Y así sucesivamente para todas las secciones... -->
+
+      <section
+        id="faq"
+        class="min-h-screen flex items-center justify-center px-4 py-12"
+      >
+        <div class="max-w-4xl mx-auto w-full">
+          <h2
+            class="text-2xl font-bold mb-6 text-center"
+            data-i18n="faq.title_header"
+          >
+            🧠 Preguntas Frecuentes (FAQ)
+          </h2>
+
+          <div class="space-y-6 text-slate-100">
+            <!-- Pregunta 1 -->
+            <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+              <h3
+                class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+                onclick="toggleFAQ(1)"
+              >
+                <span data-i18n="faq.q1_title"
+                  >¿Qué necesito para usar Teethlion?</span
+                >
+                <span class="text-xl">+</span>
+              </h3>
+              <p
+                class="mt-2 hidden"
+                id="faq-answer-1"
+                data-i18n="faq.q1_answer"
+              >
+                Solo dispositivos conectados a la misma red LAN. No necesitas
+                internet, servidores ni routers especiales.
+              </p>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+              <h3
+                class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+                onclick="toggleFAQ(2)"
+              >
+                <span data-i18n="faq.q2_title"
+                  >¿Qué pasa si alguien viola la licencia?</span
+                >
+                <span class="text-xl">+</span>
+              </h3>
+              <p
+                class="mt-2 hidden"
+                id="faq-answer-2"
+                data-i18n="faq.q2_answer"
+              >
+                Las licencias AGPL y TOL son legalmente vinculantes. El uso no
+                autorizado puede enfrentar acciones legales.
+              </p>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+              <h3
+                class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+                onclick="toggleFAQ(3)"
+              >
+                <span data-i18n="faq.q3_title"
+                  >¿Por qué es gratis para algunos y de pago para otros?</span
+                >
+                <span class="text-xl">+</span>
+              </h3>
+              <p
+                class="mt-2 hidden"
+                id="faq-answer-3"
+                data-i18n="faq.q3_answer"
+              >
+                Promovemos acceso libre para educación y hogares. Las licencias
+                comerciales financian el desarrollo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Formulario con protección avanzada -->
       <section
         id="contacto"
-        class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center"
+        class="min-h-screen flex items-center justify-center px-4 py-12"
       >
-        <h2 class="text-2xl font-bold mb-4" data-i18n="contact.title">
-          Contacto
-        </h2>
-        <form
-          action="https://formsubmit.co/contacto@teethlion.com"
-          method="POST"
-          class="space-y-4"
-        >
-          <input
-            type="text"
-            name="name"
-            required
-            placeholder="Tu nombre"
-            class="w-full p-2 rounded bg-slate-800"
-            data-i18n-placeholder="contact.name_placeholder"
-          />
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Tu correo"
-            class="w-full p-2 rounded bg-slate-800"
-            data-i18n-placeholder="contact.email_placeholder"
-          />
-          <textarea
-  name="message"
-  required
-  placeholder="Tu mensaje"
-  class="w-full p-2 rounded bg-slate-800 min-h-[120px]"
-  id="message-textarea"
-></textarea>
-          <input type="text" name="_honey" style="display: none" />
-          <input type="hidden" name="_captcha" value="false" />
-          <button
-            type="submit"
-            class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300"
-            data-i18n="contact.send_button"
+        <div class="max-w-3xl w-full">
+          <h2
+            class="text-2xl font-bold mb-6 text-center"
+            data-i18n="contact.title"
           >
-            Enviar
-          </button>
-        </form>
-      </section>
+            Contacto Seguro
+          </h2>
 
-      <section
-        class="h-screen flex flex-col justify-center items-center text-center px-4"
-      >
-        <h2 class="text-3xl font-bold mb-4" data-i18n="contribute.title">
-          Contribuye a Teethlion
-        </h2>
-        <p
-          class="text-slate-300 max-w-xl mb-6"
-          data-i18n="contribute.description"
-        >
-          ¿Te gustaría mantener viva la red Teethlion o ayudar a expandirla?
-          Apóyanos con una contribución directa.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <!---boton de financia la red -->
-          <div class="relative group" id="finance-dropdown">
-            <button 
-              class="bg-yellow-400 text-black px-6 py-3 rounded hover:bg-yellow-300 font-semibold transition"
-              onclick="toggleFinanceDropdown()"
-            >
-              <span data-i18n="contribute.finance_button">⚡ Financia la red</span>
-            </button>
-            
-            <div 
-              id="finance-menu" 
-              class="absolute z-10 hidden group-hover:block bg-slate-800 rounded-md shadow-lg w-64 mt-1"
-            >
-              <div class="py-1">
-                <!-- Enlaces directos a PayPal sin JS -->
-                <a href="https://www.paypal.com/donate?business=teethlionsolutions@gmail.com&amount=10&currency_code=EUR" 
-                   target="_blank"
-                   class="block px-4 py-2 hover:bg-slate-700 flex items-center">
-                  <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" class="h-5 mr-2" alt="PayPal">
-                  <span data-i18n="contribute.donation_10">Donación €10</span>
-                </a>
-                <a href="https://www.paypal.com/donate?business=teethlionsolutions@gmail.com&amount=25&currency_code=EUR" 
-                   target="_blank"
-                   class="block px-4 py-2 hover:bg-slate-700 flex items-center">
-                  <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" class="h-5 mr-2" alt="PayPal">
-                  <span data-i18n="contribute.donation_25">Donación €25</span>
-                </a>
-                
-                <!-- Stripe Checkout (no requiere backend) -->
-                <a href="#" 
-                   onclick="window.open('https://checkout.stripe.com/pay/CHECKOUT_SESSION_ID','_blank')"
-                   class="block px-4 py-2 hover:bg-slate-700 flex items-center">
-                  <img src="https://stripe.com/img/v3/home/twitter.png" class="h-5 mr-2" alt="Stripe">
-                  <span data-i18n="contribute.card_donation">Donación con Tarjeta</span>
-                </a>
+          <form
+            id="secure-contact-form"
+            class="bg-slate-800 bg-opacity-50 p-6 rounded-lg shadow-lg"
+          >
+            <input
+              type="checkbox"
+              name="_honeypot"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input
+              type="hidden"
+              name="_autoresponse"
+              value="Gracias por tu mensaje"
+            />
+
+            <div class="mb-4">
+              <label
+                for="secure-name"
+                class="block text-yellow-300 mb-2 font-medium"
+                data-i18n="contact.name_label"
+                >Nombre</label
+              >
+              <input
+                type="text"
+                id="secure-name"
+                name="name"
+                required
+                pattern="[A-Za-zÁ-Úá-ú\s]{2,50}"
+                maxlength="50"
+                class="w-full p-3 rounded bg-slate-700 border-2 border-slate-600 focus:border-yellow-400"
+                data-i18n-placeholder="contact.name_placeholder"
+                oninput="sanitizeInput(this, /[^A-Za-zÁ-Úá-ú\s]/g)"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="secure-email"
+                class="block text-yellow-300 mb-2 font-medium"
+                data-i18n="contact.email_label"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="secure-email"
+                name="email"
+                required
+                class="w-full p-3 rounded bg-slate-700 border-2 border-slate-600 focus:border-yellow-400"
+                data-i18n-placeholder="contact.email_placeholder"
+                onblur="validateEmail(this)"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="secure-message"
+                class="block text-yellow-300 mb-2 font-medium"
+                data-i18n="contact.message_label"
+                >Mensaje</label
+              >
+              <textarea
+                id="secure-message"
+                name="message"
+                required
+                rows="6"
+                maxlength="1000"
+                class="w-full p-3 rounded bg-slate-700 border-2 border-slate-600 focus:border-yellow-400"
+                data-i18n-placeholder="contact.message_placeholder"
+                oninput="sanitizeTextarea(this)"
+              ></textarea>
+              <div class="flex justify-between text-sm text-slate-400 mt-1">
+                <span data-i18n="contact.message_help"
+                  >Máx. 1000 caracteres</span
+                >
+                <span id="char-count">0/1000</span>
               </div>
             </div>
-          </div>
-          <!--fin de botón financia la red-->
-          <a
-  href="#contacto"
-  onclick="fillNetworkExpansionMessage()"
-  class="bg-yellow-400 text-black px-6 py-3 rounded hover:bg-yellow-300 font-semibold transition"
-  data-i18n="contribute.expand_button"
->
-  🌐 Amplía la red
-</a>
-          <a
-  href="#contacto"
-  onclick="fillSatelliteMessage()"
-  class="bg-yellow-400 text-black px-6 py-3 rounded hover:bg-yellow-300 font-semibold transition"
-  data-i18n="contribute.satellite_button"
->
-  🛰️ Compra un satélite
-</a>
-        </div>
-      </section>
 
-      <section id="licencias" class="max-w-4xl mx-auto px-4 py-12">
-        <h2
-          class="text-2xl font-bold text-center mb-6"
-          data-i18n="project_licenses.title"
-        >
-          📜 Licencias del Proyecto
-        </h2>
-
-        <div class="flex justify-center space-x-4 mb-4">
-          <button
-            onclick="showLicense('agpl')"
-            id="btn-agpl"
-            class="px-4 py-2 rounded bg-yellow-400 text-black font-semibold focus:outline-none"
-            data-i18n="project_licenses.agpl_button"
-          >
-            AGPL v3
-          </button>
-          <button
-            onclick="showLicense('tol')"
-            id="btn-tol"
-            class="px-4 py-2 rounded bg-slate-700 text-white font-semibold focus:outline-none"
-            data-i18n="project_licenses.tol_button"
-          >
-            Teethlion Open License (TOL)
-          </button>
-        </div>
-
-        <div
-          id="agpl"
-          class="license-panel bg-white bg-opacity-5 rounded-lg p-4 shadow h-96 overflow-y-scroll"
-        >
-          <h3
-            class="text-lg font-bold text-yellow-300 mb-2"
-            data-i18n="project_licenses.agpl_v3_title_panel"
-          >
-            Licencia AGPL v3
-          </h3>
-          <pre class="text-sm text-slate-100 whitespace-pre-wrap">
-Cargando licencia AGPL v3...</pre
-          >
-        </div>
-
-        <div
-          id="tol"
-          class="license-panel hidden bg-white bg-opacity-5 rounded-lg p-4 shadow h-96 overflow-y-scroll"
-        >
-          <h3
-            class="text-lg font-bold text-yellow-300 mb-2"
-            data-i18n="project_licenses.tol_title_panel"
-          >
-            Teethlion Open License (TOL)
-          </h3>
-          <pre class="text-sm text-slate-100 whitespace-pre-wrap">
-Cargando licencia TOL...</pre
-          >
-        </div>
-      </section>
-
-      <section
-        id="licensing-calculator"
-        class="max-w-4xl mx-auto px-4 py-12 text-center"
-      >
-        <h2 class="text-2xl font-bold mb-4" data-i18n="calculator.title">
-          Calculadora de Licenciamiento
-        </h2>
-        <p class="mb-6 text-slate-300" data-i18n="calculator.description">
-          Usa esta herramienta para estimar el coste único de licencias para
-          gobiernos, instituciones o empresas según el número de personas
-          conectadas a la red Teethlion.
-        </p>
-
-        <div
-          class="bg-slate-800 p-6 rounded-lg max-w-md mx-auto text-left space-y-4"
-        >
-          <div>
-            <label
-              class="block text-yellow-300 font-semibold mb-1"
-              data-i18n="calculator.entity_type_label"
+            <button
+              type="submit"
+              id="submit-btn"
+              class="w-full bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-3 px-4 rounded transition-colors"
+              data-i18n="contact.send_button"
             >
-              Tipo de entidad:
-            </label>
-            <select
-              id="entity-type"
-              class="w-full p-2 rounded bg-slate-700 border border-slate-600 text-white"
-            >
-              <option value="gov" data-i18n="calculator.entity_gov">
-                Gobierno
-              </option>
-              <option value="school" data-i18n="calculator.entity_school">
-                Escuela
-              </option>
-              <option
-                value="enterprise"
-                data-i18n="calculator.entity_enterprise"
-              >
-                Empresa
-              </option>
-            </select>
-          </div>
+              Enviar Mensaje
+            </button>
 
-          <div>
-            <label
-              class="block text-yellow-300 font-semibold mb-1"
-              data-i18n="calculator.people_label"
-            >
-              Número de personas:
-            </label>
-            <input
-              type="number"
-              id="people"
-              value="1000"
-              min="1"
-              class="w-full p-2 rounded bg-slate-700 border border-slate-600 text-white"
-            />
-          </div>
-
-          <button
-            onclick="calculateLicense()"
-            class="w-full bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300 font-semibold transition"
-            data-i18n="calculator.calculate_button"
-          >
-            Calcular costo
-          </button>
-
-          <div class="bg-slate-800 p-6 rounded-lg max-w-md mx-auto text-left space-y-4">
-            <!-- Contenido de la calculadora -->
-            <div id="result" class="mt-4 p-3 bg-slate-700 rounded text-yellow-300 font-bold text-center"></div>
-            
-            <div class="text-sm text-slate-300 mt-4 space-y-2">
-                <div class="flex items-center">
-                    <span class="text-yellow-300 mr-1">Tarifa de soporte y actualizaciones:</span>
-                    <span>variable</span>
-                </div>
-                <div class="italic text-slate-400">
-                    Contáctanos para una estimación personalizada.
-                </div>
-            </div>
-        </div>
-      </section>
-
-      <section id="faq" class="max-w-4xl mx-auto px-4 py-12">
-        <h2
-          class="text-2xl font-bold mb-6 text-center"
-          data-i18n="faq.title_header"
-        >
-          🧠 Preguntas Frecuentes (FAQ)
-        </h2>
-        <div class="space-y-6 text-slate-100">
-          <div>
-            <h3 class="font-semibold text-yellow-300" data-i18n="faq.q1_title">
-              ¿Qué necesito para usar Teethlion?
-            </h3>
-            <p data-i18n="faq.q1_answer">
-              Solo dispositivos conectados a la misma red LAN. No necesitas
-              internet, servidores ni routers especiales.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-semibold text-yellow-300" data-i18n="faq.q2_title">
-              ¿Qué pasa si alguien viola la licencia?
-            </h3>
-            <p data-i18n="faq.q2_answer">
-              Las licencias AGPL y TOL son legalmente vinculantes. Si alguien
-              utiliza Teethlion sin respetar las condiciones, puede enfrentar
-              acciones legales, especialmente en entornos comerciales o
-              institucionales.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-semibold text-yellow-300" data-i18n="faq.q3_title">
-              ¿Por qué Teethlion es libre para unos y de pago para otros?
-            </h3>
-            <p data-i18n="faq.q3_answer">
-              Teethlion promueve el acceso libre para hogares y educación. Sin
-              embargo, cuando el software se usa con fines comerciales,
-              institucionales o gubernamentales, se requiere licencia para
-              financiar el desarrollo y garantizar soporte.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-semibold text-yellow-300" data-i18n="faq.q4_title">
-              ¿Cómo obtener una licencia comercial o institucional?
-            </h3>
-            <p>
-              <span data-i18n="faq.q4_answer_p1"
-                >Puedes usar el formulario de contacto o escribirnos a
-              </span>
-              <a
-                href="mailto:teethlionsolutions@gmail.com"
-                class="underline text-yellow-300"
-                data-i18n="faq.q4_answer_link"
-                >nuestro correo</a
-              >
-              <span data-i18n="faq.q4_answer_p2"
-                >. Evaluamos cada caso según el tamaño de la organización y el
-                área de cobertura.</span
-              >
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-semibold text-yellow-300" data-i18n="faq.q5_title">
-              ¿Puedo contribuir al proyecto?
-            </h3>
-            <p data-i18n="faq.q5_answer">
-              ¡Sí! Puedes contribuir con ideas, código, documentación, pruebas o
-              financiación voluntaria. Consulta la sección de donaciones para
-              apoyar el crecimiento de Teethlion.
-            </p>
-          </div>
+            <div
+              id="form-feedback"
+              class="hidden mt-4 p-3 rounded text-center font-medium"
+            ></div>
+          </form>
         </div>
       </section>
 
@@ -788,22 +592,9 @@ Cargando licencia TOL...</pre
             >
               💪 Nuestra Misión
             </h3>
-            <p data-i18n="manifesto.mission.p1">
-              <strong>Teethlion</strong> nace como un proyecto libre, audaz y
-              revolucionario, cuyo objetivo es restaurar la soberanía de las
-              comunicaciones humanas en cualquier circunstancia.
-            </p>
-            <p data-i18n="manifesto.mission.p2">
-              Queremos que todas las personas, familias, comunidades, escuelas y
-              gobiernos tengan acceso a una red descentralizada, cifrada,
-              autónoma y resiliente.
-            </p>
-            <p data-i18n="manifesto.mission.p3">
-              <strong>Teethlion</strong> no depende de proveedores de Internet,
-              ni de infraestructuras centralizadas, ni de servicios en la nube.
-              Es un sistema que respira libertad, inspirado en la naturaleza
-              viva: ágil, colaborativo, indestructible.
-            </p>
+            <p data-i18n="manifesto.mission.p1"></p>
+            <p data-i18n="manifesto.mission.p2"></p>
+            <p data-i18n="manifesto.mission.p3"></p>
           </div>
 
           <div>
@@ -814,24 +605,10 @@ Cargando licencia TOL...</pre
               🌍 Principios Fundamentales
             </h3>
             <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.principles.item1">
-                <strong>Libertad personal:</strong> Cada individuo debe poder
-                comunicarse sin censura, espionaje ni dependencia.
-              </li>
-              <li data-i18n="manifesto.principles.item2">
-                <strong>Resiliencia comunitaria:</strong> Las comunidades deben
-                ser capaces de mantener redes locales y globales incluso en
-                situaciones críticas.
-              </li>
-              <li data-i18n="manifesto.principles.item3">
-                <strong>Accesibilidad:</strong> La tecnología debe ser accesible
-                para todos, sin barreras económicas, especialmente en educación.
-              </li>
-              <li data-i18n="manifesto.principles.item4">
-                <strong>Innovación protegida:</strong> La arquitectura y esencia
-                de Teethlion deben ser respetadas para preservar su integridad y
-                visión.
-              </li>
+              <li data-i18n="manifesto.principles.item1"></li>
+              <li data-i18n="manifesto.principles.item2"></li>
+              <li data-i18n="manifesto.principles.item3"></li>
+              <li data-i18n="manifesto.principles.item4"></li>
             </ul>
           </div>
 
@@ -843,19 +620,10 @@ Cargando licencia TOL...</pre
               ✨ Lo que Teethlion ofrece
             </h3>
             <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.offers.item1">
-                Comunicación P2P cifrada de alta seguridad.
-              </li>
-              <li data-i18n="manifesto.offers.item2">
-                Redes LAN autónomas que pueden expandirse globalmente.
-              </li>
-              <li data-i18n="manifesto.offers.item3">
-                Funcionamiento sin necesidad de conexión a Internet.
-              </li>
-              <li data-i18n="manifesto.offers.item4">
-                Adaptabilidad a distintos entornos: civil, educativo,
-                institucional y gubernamental.
-              </li>
+              <li data-i18n="manifesto.offers.item1"></li>
+              <li data-i18n="manifesto.offers.item2"></li>
+              <li data-i18n="manifesto.offers.item3"></li>
+              <li data-i18n="manifesto.offers.item4"></li>
             </ul>
           </div>
 
@@ -864,38 +632,20 @@ Cargando licencia TOL...</pre
               class="text-xl font-semibold text-yellow-300"
               data-i18n="manifesto.license.title"
             >
-              📅 Nuestra Licencia (Teethlion Open License)
+              📅 Nuestra Licencia (TOL)
             </h3>
             <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.license.item1">
-                <strong>Uso Personal:</strong> Gratis y libre para cualquier
-                persona, para un máximo de 5 dispositivos conectados
-                simultáneamente.
-              </li>
-              <li data-i18n="manifesto.license.item2">
-                <strong>Uso Educativo:</strong> Gratis para escuelas y
-                universidades en redes de hasta 30 dispositivos.
-              </li>
-              <li data-i18n="manifesto.license.item3">
-                <strong>Uso Extendido:</strong> Para usos de más de 30
-                dispositivos, o para redes municipales, empresariales o
-                gubernamentales, se requiere una licencia por cada
-                persona/dispositivo.
-              </li>
+              <li data-i18n="manifesto.license.item1"></li>
+              <li data-i18n="manifesto.license.item2"></li>
+              <li data-i18n="manifesto.license.item3"></li>
             </ul>
-            <p class="mt-2">
-              <strong data-i18n="manifesto.license.rates_title"
-                >Tarifas Licencia Vitalicia:</strong
-              >
-            </p>
+            <p
+              class="mt-2 font-semibold"
+              data-i18n="manifesto.license.rates_title"
+            ></p>
             <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.license.rate1">
-                1 € / persona para gobiernos, ciudades o instituciones (&gt;30
-                usuarios).
-              </li>
-              <li data-i18n="manifesto.license.rate2">
-                Licencia única de por vida. Sin renovaciones obligatorias.
-              </li>
+              <li data-i18n="manifesto.license.rate1"></li>
+              <li data-i18n="manifesto.license.rate2"></li>
             </ul>
           </div>
 
@@ -907,21 +657,9 @@ Cargando licencia TOL...</pre
               🔒 Protección de Teethlion
             </h3>
             <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.protection.item1">
-                <strong>Marca registrada:</strong> "Teethlion" es una marca
-                protegida. No puede ser usada para productos derivados.
-              </li>
-              <li data-i18n="manifesto.protection.item2">
-                <strong>Prohibición de forks comerciales:</strong> No está
-                permitido crear, distribuir o vender productos derivados o
-                alternativos basados en la arquitectura, concepto o
-                funcionamiento de Teethlion sin autorización expresa.
-              </li>
-              <li data-i18n="manifesto.protection.item3">
-                <strong>Prohibición de reimplementaciones:</strong> No se
-                permite crear variantes en otros lenguajes (Rust, C, Python,
-                etc.) que reproduzcan el concepto Teethlion sin licencia.
-              </li>
+              <li data-i18n="manifesto.protection.item1"></li>
+              <li data-i18n="manifesto.protection.item2"></li>
+              <li data-i18n="manifesto.protection.item3"></li>
             </ul>
           </div>
 
@@ -932,141 +670,429 @@ Cargando licencia TOL...</pre
             >
               🚀 Nuestro Sueño
             </h3>
-            <p data-i18n="manifesto.dream.p1">
-              Imaginamos un futuro donde cada comunidad humana tenga su
-              <strong>red descentralizada</strong> de Teethlions rugiendo en
-              red: comunicándose, protegiéndose, sobreviviendo, evolucionando.
-            </p>
-            <p data-i18n="manifesto.dream.p2">
-              <strong>Teethlion</strong> es la libertad de comunicar. Es la
-              evolución de las redes humanas.
-            </p>
+            <p data-i18n="manifesto.dream.p1"></p>
+            <p data-i18n="manifesto.dream.p2"></p>
             <p
               class="mt-4 font-semibold text-yellow-300"
               data-i18n="manifesto.dream.welcome"
-            >
-              🕊️✨ Bienvenido a Teethlion. Rugimos juntos.
-            </p>
+            ></p>
           </div>
         </div>
       </section>
 
-<section id="partners"
-  class="flex flex-col justify-center items-center text-center min-h-screen px-4 py-12 max-w-4xl mx-auto">
-  <h2 class="text-2xl font-bold text-yellow-300 mb-4">
-    🤝 Partners y Apoyo Institucional
-  </h2>
-  <p class="text-slate-300 mb-6">
-    Teethlion cuenta con el interés de comunidades, ONGs y entidades educativas que promueven la soberanía tecnológica.
-    Si representas a una institución interesada en apoyar el proyecto, contáctanos.
-  </p>
-  <a href="#contacto"
-     class="inline-block bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300 transition">
-    📩 Quiero ser Partner
-  </a>
-</section>
+      <section
+        id="partners"
+        class="flex flex-col justify-center items-center text-center min-h-screen px-4 py-12 max-w-4xl mx-auto"
+      >
+        <h2
+          class="text-2xl font-bold text-yellow-300 mb-4"
+          data-i18n="partners.title"
+        >
+          🤝 Partners y Apoyo Institucional
+        </h2>
+        <p class="text-slate-300 mb-6" data-i18n="partners.description">
+          Teethlion cuenta con el interés de comunidades, ONGs y entidades
+          educativas que promueven la soberanía tecnológica. Si representas a
+          una institución interesada en apoyar el proyecto, contáctanos.
+        </p>
+        <a
+          href="#contacto"
+          class="inline-block bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300 transition"
+          data-i18n="partners.cta"
+        >
+          📩 Quiero ser Partner
+        </a>
+      </section>
 
+      <section
+        id="instancias"
+        class="flex items-center justify-center text-center min-h-screen px-4 py-12 bg-opacity-20"
+      >
+        <div>
+          <h2
+            class="text-2xl font-bold text-yellow-300 mb-4"
+            data-i18n="instances.title"
+          >
+            🌐 Instancias activas
+          </h2>
+          <p class="text-slate-100 mb-2" data-i18n="instances.description">
+            Teethlion ha sido instalado en:
+          </p>
+          <div
+            class="text-6xl font-extrabold text-yellow-400 mb-2"
+            id="instance-count"
+          >
+            8
+          </div>
+          <p class="text-slate-300" data-i18n="instances.extra_info">
+            nodos verificados en 5 países
+          </p>
+        </div>
+      </section>
 
+      <section
+        id="contribuye"
+        class="h-screen flex flex-col justify-center items-center text-center px-4 py-12"
+      >
+        <h2 class="text-3xl font-bold mb-4" data-i18n="contribute.title">
+          Contribuye a Teethlion
+        </h2>
+        <p
+          class="text-slate-300 max-w-xl mb-6"
+          data-i18n="contribute.description"
+        >
+          ¿Te gustaría mantener viva la red Teethlion o ayudar a expandirla?
+          Apóyanos con una contribución directa.
+        </p>
 
-<section id="instancias" class="flex items-center justify-center text-center min-h-screen px-4">
-  <div>
-    <h2 class="text-2xl font-bold text-yellow-300 mb-4">
-      🌐 Instancias activas
-    </h2>
-    <p class="text-slate-100 mb-2">
-      Teethlion ha sido instalado en:
-    </p>
-    <div class="text-6xl font-extrabold text-yellow-400 mb-2">
-      47
-    </div>
-    <p class="text-slate-300">
-      nodos verificados en 7 países
-    </p>
-  </div>
-</section>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <!-- Botón de Donar -->
+          <a
+            href="https://www.paypal.com/donate?business=teethlionsolutions@gmail.com&amount=10&currency_code=EUR"
+            target="_blank"
+            class="bg-yellow-400 text-black px-6 py-3 rounded hover:bg-yellow-300 font-semibold transition"
+            data-i18n="contribute.donation_10"
+          >
+            ⚡ Donar €10
+          </a>
 
+          <!-- Botón de Ampliar red -->
+          <a
+            href="#contacto"
+            onclick="fillNetworkExpansionMessage()"
+            class="bg-yellow-400 text-black px-6 py-3 rounded hover:bg-yellow-300 font-semibold transition"
+            data-i18n="contribute.expand_button"
+          >
+            🌐 Amplía la red
+          </a>
 
+          <!-- Botón de Satélite -->
+          <a
+            href="#contacto"
+            onclick="fillSatelliteMessage()"
+            class="bg-yellow-400 text-black px-6 py-3 rounded hover:bg-yellow-300 font-semibold transition"
+            data-i18n="contribute.satellite_button"
+          >
+            🛰️ Compra un satélite
+          </a>
+        </div>
+      </section>
 
-<!-- Agrega esta sección donde prefieras, por ejemplo antes del footer -->
-<section id="cto" class="max-w-4xl mx-auto px-4 py-12 text-center">
-  <h2 class="text-2xl font-bold mb-8" data-i18n="cto.title">CTO</h2>
-  
-  <div class="flex flex-col items-center">
-    <!-- Foto circular (reemplaza la URL por tu imagen) -->
-    <img src="img/EmmanuelMellado_gif.gif" alt="Emmanuel Mellado - CTO" 
-         class="w-40 h-40 rounded-full object-cover border-4 border-yellow-300 mb-4">
-    
-    <h3 class="text-xl font-semibold text-yellow-300">Emmanuel Mellado</h3>
-    <p class="text-slate-300 mt-2" data-i18n="cto.description">
-      Líder técnico, creadir y arquitecto principal de Teethlion
-    </p>
-    
-    <!-- Opcional: Redes sociales -->
-    <div class="flex gap-4 mt-4">
-      <a href="#" class="text-slate-400 hover:text-yellow-300">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-        </svg>
-      </a>
-      <a href="#" class="text-slate-400 hover:text-yellow-300">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-        </svg>
-      </a>
-      <a href="#" class="text-slate-400 hover:text-yellow-300">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd"></path>
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+      <section
+        id="licensing-calculator"
+        class="min-h-screen flex items-center justify-center px-4 py-12"
+      >
+        <div class="max-w-4xl w-full text-center">
+          <h2 class="text-2xl font-bold mb-4" data-i18n="calculator.title">
+            Calculadora de Licenciamiento
+          </h2>
+          <p class="mb-6 text-slate-300" data-i18n="calculator.description">
+            Usa esta herramienta para estimar el coste único de licencias para
+            gobiernos, instituciones o empresas.
+          </p>
 
+          <div
+            class="bg-slate-800 p-6 rounded-lg max-w-md mx-auto text-left space-y-4"
+          >
+            <!-- Tipo de entidad -->
+            <div>
+              <label
+                class="block text-yellow-300 font-semibold mb-1"
+                data-i18n="calculator.entity_type_label"
+              >
+                Tipo de entidad:
+              </label>
+              <select
+                id="entity-type"
+                class="w-full p-2 rounded bg-slate-700 border border-slate-600 text-white"
+              >
+                <option value="gov" data-i18n="calculator.entity_gov">
+                  Gobierno
+                </option>
+                <option value="school" data-i18n="calculator.entity_school">
+                  Escuela
+                </option>
+                <option
+                  value="enterprise"
+                  data-i18n="calculator.entity_enterprise"
+                >
+                  Empresa
+                </option>
+              </select>
+            </div>
+
+            <!-- Número de personas -->
+            <div>
+              <label
+                class="block text-yellow-300 font-semibold mb-1"
+                data-i18n="calculator.people_label"
+              >
+                Número de personas:
+              </label>
+              <input
+                type="number"
+                id="people"
+                value="1000"
+                min="1"
+                class="w-full p-2 rounded bg-slate-700 border border-slate-600 text-white"
+              />
+            </div>
+
+            <!-- Botón calcular -->
+            <button
+              onclick="calculateLicense()"
+              class="w-full bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300 font-semibold transition"
+              data-i18n="calculator.calculate_button"
+            >
+              Calcular costo
+            </button>
+
+            <!-- Resultado -->
+            <div
+              id="result"
+              class="mt-4 p-3 bg-slate-700 rounded text-yellow-300 font-bold text-center"
+            ></div>
+
+            <!-- Información adicional -->
+            <div class="text-sm text-slate-300 mt-4 space-y-2">
+              <div class="flex items-center">
+                <span
+                  class="text-yellow-300 mr-1"
+                  data-i18n="calculator.support_fee"
+                  >Tarifa de soporte y actualizaciones:</span
+                >
+                <span data-i18n="calculator.support_variable">variable</span>
+              </div>
+              <div
+                class="italic text-slate-400"
+                data-i18n="calculator.contact_for_estimate"
+              >
+                Contáctanos para una estimación personalizada.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cto" class="max-w-4xl mx-auto px-4 py-12 text-center">
+        <h2 class="text-2xl font-bold mb-8" data-i18n="cto.title">CTO</h2>
+
+        <div class="flex flex-col items-center">
+          <!-- Foto circular (reemplaza la URL por tu imagen) -->
+          <img
+            src="img/EmmanuelMellado_gif.gif"
+            alt="Emmanuel Mellado - CTO"
+            class="w-40 h-40 rounded-full object-cover border-4 border-yellow-300 mb-4"
+          />
+
+          <h3 class="text-xl font-semibold text-yellow-300">
+            Emmanuel Mellado
+          </h3>
+          <p class="text-slate-300 mt-2" data-i18n="cto.description">
+            Líder técnico, creadir y arquitecto principal de Teethlion
+          </p>
+
+          <!-- Opcional: Redes sociales -->
+          <div class="flex gap-4 mt-4">
+            <a href="#" class="text-slate-400 hover:text-yellow-300">
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="text-slate-400 hover:text-yellow-300">
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="text-slate-400 hover:text-yellow-300">
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <div class="fixed bottom-16 right-4 flex flex-col gap-2 z-50">
-      <button
-        onclick="navigate(-1)"
-        class="bg-slate-800 hover:bg-yellow-300 text-white p-2 rounded-full"
-      >
-        ⬆️
-      </button>
-      <button
-        onclick="navigate(1)"
-        class="bg-slate-800 hover:bg-yellow-300 text-white p-2 rounded-full"
-      >
-        ⬇️
-      </button>
-    </div>
-
-
-
+    <!-- FOOTER -->
     <footer class="text-center text-sm py-4 text-slate-400">
       <span id="footer-phrase" data-i18n="footer.phrase"></span>
     </footer>
 
+    <!-- SCRIPT MENU + FRASE -->
     <script>
-	
-function scrollNav(direction) {
-    const nav = document.getElementById('nav-scroll');
-    const scrollAmount = 150;
-    nav.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });	
-}
-function toggleFinanceDropdown() {
-  const menu = document.getElementById('finance-menu');
-  menu.classList.toggle('hidden');
-  menu.classList.toggle('block');
-}
+      //flechas de navegación
+      function scrollToNextSection() {
+        const current = window.scrollY;
+        const sections = Array.from(
+          document.querySelectorAll("main > section")
+        );
+        const next = sections.find((sec) => sec.offsetTop > current + 10);
+        if (next) {
+          next.scrollIntoView({ behavior: "smooth" });
+        }
+      }
 
-// Cerrar el menú al hacer clic fuera de él
-document.addEventListener('click', function(event) {
-  const dropdown = document.getElementById('finance-dropdown');
-  if (!dropdown.contains(event.target)) {
-    const menu = document.getElementById('finance-menu');
-    menu.classList.add('hidden');
-    menu.classList.remove('block');
-  }
-});
+      function scrollToPrevSection() {
+        const current = window.scrollY;
+        const sections = Array.from(
+          document.querySelectorAll("main > section")
+        );
+        const prevSections = sections.filter(
+          (sec) => sec.offsetTop < current - 10
+        );
+        if (prevSections.length > 0) {
+          const prev = prevSections[prevSections.length - 1];
+          prev.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      // Función para alternar respuestas FAQ
+      function toggleFAQ(id) {
+        const answer = document.getElementById(`faq-answer-${id}`);
+        const icon =
+          answer.previousElementSibling.querySelector("span:last-child");
+
+        answer.classList.toggle("hidden");
+        icon.textContent = answer.classList.contains("hidden") ? "+" : "−";
+      }
+
+      // Formulario de contacto
+      function sanitizeInput(input, regex) {
+        input.value = input.value.replace(regex, "");
+      }
+
+      function sanitizeTextarea(textarea) {
+        textarea.value = textarea.value.replace(
+          /[^A-Za-zÁ-Úá-ú0-9\s.,;:!?¿¡()@\-_\n]/g,
+          ""
+        );
+        updateCharCount(textarea);
+      }
+
+      function updateCharCount(textarea) {
+        const count = textarea.value.length;
+        document.getElementById("char-count").textContent = `${count}/1000`;
+        document
+          .getElementById("char-count")
+          .classList.toggle("text-yellow-300", count > 900);
+      }
+
+      function validateEmail(input) {
+        const email = input.value;
+        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!re.test(email)) {
+          showFeedback("Por favor ingresa un email válido", "error");
+          input.focus();
+          return false;
+        }
+        return true;
+      }
+
+      function showFeedback(message, type) {
+        const feedback = document.getElementById("form-feedback");
+        feedback.textContent = message;
+        feedback.classList.remove("hidden", "bg-red-500", "bg-green-500");
+        feedback.classList.add(
+          type === "error" ? "bg-red-500" : "bg-green-500"
+        );
+        setTimeout(() => feedback.classList.add("hidden"), 7000);
+      }
+
+      document
+        .getElementById("secure-contact-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const form = this;
+          const btn = document.getElementById("submit-btn");
+
+          if (!validateEmail(document.getElementById("secure-email"))) {
+            btn.disabled = false;
+            btn.innerHTML = "Enviar Mensaje";
+            return;
+          }
+
+          btn.disabled = true;
+          btn.innerHTML = '<span class="animate-pulse">Enviando...</span>';
+
+          const formData = new FormData(form);
+
+          try {
+            const response = await fetch(
+              "https://formsubmit.co/ajax/contacto@teethlion.com",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                },
+                body: formData,
+              }
+            );
+
+            if (response.ok) {
+              showFeedback("✅ Mensaje enviado correctamente", "success");
+              btn.innerHTML = "✔️ Enviado";
+              form.reset();
+              updateCharCount(document.getElementById("secure-message"));
+            } else {
+              showFeedback("❌ Error al enviar. Intenta de nuevo.", "error");
+              btn.innerHTML = "Reintentar";
+              btn.disabled = false;
+            }
+          } catch (error) {
+            console.error("Error en envío:", error);
+            showFeedback("❌ Fallo de red. Verifica tu conexión.", "error");
+            btn.innerHTML = "Reintentar";
+            btn.disabled = false;
+          }
+        });
+
+      function scrollNav(direction) {
+        const nav = document.getElementById("nav-scroll");
+        const scrollAmount = 150;
+        nav.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+      }
+      function toggleFinanceDropdown() {
+        const menu = document.getElementById("finance-menu");
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("block");
+      }
+
+      // Cerrar el menú al hacer clic fuera de él
+      document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("finance-dropdown");
+        if (!dropdown.contains(event.target)) {
+          const menu = document.getElementById("finance-menu");
+          menu.classList.add("hidden");
+          menu.classList.remove("block");
+        }
+      });
 
       // Navegación por secciones
       let current = 0;
@@ -1108,76 +1134,83 @@ document.addEventListener('click', function(event) {
       }
 
       // Calculadora de licencias
-// Calculadora de licencias (versión con placeholders dinámicos)
-function calculateLicense() {
-  const people = parseInt(document.getElementById("people").value);
-  const type = document.getElementById("entity-type").value;
-  const resultElement = document.getElementById("result");
+      // Calculadora de licencias (versión con placeholders dinámicos)
+      function calculateLicense() {
+        const people = parseInt(document.getElementById("people").value);
+        const type = document.getElementById("entity-type").value;
+        const resultElement = document.getElementById("result");
 
-  if (type === "school" && people <= 30) {
-    resultElement.textContent =
-      translations[currentLang]["calculator.school_no_license"];
-  } else {
-    const total = people * 1; // 1€ por persona
-    const note = translations[currentLang]["calculator.lifetime_note"];
-    const pattern = translations[currentLang]["calculator.estimated_cost_text"];
-    
-    resultElement.textContent = pattern
-      .replace("{total}", total)
-      .replace("{note}", note);
-  }
-}
+        if (type === "school" && people <= 30) {
+          resultElement.textContent =
+            translations[currentLang]["calculator.school_no_license"];
+        } else {
+          const total = people * 1; // 1€ por persona
+          const note = translations[currentLang]["calculator.lifetime_note"];
+          const pattern =
+            translations[currentLang]["calculator.estimated_cost_text"];
 
-   
-   
-   
-// Función unificada para manejar ambos casos
-function setupContactButtons() {
-  // Botón satélite
-  document.querySelector('[data-i18n="contribute.satellite_button"]')?.addEventListener('click', fillSatelliteMessage);
-  
-  // Botón ampliar red
-  document.querySelector('[data-i18n="contribute.expand_button"]')?.addEventListener('click', fillNetworkExpansionMessage);
-}
+          resultElement.textContent = pattern
+            .replace("{total}", total)
+            .replace("{note}", note);
+        }
+      }
 
-// Ejecutar al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-  setupContactButtons();
-});
+      // Función unificada para manejar ambos casos
+      function setupContactButtons() {
+        // Botón satélite
+        document
+          .querySelector('[data-i18n="contribute.satellite_button"]')
+          ?.addEventListener("click", fillSatelliteMessage);
 
-function fillNetworkExpansionMessage() {
-  setTimeout(() => {
-    const textarea = document.querySelector('#contacto textarea[name="message"]');
-    if (textarea) {
-      const phonePrompt = translations[currentLang]["contact.expansion_phone_prompt"] || "Nuestro número de contacto es:";
-      textarea.value = translations[currentLang]["contact.expansion_message"] 
-        || `Hola, estamos interesados en financiar Teethlion en nuestra comunidad o en una comunidad de nuestro interés. Se requiere soporte para N nodos en un área de un radio de N kilómetros y nos gustaría que nos brinden el soporte y/o la infraestructura para lograrlo. Aportaremos el pago de las licencias y el costo del proyecto y de la infraestructura. ${phonePrompt} _______________`;
-      
-      textarea.focus();
-      textarea.selectionStart = textarea.value.length;
-      textarea.selectionEnd = textarea.value.length;
-    }
-  }, 300);
-}
+        // Botón ampliar red
+        document
+          .querySelector('[data-i18n="contribute.expand_button"]')
+          ?.addEventListener("click", fillNetworkExpansionMessage);
+      }
 
-function fillSatelliteMessage() {
-  // Espera a que se cargue la sección de contacto
-  setTimeout(() => {
-    const textarea = document.querySelector('#contacto textarea[name="message"]');
-    if (textarea) {
-      const phonePrompt = translations[currentLang]["contact.satellite_phone_prompt"] || "Mi número de contacto es:";
-      textarea.value = translations[currentLang]["contact.satellite_message"] 
-        || `Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion. ${phonePrompt} __________`;
-      
-      // Enfoca el campo del mensaje
-      textarea.focus();
-      
-      // Mueve el cursor al final del texto
-      textarea.selectionStart = textarea.value.length;
-      textarea.selectionEnd = textarea.value.length;
-    }
-  }, 300); // Pequeño retraso para asegurar la navegación
-}
+      function fillNetworkExpansionMessage() {
+        setTimeout(() => {
+          const textarea = document.querySelector(
+            '#contacto textarea[name="message"]'
+          );
+          if (textarea) {
+            const phonePrompt =
+              translations[currentLang]["contact.expansion_phone_prompt"] ||
+              "Nuestro número de contacto es:";
+            textarea.value =
+              translations[currentLang]["contact.expansion_message"] ||
+              `Hola, estamos interesados en financiar Teethlion en nuestra comunidad o en una comunidad de nuestro interés. Se requiere soporte para N nodos en un área de un radio de N kilómetros y nos gustaría que nos brinden el soporte y/o la infraestructura para lograrlo. Aportaremos el pago de las licencias y el costo del proyecto y de la infraestructura. ${phonePrompt} _______________`;
+
+            textarea.focus();
+            textarea.selectionStart = textarea.value.length;
+            textarea.selectionEnd = textarea.value.length;
+          }
+        }, 300);
+      }
+
+      function fillSatelliteMessage() {
+        // Espera a que se cargue la sección de contacto
+        setTimeout(() => {
+          const textarea = document.querySelector(
+            '#contacto textarea[name="message"]'
+          );
+          if (textarea) {
+            const phonePrompt =
+              translations[currentLang]["contact.satellite_phone_prompt"] ||
+              "Mi número de contacto es:";
+            textarea.value =
+              translations[currentLang]["contact.satellite_message"] ||
+              `Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion. ${phonePrompt} __________`;
+
+            // Enfoca el campo del mensaje
+            textarea.focus();
+
+            // Mueve el cursor al final del texto
+            textarea.selectionStart = textarea.value.length;
+            textarea.selectionEnd = textarea.value.length;
+          }
+        }, 300); // Pequeño retraso para asegurar la navegación
+      }
 
       // Función para cargar licencias - actualizada
       async function loadLicenses() {
@@ -1211,6 +1244,7 @@ function fillSatelliteMessage() {
       // Traducciones
       const translations = {
         es: {
+          subtitle: "Comunicaciones descentralizadas, libres y soberanas.",
           "nav.que_es": "¿Qué es Teethlion?",
           "nav.descargas": "Descargas",
           "nav.contacto": "Contacto",
@@ -1224,7 +1258,7 @@ function fillSatelliteMessage() {
           "what_is.p1":
             "Teethlion es una red de comunicación local descentralizada que funciona sin Internet. Ideal para hogares, escuelas, instituciones y gobiernos.",
           "what_is.feature1":
-            "Comunicación de voz en tiempo real sobre LAN y WAN.",
+            "Comunicación de voz en tiempo real sobre LAN, MAN, WAN y GAN.",
           "what_is.feature2": "Sin necesidad de servidores centrales.",
           "what_is.feature3": "Seguridad mediante cifrado de grado militar.",
           "what_is.feature4":
@@ -1344,8 +1378,7 @@ function fillSatelliteMessage() {
             "Uso Educativo: Gratis para escuelas y universidades en redes de hasta 30 dispositivos.",
           "manifesto.license.item3":
             "Uso Extendido: Para usos de más de 30 dispositivos, o para redes municipales, empresariales o gubernamentales, se requiere una licencia por cada persona/dispositivo.",
-          "manifesto.license.rates_title":
-            "Tarifas Licencia Vitalicia:",
+          "manifesto.license.rates_title": "Tarifas Licencia Vitalicia:",
           "manifesto.license.rate1":
             "1 € / persona para gobiernos, ciudades o instituciones (&gt;30 usuarios).",
           "manifesto.license.rate2":
@@ -1364,26 +1397,37 @@ function fillSatelliteMessage() {
             "Teethlion es la libertad de comunicar. Es la evolución de las redes humanas.",
           "manifesto.dream.welcome":
             "🕊️✨ Bienvenido a Teethlion. Rugimos juntos.",
-          "contact.satellite_message": "Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion. Mi número de contacto es: __________",
+          "partners.title": "🤝 Partners y Apoyo Institucional",
+          "partners.description":
+            "Teethlion cuenta con el interés de comunidades, ONGs y entidades educativas que promueven la soberanía tecnológica. Si representas a una institución interesada en apoyar el proyecto, contáctanos.",
+          "partners.cta": "📩 Quiero ser Partner",
+          "instances.title": "🌐 Instancias activas",
+          "instances.description": "Teethlion ha sido instalado en:",
+          "instances.extra_info": "nodos verificados en 7 países",
+          "contact.satellite_message":
+            "Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion. Mi número de contacto es: __________",
           "contact.satellite_phone_prompt": "Mi número de contacto es:",
-          "contact.expansion_message": "Hola, estamos interesados en financiar Teethlion en nuestra comunidad o en una comunidad de nuestro interés. Se requiere soporte para N nodos en un área de un radio de N kilómetros y nos gustaría que nos brinden el soporte y/o la infraestructura para lograrlo. Aportaremos el pago de las licencias y el costo del proyecto y de la infraestructura. Nuestro número de contacto es: _______________",
+          "contact.expansion_message":
+            "Hola, estamos interesados en financiar Teethlion en nuestra comunidad o en una comunidad de nuestro interés. Se requiere soporte para N nodos en un área de un radio de N kilómetros y nos gustaría que nos brinden el soporte y/o la infraestructura para lograrlo. Aportaremos el pago de las licencias y el costo del proyecto y de la infraestructura. Nuestro número de contacto es: _______________",
           "contact.expansion_phone_prompt": "Nuestro número de contacto es:",
           "contribute.donation_10": "Donación €10",
           "contribute.donation_25": "Donación €25",
           "contribute.card_donation": "Donación con Tarjeta",
           "cto.title": "CTO del Proyecto",
-          "cto.description": "Líder técnico y arquitecto principal de Teethlion",
+          "cto.description":
+            "Líder técnico y arquitecto principal de Teethlion",
           footer: {
-    phrases: [
-      "Potenciado por tecnología Abierta",
-      "Software libre, seguro y soberano",
-      "Tecnología descentralizada para todos",
-      "Construido con Go, libp2p y corazón"
-    ]
-  },
-    "footer.phrase": "" // Este se actualizará dinámicamente
+            phrases: [
+              "Potenciado por tecnología Abierta",
+              "Software libre, seguro y soberano",
+              "Tecnología descentralizada para todos",
+              "Construido con Go, libp2p y corazón",
+            ],
+          },
+          "footer.phrase": "", // Este se actualizará dinámicamente
         },
         en: {
+          subtitle: "Decentralised, free and sovereign communications.",
           "nav.que_es": "What is Teethlion?",
           "nav.descargas": "Downloads",
           "nav.contacto": "Contact",
@@ -1414,6 +1458,7 @@ function fillSatelliteMessage() {
             "Need mobile functionalities, SaaS integration, and embedded devices?",
           "downloads.contact_us": "Contact us",
           "downloads.enterprise_version": " for the enterprise version.",
+          tooltip: "Próximamente Q3 2025",
           "roadmap.title": "Roadmap",
           "roadmap.v1.title": "✅ Version 1.0",
           "roadmap.v1.item1": "CLI + SPA Web",
@@ -1512,8 +1557,7 @@ function fillSatelliteMessage() {
             "Educational Use: Free for schools and universities in networks of up to 30 devices.",
           "manifesto.license.item3":
             "Extended Use: For uses of more than 30 devices, or for municipal, business, or governmental networks, a license is required per person/device.",
-          "manifesto.license.rates_title":
-            "Lifetime License Fees:",
+          "manifesto.license.rates_title": "Lifetime License Fees:",
           "manifesto.license.rate1":
             "€1 / person for governments, cities, or institutions (>30 users).",
           "manifesto.license.rate2":
@@ -1532,9 +1576,18 @@ function fillSatelliteMessage() {
             "Teethlion is the freedom to communicate. It is the evolution of human networks.",
           "manifesto.dream.welcome":
             "🕊️✨ Welcome to Teethlion. We roar together.",
-          "contact.satellite_message": "I'm interested in making a significant donation or collaborating with your project by deploying my own satellite or providing access to my satellite(s)/relay nodes to the Teethlion network. My contact number is: __________",
+          "partners.title": "🤝 Partners and Institutional Support",
+          "partners.description":
+            "Teethlion has the interest of communities, NGOs and educational entities that promote technological sovereignty. If you represent an institution interested in supporting the project, please contact us.",
+          "partners.cta": "📩 I want to become a Partner.",
+          "instances.title": "🌐 Active instances",
+          "instances.description": "Teethlion was installed on::",
+          "instances.extra_info": "verified nodes in 7 countries",
+          "contact.satellite_message":
+            "I'm interested in making a significant donation or collaborating with your project by deploying my own satellite or providing access to my satellite(s)/relay nodes to the Teethlion network. My contact number is: __________",
           "contact.satellite_phone_prompt": "My contact number is:",
-          "contact.expansion_message": "Hello, we are interested in funding Teethlion in our community or in a community of our interest. Support is required for N nodes in an area with a radius of N kilometers, and we would like you to provide the support and/or infrastructure to achieve this. We will contribute payment for the licenses and the project and infrastructure costs. Our contact number is: _______________",
+          "contact.expansion_message":
+            "Hello, we are interested in funding Teethlion in our community or in a community of our interest. Support is required for N nodes in an area with a radius of N kilometers, and we would like you to provide the support and/or infrastructure to achieve this. We will contribute payment for the licenses and the project and infrastructure costs. Our contact number is: _______________",
           "contact.expansion_phone_prompt": "Our contact number is:",
           "contribute.donation_10": "Donate €10",
           "contribute.donation_25": "Donate €25",
@@ -1543,16 +1596,17 @@ function fillSatelliteMessage() {
           "cto.description": "Technical lead and chief architect of Teethlion",
 
           footer: {
-    phrases: [
-      "Powered by Open technology",
-      "Free, secure and sovereign software",
-      "Decentralized technology for everyone",
-      "Built with Go, libp2p and heart"
-    ]
-  },
-    "footer.phrase": "" // Este se actualizará dinámicamente
+            phrases: [
+              "Powered by Open technology",
+              "Free, secure and sovereign software",
+              "Decentralized technology for everyone",
+              "Built with Go, libp2p and heart",
+            ],
+          },
+          "footer.phrase": "", // Este se actualizará dinámicamente
         },
         de: {
+          subtitle: "Dezentralisierte, freie und souveräne Kommunikation.",
           "nav.que_es": "Was ist Teethlion?",
           "nav.descargas": "Downloads",
           "nav.contacto": "Kontakt",
@@ -1583,6 +1637,7 @@ function fillSatelliteMessage() {
             "Benötigen Sie mobile Funktionen, SaaS-Integration und eingebettete Geräte?",
           "downloads.contact_us": "Kontaktieren Sie uns",
           "downloads.enterprise_version": " für die Unternehmensversion.",
+          tooltip: "Verfügbar ab Q3 2025",
           "roadmap.title": "Roadmap",
           "roadmap.v1.title": "✅ Version 1.0",
           "roadmap.v1.item1": "CLI + SPA Web",
@@ -1684,8 +1739,7 @@ function fillSatelliteMessage() {
             "Pädagogische Nutzung: Kostenlos für Schulen und Universitäten in Netzwerken mit bis zu 30 Geräten.",
           "manifesto.license.item3":
             "Erweiterte Nutzung: Für Nutzungen mit mehr als 30 Geräten oder für kommunale, unternehmerische oder staatliche Netzwerke ist eine Lizenz pro Person/Gerät erforderlich.",
-          "manifesto.license.rates_title":
-            "Gebühren für lebenslange Lizenz:",
+          "manifesto.license.rates_title": "Gebühren für lebenslange Lizenz:",
           "manifesto.license.rate1":
             "1 € / Person für Regierungen, Städte oder Institutionen (>30 Benutzer).",
           "manifesto.license.rate2":
@@ -1704,24 +1758,34 @@ function fillSatelliteMessage() {
             "Teethlion ist die Freiheit zu kommunizieren. Es ist die Evolution menschlicher Netzwerke.",
           "manifesto.dream.welcome":
             "🕊️✨ Willkommen bei Teethlion. Wir brüllen zusammen.",
-          "contact.satellite_message": "Ich interessiere mich für eine große Spende oder die Zusammenarbeit mit Ihrem Projekt durch den Einsatz eines eigenen Satelliten oder den Zugang zu meinem/m Satelliten/Relay-Knoten zum Teethlion-Netzwerk. Meine Kontaktnummer lautet: __________",
+          "partners.title": "🤝 Partner und institutionelle Unterstützung",
+          "partners.description":
+            "Teethlion hat das Interesse von Gemeinden, Nichtregierungsorganisationen und Bildungseinrichtungen, die technologische Souveränität fördern. Wenn Sie eine Institution vertreten, die an einer Unterstützung des Projekts interessiert ist, kontaktieren Sie uns bitte.",
+          "partners.cta": "📩 Ich möchte ein Partner werden.",
+          "instances.title": "🌐 Aktive Instanzen",
+          "instances.description": "Teethlion wurde installiert auf:",
+          "instances.extra_info": "verifizierte Knoten in 7 Ländern",
+          "contact.satellite_message":
+            "Ich interessiere mich für eine große Spende oder die Zusammenarbeit mit Ihrem Projekt durch den Einsatz eines eigenen Satelliten oder den Zugang zu meinem/m Satelliten/Relay-Knoten zum Teethlion-Netzwerk. Meine Kontaktnummer lautet: __________",
           "contact.satellite_phone_prompt": "Meine Kontaktnummer ist:",
-          "contact.expansion_message": "Hallo, wir sind daran interessiert, Teethlion in unserer Gemeinde oder in einer Gemeinde unseres Interesses zu finanzieren. Unterstützung wird für N Knoten in einem Gebiet mit einem Radius von N Kilometern benötigt, und wir möchten, dass Sie die Unterstützung und/oder Infrastruktur bereitstellen, um dies zu erreichen. Wir werden die Zahlung der Lizenzen und die Projekt- und Infrastrukturkosten übernehmen. Unsere Kontaktnummer lautet: _______________",
+          "contact.expansion_message":
+            "Hallo, wir sind daran interessiert, Teethlion in unserer Gemeinde oder in einer Gemeinde unseres Interesses zu finanzieren. Unterstützung wird für N Knoten in einem Gebiet mit einem Radius von N Kilometern benötigt, und wir möchten, dass Sie die Unterstützung und/oder Infrastruktur bereitstellen, um dies zu erreichen. Wir werden die Zahlung der Lizenzen und die Projekt- und Infrastrukturkosten übernehmen. Unsere Kontaktnummer lautet: _______________",
           "contact.expansion_phone_prompt": "Unsere Kontaktnummer ist:",
           "contribute.donation_10": "Spende €10",
           "contribute.donation_25": "Spende €25",
           "contribute.card_donation": "Kartenspende",
           "cto.title": "CTO des Projekts",
-          "cto.description": "Technischer Leiter und Hauptarchitekt von Teethlion",
+          "cto.description":
+            "Technischer Leiter und Hauptarchitekt von Teethlion",
           footer: {
-    phrases: [
-      "Unterstützt durch Open-Technology",
-      "Freie, sichere und souveräne Software",
-      "Dezentrale Technologie für alle",
-      "Erbaut mit Go, libp2p und Herz"
-    ]
-  },
-    "footer.phrase": "" // Este se actualizará dinámicamente
+            phrases: [
+              "Unterstützt durch Open-Technology",
+              "Freie, sichere und souveräne Software",
+              "Dezentrale Technologie für alle",
+              "Erbaut mit Go, libp2p und Herz",
+            ],
+          },
+          "footer.phrase": "", // Este se actualizará dinámicamente
         },
       };
 
@@ -1746,6 +1810,17 @@ function fillSatelliteMessage() {
           }
         });
 
+        //tooltip de descargas
+        function showDownloadTooltip() {
+          const tooltip = document.getElementById("download-tooltip");
+          const message =
+            translations[currentLang]?.downloads?.tooltip ||
+            "Próximamente Q3 2025";
+          tooltip.textContent = message;
+          tooltip.classList.remove("hidden");
+          setTimeout(() => tooltip.classList.add("hidden"), 3000);
+        }
+
         // Actualizar placeholders
         document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
           const key = el.getAttribute("data-i18n-placeholder");
@@ -1754,39 +1829,92 @@ function fillSatelliteMessage() {
           }
         });
 
-
-  // Actualizar el footer con una frase aleatoria
-  updateFooterPhrase();
-
+        // Actualizar el footer con una frase aleatoria
+        updateFooterPhrase();
       }
 
-
       function updateFooterPhrase() {
-  // Obtener las frases del idioma actual, con fallback a español si no existen
-  const phrases = translations[currentLang]?.footer?.phrases || 
-                 translations[currentLang]?.phrases || 
-                 translations['es'].footer.phrases;
-  
-  if (phrases && phrases.length > 0) {
-    const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-    document.getElementById('footer-phrase').textContent = randomPhrase;
-  } else {
-    // Fallback en caso de que no haya frases disponibles
-    document.getElementById('footer-phrase').textContent = "Comunicaciones descentralizadas";
-  }
-}
+        // Obtener las frases del idioma actual, con fallback a español si no existen
+        const phrases =
+          translations[currentLang]?.footer?.phrases ||
+          translations[currentLang]?.phrases ||
+          translations["es"].footer.phrases;
 
+        if (phrases && phrases.length > 0) {
+          const randomPhrase =
+            phrases[Math.floor(Math.random() * phrases.length)];
+          document.getElementById("footer-phrase").textContent = randomPhrase;
+        } else {
+          // Fallback en caso de que no haya frases disponibles
+          document.getElementById("footer-phrase").textContent =
+            "Comunicaciones descentralizadas";
+        }
+      }
 
-      // Al cargar la página
       document.addEventListener("DOMContentLoaded", () => {
-        loadLicenses(); // Cargar licencias primero
-        showLicense("agpl"); // Mostrar AGPL por defecto
-        setLang("es"); // Establecer idioma
-        updateFooterPhrase(); // Asegurarse de que el footer se muestre correctamente
+        // Elementos del menú
+        const menu = document.getElementById("offcanvas");
+        const openBtn = document.getElementById("hamburger");
+        const closeBtn = document.getElementById("close-menu");
+        const overlay = document.getElementById("overlay");
+
+        // Función para abrir el menú
+        function openMenu() {
+          menu.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          document.body.style.overflow = "hidden"; // Previene el scroll del body
+        }
+
+        // Función para cerrar el menú
+        function closeMenu() {
+          menu.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+          document.body.style.overflow = ""; // Restaura el scroll del body
+        }
+
+        // Event listeners
+        if (openBtn) openBtn.addEventListener("click", openMenu);
+        if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+        if (overlay) overlay.addEventListener("click", closeMenu);
+
+        // Cerrar con tecla Escape
+        document.addEventListener("keydown", (e) => {
+          if (
+            e.key === "Escape" &&
+            !menu.classList.contains("-translate-x-full")
+          ) {
+            closeMenu();
+          }
+        });
+
+        // Cerrar al hacer clic en enlaces del menú
+        document.querySelectorAll("#offcanvas a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        // Resto de inicializaciones...
+        loadLicenses();
+        showLicense("agpl");
+        setLang("es");
+        updateFooterPhrase();
+        setupContactButtons();
       });
-	  
-	  
-	  
     </script>
+    <div class="fixed right-4 bottom-6 flex flex-col gap-4 z-50">
+      <button
+        onclick="scrollToPrevSection()"
+        class="bg-slate-800 hover:bg-slate-600 text-white p-3 rounded-full shadow transition"
+        title="Volver arriba"
+      >
+        ⬆️
+      </button>
+      <button
+        onclick="scrollToNextSection()"
+        class="bg-slate-800 hover:bg-slate-600 text-white p-3 rounded-full shadow transition"
+        title="Próximamente Q3 2025"
+      >
+        ⬇️
+      </button>
+    </div>
   </body>
 </html>
