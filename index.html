@@ -166,19 +166,40 @@
 
     <main class="pt-20 space-y-0">
       <!-- Agregaremos aquí las mismas secciones que ya usas, pero asegurando que cada una tenga: min-h-screen flex justify-center -->
+<section
+  id="hero"
+  class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-[10vh] pb-[12vh] relative z-10"
+>
+  <div class="flex flex-col items-center justify-center flex-grow">
+    <h1 class="text-4xl font-extrabold text-white mb-4">Teethlion</h1>
 
-      <section
-        id="hero"
-        class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-12 relative z-10"
-      >
-        <h1 class="text-4xl font-extrabold text-white mb-4">Teethlion</h1>
-        <p
-          class="text-lg text-yellow-300 max-w-xl typewriter"
-          data-i18n="hero.subtitle"
-        >
-          Comunicaciones descentralizadas, libres y soberanas.
-        </p>
-      </section>
+    <p
+      class="text-lg text-yellow-300 max-w-xl mb-6"
+      id="rotatingSubtitle"
+      data-i18n="subtitle"
+    >
+      Comunicaciones descentralizadas, libres y soberanas.
+    </p>
+  </div>
+
+  <!-- Footer de la sección -->
+<!-- Footer de la sección -->
+<div class="w-full text-center mt-auto">
+  <p class="text-xs text-gray-400 px-4 pb-4">
+    <span class="text-gray-400" data-i18n-html="hero.note">
+      <sup>*</sup> Hasta 5 nodos en la misma LAN; en entornos educativos, hasta 30 nodos.
+    </span>
+  </p>
+</div>
+
+</section>
+
+
+
+
+
+
+
 
       <!-- Ejemplo de cómo aplicar clases para cada seccion individualmente: -->
       <section id="que-es" class="min-h-screen flex items-center px-4">
@@ -212,6 +233,24 @@
         </div>
       </section>
 
+
+
+<!-- Sección de los tipos de nodos -->
+<section id="tipos-nodo" class="min-h-screen flex items-center justify-center px-4 py-12 bg-slate-900">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-yellow-300 mb-8" data-i18n="nodes.title">🧬 Tipos de Nodos en Teethlion</h2>
+    <p class="text-slate-300 mb-12 max-w-3xl mx-auto" data-i18n="nodes.description">
+      Teethlion está compuesto por una red de nodos especializados que cooperan para garantizar comunicaciones descentralizadas, seguras y eficientes. Cada nodo cumple un rol único dentro del ecosistema.
+    </p>
+    <div id="node-type-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 text-left"></div>
+  </div>
+</section>
+
+
+
+
+
+
       <!-- Nueva sección del simulador --><!-- Sección del simulador -->
       <section
         id="simulator"
@@ -219,7 +258,7 @@
       >
         <div class="max-w-4xl w-full">
           <h2 class="text-2xl font-bold text-white text-center mb-6">
-            Demo Redes Teethlion
+            Demostración de Teethlion
           </h2>
 
           <!-- Aquí monta React -->
@@ -966,6 +1005,28 @@ Cargando licencia TOL...</pre
 
     <!-- SCRIPT MENU + FRASE -->
     <script>
+
+        let currentLang = "es"; // o cualquier idioma por defecto que uses
+
+
+//titulo inicial
+function initHeroRotation() {
+  const msgEl = document.getElementById("hero-message");
+  const noteEl = document.getElementById("hero-note");
+
+  const msgs = translations[currentLang]?.["hero.messages"] || [];
+  const note = translations[currentLang]?.["hero.note"] || "";
+
+  if (msgs.length) {
+    const randomMessage = msgs[Math.floor(Math.random() * msgs.length)];
+    msgEl.innerHTML = randomMessage;
+    noteEl.innerHTML = note;
+  }
+}
+
+
+
+
       //flechas de navegación
       function scrollToNextSection() {
         const current = window.scrollY;
@@ -1104,15 +1165,6 @@ Cargando licencia TOL...</pre
         menu.classList.toggle("block");
       }
 
-      // Cerrar el menú al hacer clic fuera de él
-      document.addEventListener("click", function (event) {
-        const dropdown = document.getElementById("finance-dropdown");
-        if (!dropdown.contains(event.target)) {
-          const menu = document.getElementById("finance-menu");
-          menu.classList.add("hidden");
-          menu.classList.remove("block");
-        }
-      });
 
       // Navegación por secciones
       let current = 0;
@@ -1265,7 +1317,17 @@ Cargando licencia TOL...</pre
       const translations = {
         es: {
           subtitle: "Comunicaciones descentralizadas, libres y soberanas.",
-          "nav.que_es": "¿Qué es Teethlion?",
+          "hero.messages": [
+  "Libre para uso personal<sup>*</sup>",
+  "La red más poderosa del mundo P2P * libre para uso personal ha nacido",
+  "Hecho con amor por un ingeniero Venezolano/Español. Tecnología en trámite de patente y marca registrada."
+],
+"hero.note": "<sup>*</sup> Hasta 5 nodos en la misma LAN; en entornos educativos, hasta 30 nodos.",
+"node_types.title": "🧩 Tipos de Nodos en Teethlion",
+"node_types.description":  "Cada nodo en la red Teethlion cumple una función específica. La combinación de estos nodos crea una infraestructura robusta, descentralizada y evolutiva.",          
+
+
+"nav.que_es": "¿Qué es Teethlion?",
           "nav.descargas": "Descargas",
           "nav.contacto": "Contacto",
           "nav.roadmap": "Roadmap",
@@ -1288,13 +1350,15 @@ Cargando licencia TOL...</pre
           "licensing_general.title": "Licenciamiento",
           "licensing_general.p1":
             "Gratis para uso personal y educativo (hasta 5 dispositivos en la misma red LAN). Para escuelas con más de 30 dispositivos o instituciones, se requiere licencia. La licencia incluye funcionalidades adicionales no presentes en la versión libre.",
-          "downloads.title": "Descargas",
+"nodes.title": "🧬 Tipos de Nodos en Teethlion",
+"nodes.description": "Teethlion está compuesto por una red de nodos especializados que cooperan para garantizar comunicaciones descentralizadas, seguras y eficientes. Cada nodo cumple un rol único dentro del ecosistema.",
+            "downloads.title": "Descargas",
           "downloads.linux": "⬇️ Linux",
           "downloads.windows": "⬇️ Windows",
           "downloads.macos": "⬇️ macOS",
           "downloads.enterprise_prompt":
             "¿Necesitas funcionalidades móviles, integración SaaS y dispositivos embebidos?",
-          "downloads.contact_us": "Contáctanos",
+            "downloads.contact_us": "Contáctanos",
           "downloads.enterprise_version": " para la versión empresarial.",
           "roadmap.title": "Roadmap",
           "roadmap.v1.title": "✅ Versión 1.0",
@@ -1309,7 +1373,234 @@ Cargando licencia TOL...</pre
           "roadmap.private.title": "🛡️ Privado (TOL)",
           "roadmap.private.desc":
             "Versión extendida para gobiernos y empresas.",
-          "contact.title": "Contacto",
+            "node.user.name": "Usuario",
+  "node.user.desc": "Nodo estándar para comunicación directa P2P.",
+  "node.relay.name": "Repetidor",
+  "node.relay.desc": "Extiende la señal a otras zonas sin cobertura directa.",
+  "node.bootstrap.name": "Nodo Bootstrap",
+  "node.bootstrap.desc": "Ayuda a nuevos nodos a entrar en la red.",
+  "node.honeypot.name": "Honeypot",
+  "node.honeypot.desc": "Simula nodos reales para detectar actividad maliciosa.",
+  "node.guard.name": "Guardia",
+  "node.guard.desc": "Verifica y filtra el tráfico para evitar intrusiones.",
+  "node.ai.name": "Nodo IA",
+  "node.ai.desc": "Procesa transcripción, traducción o análisis en tiempo real.",
+  "node.relay_bootstrap.name": "Relay-Bootstrap",
+  "node.relay_bootstrap.desc": "Funciona como puente y como punto de entrada para nuevos nodos.",
+  "node.ai_user.name": "AI-User",
+  "node.ai_user.desc": "Nodo de usuario con capacidades de IA para traducción y análisis local.",
+  "node.iot_future_x.name": "IoT-Future-X",
+  "node.iot_future_x.desc": "Nodo experimental para IoT, autos, drones o sensores avanzados.",
+  "node.observer.name": "Observador",
+  "node.observer.desc": "Solo escucha y monitoriza el tráfico sin participar.",
+  "node.satellite.name": "Satélite",
+  "node.satellite.desc": "Nodo espacial o remoto que brinda acceso en zonas extremas.",
+  "node.router.name": "Router Seguro",
+  "node.router.desc": "Nodo intermedio que enruta tráfico entre zonas de la red.",
+  "node.dtn.name": "Nodo Delay Tolerant",
+  "node.dtn.desc": "Ideal para entornos con conectividad intermitente.",
+  "node.mesh_node.name": "Nodo Malla",
+  "node.mesh_node.desc": "Permite una red autoorganizada entre múltiples dispositivos.",
+  "node.bridge.name": "Puente",
+"node.bridge.desc": "Conecta redes Teethlion con redes externas (VPN, Tor, Internet). Ideal para zonas con censura.",
+"node.trainer.name": "Entrenador",
+"node.trainer.desc": "Nodo que entrena modelos de IA localmente sin comprometer privacidad.",
+"node.satellite.name": "Satélite",
+"node.satellite.desc": "Nodo elevado (dron, globo, satélite) que conecta zonas remotas.",
+"node.vault.name": "Bóveda",
+"node.vault.desc": "Guarda claves y credenciales críticas. Requiere múltiples firmas.",
+"node.forensic.name": "Forense",
+"node.forensic.desc": "Nodo auditor que registra actividad sin participar. Ideal para trazabilidad legal.",
+"node.secure_mesh_gateway.name": "Gateway Malla Segura",
+"node.secure_mesh_gateway.desc": "Puerta de enlace híbrida entre Teethlion y otras redes.",
+"node.secure_mesh_gateway.modal_title": "🔌 Gateway Malla Segura",
+"node.secure_mesh_gateway.modal_desc": "Nodo híbrido que conecta Teethlion con redes externas como mallas comunitarias, Wi-Fi públicas o infraestructuras privadas.",
+"node.secure_mesh_gateway.modal_usage": [
+  "Para interconectar Teethlion con una red mesh comunitaria o Wi-Fi pública.",
+  "Para crear puertas de enlace seguras entre sensores IoT y nodos Teethlion.",
+  "Como interfaz entre redes críticas (salud, seguridad) y Teethlion.",
+  "Para sincronizar datos entre redes cerradas y Teethlion sin comprometer seguridad."
+], 
+  "node.user.name": "Usuario",
+  "node.user.desc": "Nodo estándar para comunicación directa P2P.",
+  "node.user.modal_title": "👤 Nodo Usuario",
+  "node.user.modal_desc": "Nodo más común en Teethlion. Participa en chats y llamadas P2P.",
+  "node.user.modal_usage": [
+    "Para usuarios individuales en hogares, escuelas o instituciones.",
+    "Para dispositivos móviles o laptops dentro de la red Teethlion.",
+    "Para participar en comunicaciones cifradas P2P."
+  ],
+
+  "node.relay.name": "Repetidor",
+  "node.relay.desc": "Extiende la señal a otras zonas sin cobertura directa.",
+  "node.relay.modal_title": "📡 Nodo Repetidor",
+  "node.relay.modal_desc": "Amplifica la cobertura de la red Teethlion a zonas alejadas.",
+  "node.relay.modal_usage": [
+    "Para expandir la red Teethlion dentro de un edificio grande o zona amplia.",
+    "Ideal para entornos rurales o urbanos con obstáculos físicos.",
+    "Puede ser instalado en techos o puntos elevados sin requerir interacción directa."
+  ],
+
+  "node.bootstrap.name": "Nodo Bootstrap",
+  "node.bootstrap.desc": "Ayuda a nuevos nodos a entrar en la red.",
+  "node.bootstrap.modal_title": "🚀 Nodo Bootstrap",
+  "node.bootstrap.modal_desc": "Nodo central que facilita el ingreso de nuevos participantes en la red.",
+  "node.bootstrap.modal_usage": [
+    "Para iniciar una nueva red Teethlion en zonas sin infraestructura previa.",
+    "Para garantizar la disponibilidad de peers iniciales.",
+    "Puede estar activo 24/7 en una red local o remota."
+  ],
+
+  "node.honeypot.name": "Honeypot",
+  "node.honeypot.desc": "Simula nodos reales para detectar actividad maliciosa.",
+  "node.honeypot.modal_title": "🕵️ Nodo Honeypot",
+  "node.honeypot.modal_desc": "Nodo señuelo que simula servicios para detectar ataques.",
+  "node.honeypot.modal_usage": [
+    "Para seguridad avanzada en redes sensibles.",
+    "Para detectar escaneos o comportamientos anómalos.",
+    "Ideal para entornos gubernamentales o industriales."
+  ],
+
+  "node.guard.name": "Guardia",
+  "node.guard.desc": "Verifica y filtra el tráfico para evitar intrusiones.",
+  "node.guard.modal_title": "🛡️ Nodo Guardia",
+  "node.guard.modal_desc": "Monitorea y protege la red frente a amenazas internas o externas.",
+  "node.guard.modal_usage": [
+    "Para validar conexiones entrantes o salientes.",
+    "Para bloquear tráfico malicioso o no autorizado.",
+    "Para entornos con alta necesidad de seguridad (salud, defensa, gobierno)."
+  ],
+
+  "node.ai.name": "Nodo IA",
+  "node.ai.desc": "Procesa transcripción, traducción o análisis en tiempo real.",
+  "node.ai.modal_title": "🤖 Nodo Inteligencia Artificial",
+  "node.ai.modal_desc": "Nodo dedicado a tareas de IA como traducción, síntesis de voz y análisis contextual.",
+  "node.ai.modal_usage": [
+    "Para traducir llamadas en tiempo real.",
+    "Para ejecutar modelos de voz o texto sin conexión.",
+    "Para análisis de datos locales sin comprometer privacidad."
+  ],
+
+  "node.relay_bootstrap.name": "Relay-Bootstrap",
+  "node.relay_bootstrap.desc": "Funciona como puente y como punto de entrada para nuevos nodos.",
+  "node.relay_bootstrap.modal_title": "🌐 Relay-Bootstrap",
+  "node.relay_bootstrap.modal_desc": "Nodo mixto que extiende cobertura y ofrece acceso inicial a la red.",
+  "node.relay_bootstrap.modal_usage": [
+    "Ideal para comunidades medianas que requieren cobertura y acceso.",
+    "Para usar en puntos estratégicos como plazas o escuelas.",
+    "Reduce la carga de otros nodos Bootstrap."
+  ],
+
+  "node.ai_user.name": "AI-User",
+  "node.ai_user.desc": "Nodo de usuario con capacidades de IA para traducción y análisis local.",
+  "node.ai_user.modal_title": "🧠 AI-User",
+  "node.ai_user.modal_desc": "Usuario avanzado que integra procesamiento de IA de manera local.",
+  "node.ai_user.modal_usage": [
+    "Ideal para periodistas, diplomáticos o investigadores.",
+    "Permite usar IA sin conexión a internet.",
+    "Traducción de mensajes, detección de emociones o análisis automático."
+  ],
+
+  "node.iot_future_x.name": "IoT-Future-X",
+  "node.iot_future_x.desc": "Nodo experimental para IoT, autos, drones o sensores avanzados.",
+  "node.iot_future_x.modal_title": "🌟 Nodo IoT-Future-X",
+  "node.iot_future_x.modal_desc": "Nodo versátil y modular para dispositivos embebidos y nuevas tecnologías.",
+  "node.iot_future_x.modal_usage": [
+    "Para conectar sensores en ciudades inteligentes.",
+    "Para control de drones o robótica comunitaria.",
+    "En investigación tecnológica con hardware experimental."
+  ],
+
+  "node.observer.name": "Observador",
+  "node.observer.desc": "Solo escucha y monitoriza el tráfico sin participar.",
+  "node.observer.modal_title": "👁️ Nodo Observador",
+  "node.observer.modal_desc": "Nodo pasivo que permite auditoría sin interacción.",
+  "node.observer.modal_usage": [
+    "Para estudios de red, pruebas o auditorías.",
+    "Ideal para análisis forense o educativos.",
+    "No envía tráfico ni responde a peticiones.",
+  ],
+
+  "node.satellite.name": "Satélite",
+  "node.satellite.desc": "Nodo espacial o remoto que brinda acceso en zonas extremas.",
+  "node.satellite.modal_title": "🛰️ Nodo Satélite",
+  "node.satellite.modal_desc": "Nodo remoto (dron, globo, satélite) que conecta zonas de difícil acceso.",
+  "node.satellite.modal_usage": [
+    "Para conectar zonas sin infraestructura terrestre.",
+    "Ideal en montañas, desiertos o emergencias.",
+    "Puede ser alimentado por energía solar y operar de forma autónoma.",
+  ],
+
+  "node.router.name": "Router Seguro",
+  "node.router.desc": "Nodo intermedio que enruta tráfico entre zonas de la red.",
+  "node.router.modal_title": "📶 Router Seguro",
+  "node.router.modal_desc": "Nodo especializado en el enrutamiento seguro de datos dentro de Teethlion.",
+  "node.router.modal_usage": [
+    "Para redes con múltiples segmentos o edificios.",
+    "Para enrutar mensajes entre zonas de distinta cobertura.",
+    "Proporciona eficiencia y segmentación sin comprometer la privacidad."
+  ],
+
+  "node.dtn.name": "Nodo Delay Tolerant",
+  "node.dtn.desc": "Ideal para entornos con conectividad intermitente.",
+  "node.dtn.modal_title": "⏳ Nodo DTN (Delay Tolerant)",
+  "node.dtn.modal_desc": "Nodo diseñado para tolerar desconexiones o retrasos.",
+  "node.dtn.modal_usage": [
+    "Ideal para zonas rurales o móviles.",
+    "Permite almacenamiento temporal de mensajes.",
+    "Inspirado en redes espaciales y sistemas resilientes.",
+  ],
+
+  "node.mesh_node.name": "Nodo Malla",
+  "node.mesh_node.desc": "Permite una red autoorganizada entre múltiples dispositivos.",
+  "node.mesh_node.modal_title": "🌐 Nodo Malla",
+  "node.mesh_node.modal_desc": "Conecta automáticamente con otros nodos cercanos para formar una red dinámica.",
+  "node.mesh_node.modal_usage": [
+    "Ideal para redes comunitarias sin infraestructura previa.",
+    "Permite expansión orgánica y resiliente.",
+    "Se adapta automáticamente a cambios en el entorno físico.",
+  ],
+
+  "node.bridge.name": "Puente",
+  "node.bridge.desc": "Conecta redes Teethlion con redes externas (VPN, Tor, Internet). Ideal para zonas con censura.",
+  "node.bridge.modal_title": "🌉 Nodo Puente",
+  "node.bridge.modal_desc": "Permite el flujo selectivo de datos entre Teethlion y otras redes globales.",
+  "node.bridge.modal_usage": [
+    "Para enviar información al exterior de manera segura.",
+    "Para redirigir tráfico mediante VPN, Tor u otras capas seguras.",
+    "Permite anonimato en entornos censurados.",
+  ],
+
+  "node.trainer.name": "Entrenador",
+  "node.trainer.desc": "Nodo que entrena modelos de IA localmente sin comprometer privacidad.",
+  "node.trainer.modal_title": "📚 Nodo Entrenador",
+  "node.trainer.modal_desc": "Nodo especializado en el entrenamiento descentralizado de modelos de IA.",
+  "node.trainer.modal_usage": [
+    "Para investigación o formación de modelos federados.",
+    "Para uso educativo en ciencia de datos.",
+    "Puede entrenar sin enviar datos a la nube.",
+  ],
+
+  "node.vault.name": "Bóveda",
+  "node.vault.desc": "Guarda claves y credenciales críticas. Requiere múltiples firmas.",
+  "node.vault.modal_title": "🔐 Nodo Bóveda",
+  "node.vault.modal_desc": "Almacena información sensible y requiere consenso para su acceso.",
+  "node.vault.modal_usage": [
+    "Para gestionar llaves privadas y certificados.",
+    "Requiere validación multi-firma para extraer datos.",
+    "Ideal en redes institucionales o gubernamentales.",
+  ],
+
+  "node.forensic.name": "Forense",
+  "node.forensic.desc": "Nodo auditor que registra actividad sin participar. Ideal para trazabilidad legal.",
+  "node.forensic.modal_title": "🧾 Nodo Forense",
+  "node.forensic.modal_desc": "Nodo de auditoría pasiva que graba eventos relevantes sin intervenir.",
+  "node.forensic.modal_usage": [
+    "Para generar evidencia digital firmada.",
+    "Ideal en contextos legales, escolares o gubernamentales.",
+    "Puede exportar reportes para análisis externo.",
+  ],
+"contact.title": "Contacto",
           "contact.name_placeholder": "Tu nombre",
           "contact.email_placeholder": "Tu correo",
           "contact.message_placeholder": "Tu mensaje",
@@ -1448,7 +1739,15 @@ Cargando licencia TOL...</pre
         },
         en: {
           subtitle: "Decentralised, free and sovereign communications.",
+          "hero.messages": [
+  "Free for personal use<sup>*</sup>",
+  "The most powerful P2P network in the world * free for personal use is born",
+  "Built with love by a Venezuelan/Spanish engineer. Patent-pending technology and trademarked."
+],
+"hero.note": "<sup>*</sup> Up to 5 nodes on the same LAN; up to 30 nodes in educational environments.",
           "nav.que_es": "What is Teethlion?",
+"node_types.title": "🧩 Node Types in Teethlion",
+"node_types.description":  "Each node in the Teethlion network serves a specific role. Their combination builds a resilient, decentralized, and evolving infrastructure.",
           "nav.descargas": "Downloads",
           "nav.contacto": "Contact",
           "nav.roadmap": "Roadmap",
@@ -1477,6 +1776,197 @@ Cargando licencia TOL...</pre
           "downloads.enterprise_prompt":
             "Need mobile functionalities, SaaS integration, and embedded devices?",
           "downloads.contact_us": "Contact us",
+"nodes.title": "🧬 Knotentypen in Teethlion",
+"nodes.description": "Teethlion besteht aus einem Netzwerk spezialisierter Knoten, die zusammenarbeiten, um dezentrale, sichere und effiziente Kommunikation zu gewährleisten. Jeder Knoten erfüllt eine einzigartige Funktion im Ökosystem.",
+"node.secure_mesh_gateway.name": "Secure Mesh Gateway",
+"node.secure_mesh_gateway.desc": "Hybrid gateway between Teethlion and other networks.",
+"node.secure_mesh_gateway.modal_title": "🔌 Secure Mesh Gateway",
+"node.secure_mesh_gateway.modal_desc": "Hybrid node that connects Teethlion to external networks like community meshes, public Wi-Fi or private infrastructures.",
+"node.secure_mesh_gateway.modal_usage": [
+  "To interconnect Teethlion with a community mesh or public Wi-Fi.",
+  "To create secure gateways between IoT sensors and Teethlion nodes.",
+  "As an interface between critical networks (health, security) and Teethlion.",
+  "To synchronize data between closed networks and Teethlion without compromising security."
+],
+  "node.user.name": "User",
+  "node.user.desc": "Standard node for direct P2P communication.",
+  "node.user.modal_title": "👤 User Node",
+  "node.user.modal_desc": "Most common node in Teethlion. Participates in chats and P2P calls.",
+  "node.user.modal_usage": [
+    "For individual users in homes, schools, or institutions.",
+    "For mobile devices or laptops within the Teethlion network.",
+    "To participate in encrypted P2P communications."
+  ],
+
+  "node.relay.name": "Repeater",
+  "node.relay.desc": "Extends signal to areas without direct coverage.",
+  "node.relay.modal_title": "📡 Repeater Node",
+  "node.relay.modal_desc": "Amplifies Teethlion network coverage to distant areas.",
+  "node.relay.modal_usage": [
+    "To expand Teethlion coverage in large buildings or wide areas.",
+    "Ideal for rural or urban environments with physical obstacles.",
+    "Can be installed on rooftops or high points without user interaction."
+  ],
+
+  "node.bootstrap.name": "Bootstrap Node",
+  "node.bootstrap.desc": "Helps new nodes join the network.",
+  "node.bootstrap.modal_title": "🚀 Bootstrap Node",
+  "node.bootstrap.modal_desc": "Central node that facilitates the entry of new participants.",
+  "node.bootstrap.modal_usage": [
+    "To start a new Teethlion network in areas with no prior infrastructure.",
+    "To ensure availability of initial peers.",
+    "Can run 24/7 on a local or remote network."
+  ],
+
+  "node.honeypot.name": "Honeypot",
+  "node.honeypot.desc": "Simulates real nodes to detect malicious activity.",
+  "node.honeypot.modal_title": "🕵️ Honeypot Node",
+  "node.honeypot.modal_desc": "Decoy node that simulates services to detect attacks.",
+  "node.honeypot.modal_usage": [
+    "For advanced security in sensitive networks.",
+    "To detect scans or anomalous behavior.",
+    "Ideal for government or industrial environments."
+  ],
+
+  "node.guard.name": "Guard",
+  "node.guard.desc": "Verifies and filters traffic to prevent intrusions.",
+  "node.guard.modal_title": "🛡️ Guard Node",
+  "node.guard.modal_desc": "Monitors and protects the network from threats.",
+  "node.guard.modal_usage": [
+    "To validate incoming or outgoing connections.",
+    "To block malicious or unauthorized traffic.",
+    "For high-security environments (healthcare, defense, government)."
+  ],
+
+  "node.ai.name": "AI Node",
+  "node.ai.desc": "Processes transcription, translation, or analysis in real time.",
+  "node.ai.modal_title": "🤖 Artificial Intelligence Node",
+  "node.ai.modal_desc": "Dedicated node for tasks like translation, speech synthesis, and context analysis.",
+  "node.ai.modal_usage": [
+    "To translate calls in real time.",
+    "To run voice or text models offline.",
+    "For local data analysis without compromising privacy."
+  ],
+
+  "node.relay_bootstrap.name": "Relay-Bootstrap",
+  "node.relay_bootstrap.desc": "Acts as a bridge and entry point for new nodes.",
+  "node.relay_bootstrap.modal_title": "🌐 Relay-Bootstrap",
+  "node.relay_bootstrap.modal_desc": "Hybrid node that extends coverage and provides network access.",
+  "node.relay_bootstrap.modal_usage": [
+    "Ideal for medium-sized communities needing access and coverage.",
+    "To deploy in strategic points like plazas or schools.",
+    "Reduces load on other Bootstrap nodes."
+  ],
+
+  "node.ai_user.name": "AI-User",
+  "node.ai_user.desc": "User node with local AI capabilities for translation and analysis.",
+  "node.ai_user.modal_title": "🧠 AI-User",
+  "node.ai_user.modal_desc": "Advanced user with local AI processing.",
+  "node.ai_user.modal_usage": [
+    "Ideal for journalists, diplomats, or researchers.",
+    "Allows AI use without internet.",
+    "For message translation, emotion detection, or auto-analysis."
+  ],
+
+  "node.iot_future_x.name": "IoT-Future-X",
+  "node.iot_future_x.desc": "Experimental node for IoT, cars, drones, or advanced sensors.",
+  "node.iot_future_x.modal_title": "🌟 IoT-Future-X Node",
+  "node.iot_future_x.modal_desc": "Versatile modular node for embedded devices and emerging technologies.",
+  "node.iot_future_x.modal_usage": [
+    "To connect sensors in smart cities.",
+    "For community drone or robotics control.",
+    "In tech research with experimental hardware."
+  ],
+
+  "node.observer.name": "Observer",
+  "node.observer.desc": "Only listens and monitors traffic without participating.",
+  "node.observer.modal_title": "👁️ Observer Node",
+  "node.observer.modal_desc": "Passive node that audits traffic without interacting.",
+  "node.observer.modal_usage": [
+    "For network studies, tests, or audits.",
+    "Ideal for forensic or educational analysis.",
+    "Does not send traffic or reply to requests."
+  ],
+
+  "node.satellite.name": "Satellite",
+  "node.satellite.desc": "Remote or space node that provides access in extreme zones.",
+  "node.satellite.modal_title": "🛰️ Satellite Node",
+  "node.satellite.modal_desc": "Remote node (drone, balloon, satellite) connecting hard-to-reach zones.",
+  "node.satellite.modal_usage": [
+    "To connect areas without terrestrial infrastructure.",
+    "Ideal in mountains, deserts, or emergencies.",
+    "Can be solar-powered and operate autonomously."
+  ],
+
+  "node.router.name": "Secure Router",
+  "node.router.desc": "Intermediate node that routes traffic between network zones.",
+  "node.router.modal_title": "📶 Secure Router",
+  "node.router.modal_desc": "Specialized node for secure routing of data within Teethlion.",
+  "node.router.modal_usage": [
+    "For networks with multiple segments or buildings.",
+    "To route messages between zones with different coverage.",
+    "Ensures efficiency and segmentation without privacy loss."
+  ],
+
+  "node.dtn.name": "Delay Tolerant Node",
+  "node.dtn.desc": "Ideal for environments with intermittent connectivity.",
+  "node.dtn.modal_title": "⏳ DTN (Delay Tolerant Node)",
+  "node.dtn.modal_desc": "Node designed to tolerate disconnections or delays.",
+  "node.dtn.modal_usage": [
+    "Ideal for rural or mobile zones.",
+    "Temporarily stores messages.",
+    "Inspired by space and resilient networks."
+  ],
+
+  "node.mesh_node.name": "Mesh Node",
+  "node.mesh_node.desc": "Enables a self-organizing network among devices.",
+  "node.mesh_node.modal_title": "🌐 Mesh Node",
+  "node.mesh_node.modal_desc": "Automatically connects with nearby nodes to form a dynamic network.",
+  "node.mesh_node.modal_usage": [
+    "Ideal for community networks with no prior infrastructure.",
+    "Enables organic and resilient expansion.",
+    "Adapts to changes in the physical environment."
+  ],
+
+  "node.bridge.name": "Bridge",
+  "node.bridge.desc": "Connects Teethlion with external networks (VPN, Tor, Internet). Ideal in censored areas.",
+  "node.bridge.modal_title": "🌉 Bridge Node",
+  "node.bridge.modal_desc": "Allows selective data flow between Teethlion and global networks.",
+  "node.bridge.modal_usage": [
+    "To securely send information outside the network.",
+    "To reroute traffic through VPN, Tor, or secure layers.",
+    "Enables anonymity in censored environments."
+  ],
+
+  "node.trainer.name": "Trainer",
+  "node.trainer.desc": "Trains AI models locally without compromising privacy.",
+  "node.trainer.modal_title": "📚 Trainer Node",
+  "node.trainer.modal_desc": "Specialized node for decentralized AI training.",
+  "node.trainer.modal_usage": [
+    "For federated learning or AI research.",
+    "For data science education.",
+    "Can train models without sending data to the cloud."
+  ],
+
+  "node.vault.name": "Vault",
+  "node.vault.desc": "Stores critical credentials and keys. Requires multi-signature.",
+  "node.vault.modal_title": "🔐 Vault Node",
+  "node.vault.modal_desc": "Stores sensitive information and requires consensus for access.",
+  "node.vault.modal_usage": [
+    "To manage private keys and certificates.",
+    "Requires multi-signature validation to extract data.",
+    "Ideal for institutional or government networks."
+  ],
+
+  "node.forensic.name": "Forensic",
+  "node.forensic.desc": "Audits activity without participation. Ideal for legal traceability.",
+  "node.forensic.modal_title": "🧾 Forensic Node",
+  "node.forensic.modal_desc": "Passive audit node that records relevant events without intervening.",
+  "node.forensic.modal_usage": [
+    "To generate signed digital evidence.",
+    "Ideal in legal, academic, or government contexts.",
+    "Can export reports for external analysis."
+  ],
           "downloads.enterprise_version": " for the enterprise version.",
           tooltip: "Próximamente Q3 2025",
           "roadmap.title": "Roadmap",
@@ -1492,6 +1982,17 @@ Cargando licencia TOL...</pre
           "roadmap.private.title": "🛡️ Private (TOL)",
           "roadmap.private.desc":
             "Extended version for governments and companies.",
+"node.bridge.name": "Bridge",
+"node.bridge.desc": "Connects Teethlion networks to external ones (VPN, Tor, regulated Internet). Useful in censored zones.",
+"node.trainer.name": "Trainer",
+"node.trainer.desc": "Specialized node for local AI training without exposing data.",
+"node.satellite.name": "Satellite",
+"node.satellite.desc": "High-altitude node (drone, balloon, satellite) for remote region access.",
+"node.vault.name": "Vault",
+"node.vault.desc": "Stores critical credentials and keys. Requires multisig for access.",
+"node.forensic.name": "Forensic",
+"node.forensic.desc": "Audit-only node. Records network traffic for legal or regulatory purposes.",
+
           "contact.title": "Contact",
           "contact.name_placeholder": "Your name",
           "contact.email_placeholder": "Your email",
@@ -1627,7 +2128,15 @@ Cargando licencia TOL...</pre
         },
         de: {
           subtitle: "Dezentralisierte, freie und souveräne Kommunikation.",
+          "hero.messages": [
+  "Kostenlos für den persönlichen Gebrauch<sup>*</sup>",
+  "Das mächtigste Peer-to-Peer-Netzwerk der Welt * kostenlos für den persönlichen Gebrauch ist geboren",
+  "Mit Liebe gefertigt von einem venezolanisch/spanischen Ingenieur. Patentiertechnologie in Prüfung und eingetragene Marke."
+],
+"hero.note": "<sup>*</sup> Bis zu 5 Knoten im selben LAN; in Bildungseinrichtungen bis zu 30 Knoten.",
           "nav.que_es": "Was ist Teethlion?",
+          "node_types.title": "🧩 Knotentypen in Teethlion",
+          "node_types.description":  "Jeder Knoten im Teethlion-Netzwerk hat eine bestimmte Aufgabe. Durch ihre Kombination entsteht eine robuste, dezentrale und sich entwickelnde Infrastruktur.",
           "nav.descargas": "Downloads",
           "nav.contacto": "Kontakt",
           "nav.roadmap": "Roadmap",
@@ -1671,6 +2180,223 @@ Cargando licencia TOL...</pre
           "roadmap.private.title": "🛡️ Privat (TOL)",
           "roadmap.private.desc":
             "Erweiterte Version für Regierungen und Unternehmen.",
+ "node.user.name": "Benutzer",
+  "node.user.desc": "Standardknoten für direkte P2P-Kommunikation.",
+  "node.relay.name": "Relay",
+  "node.relay.desc": "Erweitert das Signal in nicht abgedeckte Bereiche.",
+  "node.bootstrap.name": "Bootstrap-Knoten",
+  "node.bootstrap.desc": "Hilft neuen Knoten beim Netzwerkeinstieg.",
+  "node.honeypot.name": "Honeypot",
+  "node.honeypot.desc": "Simuliert reale Knoten zur Erkennung von Angriffen.",
+  "node.guard.name": "Wächter",
+  "node.guard.desc": "Überwacht und schützt den Netzwerkverkehr.",
+  "node.ai.name": "KI-Knoten",
+  "node.ai.desc": "Übersetzt, transkribiert oder analysiert in Echtzeit.",
+  "node.relay_bootstrap.name": "Relay-Bootstrap",
+  "node.relay_bootstrap.desc": "Dient als Brücke und Einstiegspunkt.",
+  "node.ai_user.name": "KI-Benutzer",
+  "node.ai_user.desc": "Benutzerknoten mit lokaler KI-Funktion.",
+  "node.iot_future_x.name": "IoT-Future-X",
+  "node.iot_future_x.desc": "Experimenteller Knoten für IoT und Sensorik.",
+  "node.observer.name": "Beobachter",
+  "node.observer.desc": "Hört passiv mit, ohne zu senden.",
+  "node.satellite.name": "Satellit",
+  "node.satellite.desc": "Fernknoten für schwer erreichbare Gebiete.",
+  "node.router.name": "Sicherer Router",
+  "node.router.desc": "Leitet Daten zwischen Netzsegmenten weiter.",
+  "node.dtn.name": "DTN-Knoten",
+  "node.dtn.desc": "Für Netze mit unregelmäßiger Verbindung geeignet.",
+  "node.mesh_node.name": "Mesh-Knoten",
+  "node.mesh_node.desc": "Ermöglicht selbstorganisierende Netzwerke.",
+  "node.bridge.name": "Brücke",
+"node.bridge.desc": "Verbindet Teethlion mit externen Netzwerken (VPN, Tor, reguliertes Internet). Nützlich bei Zensur.",
+"node.trainer.name": "Trainer",
+"node.trainer.desc": "Spezialisierter Knoten für lokales KI-Training ohne Datenschutzrisiken.",
+"node.satellite.name": "Satellit",
+"node.satellite.desc": "Hochgelegener Knoten (Drohne, Ballon, Satellit) für abgelegene Regionen.",
+"node.vault.name": "Tresor",
+"node.vault.desc": "Speichert kritische Schlüssel und Zertifikate. Multisignatur erforderlich.",
+"node.forensic.name": "Forensisch",
+"node.forensic.desc": "Audit-Knoten zur passiven Überwachung für rechtliche Zwecke.",
+ "node.secure_mesh_gateway.name": "Secure Mesh Gateway",
+"node.secure_mesh_gateway.desc": "Hybrid gateway between Teethlion and other networks.",
+"node.secure_mesh_gateway.modal_title": "🔌 Secure Mesh Gateway",
+"node.secure_mesh_gateway.modal_desc": "Hybrid node that connects Teethlion to external networks like community meshes, public Wi-Fi or private infrastructures.",
+"node.secure_mesh_gateway.modal_usage": [
+  "To interconnect Teethlion with a community mesh or public Wi-Fi.",
+  "To create secure gateways between IoT sensors and Teethlion nodes.",
+  "As an interface between critical networks (health, security) and Teethlion.",
+  "To synchronize data between closed networks and Teethlion without compromising security."
+],
+  "node.user.name": "Benutzer",
+  "node.user.desc": "Standardknoten für direkte P2P-Kommunikation.",
+  "node.user.modal_title": "👤 Benutzerknoten",
+  "node.user.modal_desc": "Der gebräuchlichste Knoten in Teethlion. Nimmt an Chats und P2P-Anrufen teil.",
+  "node.user.modal_usage": [
+    "Für einzelne Benutzer in Haushalten, Schulen oder Institutionen.",
+    "Für mobile Geräte oder Laptops innerhalb des Teethlion-Netzwerks.",
+    "Zur Teilnahme an verschlüsselten P2P-Kommunikationen."
+  ],
+
+  "node.relay.name": "Repeater",
+  "node.relay.desc": "Erweitert das Signal auf Bereiche ohne direkte Abdeckung.",
+  "node.relay.modal_title": "📡 Repeater-Knoten",
+  "node.relay.modal_desc": "Verstärkt die Abdeckung des Teethlion-Netzwerks auf entfernte Bereiche.",
+  "node.relay.modal_usage": [
+    "Zur Erweiterung der Teethlion-Abdeckung in großen Gebäuden oder weiten Gebieten.",
+    "Ideal für ländliche oder urbane Umgebungen mit physischen Hindernissen.",
+    "Kann auf Dächern oder hohen Punkten ohne Benutzerinteraktion installiert werden."
+  ],
+
+  "node.bootstrap.name": "Bootstrap-Knoten",
+  "node.bootstrap.desc": "Hilft neuen Knoten, dem Netzwerk beizutreten.",
+  "node.bootstrap.modal_title": "🚀 Bootstrap-Knoten",
+  "node.bootstrap.modal_desc": "Zentraler Knoten, der den Eintritt neuer Teilnehmer erleichtert.",
+  "node.bootstrap.modal_usage": [
+    "Zum Starten eines neuen Teethlion-Netzwerks in Bereichen ohne vorherige Infrastruktur.",
+    "Zur Sicherstellung der Verfügbarkeit initialer Peers.",
+    "Kann rund um die Uhr in einem lokalen oder entfernten Netzwerk betrieben werden."
+  ],
+
+  "node.honeypot.name": "Honeypot",
+  "node.honeypot.desc": "Simuliert reale Knoten, um bösartige Aktivitäten zu erkennen.",
+  "node.honeypot.modal_title": "🕵️ Honeypot-Knoten",
+  "node.honeypot.modal_desc": "Köderknoten, der Dienste simuliert, um Angriffe zu erkennen.",
+  "node.honeypot.modal_usage": [
+    "Für fortschrittliche Sicherheit in sensiblen Netzwerken.",
+    "Zur Erkennung von Scans oder anomalem Verhalten.",
+    "Ideal für Regierungs- oder Industrieumgebungen."
+  ],
+
+  "node.guard.name": "Wächter",
+  "node.guard.desc": "Überprüft und filtert den Datenverkehr, um Eindringlinge zu verhindern.",
+  "node.guard.modal_title": "🛡️ Wächter-Knoten",
+  "node.guard.modal_desc": "Überwacht und schützt das Netzwerk vor Bedrohungen.",
+  "node.guard.modal_usage": [
+    "Zur Validierung eingehender oder ausgehender Verbindungen.",
+    "Zum Blockieren von bösartigem oder unautorisiertem Datenverkehr.",
+    "Für Hochsicherheitsumgebungen (Gesundheitswesen, Verteidigung, Regierung)."
+  ],
+
+  "node.ai.name": "KI-Knoten",
+  "node.ai.desc": "Verarbeitet Transkription, Übersetzung oder Analyse in Echtzeit.",
+  "node.ai.modal_title": "🤖 Künstliche Intelligenz-Knoten",
+  "node.ai.modal_desc": "Dedizierter Knoten für Aufgaben wie Übersetzung, Sprachausgabe und Kontextanalyse.",
+  "node.ai.modal_usage": [
+    "Zur Echtzeitübersetzung von Anrufen.",
+    "Zum Ausführen von Sprach- oder Textmodellen offline.",
+    "Für lokale Datenanalyse ohne Beeinträchtigung der Privatsphäre."
+  ],
+
+  "node.relay_bootstrap.name": "Relay-Bootstrap",
+  "node.relay_bootstrap.desc": "Fungiert als Brücke und Einstiegspunkt für neue Knoten.",
+  "node.relay_bootstrap.modal_title": "🌐 Relay-Bootstrap",
+  "node.relay_bootstrap.modal_desc": "Hybrider Knoten, der die Abdeckung erweitert und Netzwerkzugang bietet.",
+  "node.relay_bootstrap.modal_usage": [
+    "Ideal für mittelgroße Gemeinschaften, die Zugang und Abdeckung benötigen.",
+    "Zur Bereitstellung an strategischen Punkten wie Plätzen oder Schulen.",
+    "Reduziert die Belastung anderer Bootstrap-Knoten."
+  ],
+
+  "node.ai_user.name": "KI-Benutzer",
+  "node.ai_user.desc": "Benutzerknoten mit lokalen KI-Fähigkeiten für Übersetzung und Analyse.",
+  "node.ai_user.modal_title": "🧠 KI-Benutzer",
+  "node.ai_user.modal_desc": "Fortgeschrittener Benutzer mit lokaler KI-Verarbeitung.",
+  "node.ai_user.modal_usage": [
+    "Ideal für Journalisten, Diplomaten oder Forscher.",
+    "Ermöglicht die Nutzung von KI ohne Internetverbindung.",
+    "Für Nachrichtenübersetzung, Emotionserkennung oder automatische Analyse."
+  ],
+
+  "node.iot_future_x.name": "IoT-Future-X",
+  "node.iot_future_x.desc": "Experimenteller Knoten für IoT, Autos, Drohnen oder fortschrittliche Sensoren.",
+  "node.iot_future_x.modal_title": "🌟 IoT-Future-X-Knoten",
+  "node.iot_future_x.modal_desc": "Vielseitiger modularer Knoten für eingebettete Geräte und neue Technologien.",
+  "node.iot_future_x.modal_usage": [
+    "Zur Verbindung von Sensoren in intelligenten Städten.",
+    "Für die Steuerung von Drohnen oder gemeinschaftlicher Robotik.",
+    "In technologischer Forschung mit experimenteller Hardware."
+  ],
+
+  "node.observer.name": "Beobachter",
+  "node.observer.desc": "Hört nur zu und überwacht den Datenverkehr ohne Teilnahme.",
+  "node.observer.modal_title": "👁️ Beobachter-Knoten",
+  "node.observer.modal_desc": "Passiver Knoten, der den Datenverkehr ohne Interaktion überprüft.",
+  "node.observer.modal_usage": [
+    "Für Netzwerkstudien, Tests oder Audits.",
+    "Ideal für forensische oder pädagogische Analysen.",
+    "Sendet keinen Datenverkehr und antwortet nicht auf Anfragen."
+  ],
+
+  "node.satellite.name": "Satellit",
+  "node.satellite.desc": "Entfernter oder Weltraumknoten, der Zugang in extremen Zonen bietet.",
+  "node.satellite.modal_title": "🛰️ Satelliten-Knoten",
+  "node.satellite.modal_desc": "Entfernter Knoten (Drohne, Ballon, Satellit), der schwer zugängliche Zonen verbindet.",
+  "node.satellite.modal_usage": [
+    "Zur Verbindung von Bereichen ohne terrestrische Infrastruktur.",
+    "Ideal in Bergen, Wüsten oder Notfällen.",
+    "Kann solarbetrieben und autonom betrieben werden."
+  ],
+
+  "node.router.name": "Sicherer Router",
+  "node.router.desc": "Zwischenknoten, der den Datenverkehr zwischen Netzwerkzonen weiterleitet.",
+  "node.router.modal_title": "📶 Sicherer Router",
+  "node.router.modal_desc": "Spezialisierter Knoten für die sichere Weiterleitung von Daten innerhalb von Teethlion.",
+  "node.router.modal_usage": [
+    "Für Netzwerke mit mehreren Segmenten oder Gebäuden.",
+    "Zur Weiterleitung von Nachrichten zwischen Zonen mit unterschiedlicher Abdeckung.",
+    "Gewährleistet Effizienz und Segmentierung ohne Verlust der Privatsphäre."
+  ],
+
+  "node.dtn.name": "Verzögerungstoleranter Knoten",
+  "node.dtn.desc": "Ideal für Umgebungen mit intermittierender Konnektivität.",
+  "node.dtn.modal_title": "⏳ DTN (Verzögerungstoleranter Knoten)",
+  "node.dtn.modal_desc": "Knoten, der für Unterbrechungen oder Verzögerungen ausgelegt ist.",
+  "node.dtn.modal_usage": [
+    "Ideal für ländliche oder mobile Zonen.",
+    "Speichert Nachrichten vorübergehend.",
+    "Inspiriert von Weltraum- und resilienten Netzwerken."
+  ],
+
+  "node.mesh_node.name": "Mesh-Knoten",
+  "node.mesh_node.desc": "Ermöglicht ein selbstorganisierendes Netzwerk zwischen Geräten.",
+  "node.mesh_node.modal_title": "🌐 Mesh-Knoten",
+  "node.mesh_node.modal_desc": "Verbindet sich automatisch mit nahegelegenen Knoten, um ein dynamisches Netzwerk zu bilden.",
+  "node.mesh_node.modal_usage": [
+    "Ideal für Gemeinschaftsnetzwerke ohne vorherige Infrastruktur.",
+    "Ermöglicht organische und resiliente Erweiterung.",
+    "Passt sich Änderungen in der physischen Umgebung an."
+  ],
+
+  "node.bridge.name": "Brücke",
+  "node.bridge.desc": "Verbindet Teethlion mit externen Netzwerken (VPN, Tor, Internet). Ideal in zensierten Bereichen.",
+  "node.bridge.modal_title": "🌉 Brücken-Knoten",
+  "node.bridge.modal_desc": "Ermöglicht selektiven Datenfluss zwischen Teethlion und globalen Netzwerken.",
+  "node.bridge.modal_usage": [
+    "Um Informationen sicher außerhalb des Netzwerks zu senden.",
+    "Zur Umleitung von Datenverkehr über VPN, Tor oder sichere Schichten.",
+    "Ermöglicht Anonymität in zensierten Umgebungen."
+  ],
+
+  "node.trainer.name": "Trainer",
+  "node.trainer.desc": "Trainiert KI-Modelle lokal, ohne die Privatsphäre zu beeinträchtigen.",
+  "node.trainer.modal_title": "📚 Trainer-Knoten",
+  "node.trainer.modal_desc": "Spezialisierter Knoten für dezentrales KI-Training.",
+  "node.trainer.modal_usage": [
+    "Für föderiertes Lernen oder KI-Forschung.",
+    "Für die Ausbildung in Datenwissenschaft.",
+    "Kann Modelle trainieren, ohne Daten in die Cloud zu senden."
+  ],
+
+  "node.vault.name": "Tresor",
+  "node.vault.desc": "Speichert kritische Anmeldeinformationen und Schlüssel. Erfordert Mehrfachsignatur.",
+  "node.vault.modal_title": "🔐 Tresor-Knoten",
+  "node.vault.modal_desc": "Speichert sensible Informationen und erfordert Konsens für den Zugriff.",
+  "node.vault.modal_usage": [
+    "Zur Verwaltung privater Schlüssel und Zertifikate.",
+    "Erfordert Mehrfachsignaturvalidierung zum Extrahieren von Daten.",
+    "Ideal für institutionelle oder Regierungsnetzwerke."
+],           
           "contact.title": "Kontakt",
           "contact.name_placeholder": "Ihr Name",
           "contact.email_placeholder": "Ihre E-Mail",
@@ -1809,18 +2535,78 @@ Cargando licencia TOL...</pre
         },
       };
 
+
+const nodeTypes = [
+  { key: "user", color: "#23aaff" },
+  { key: "relay", color: "#aaff23" },
+  { key: "bootstrap", color: "#ffaa23" },
+  { key: "honeypot", color: "#ff2323" },
+  { key: "guard", color: "#23ffaa" },
+  { key: "ai", color: "#aa23ff" },
+  { key: "relay_bootstrap", color: "#ffff23" },
+  { key: "ai_user", color: "#ff23ff" },
+  { key: "iot_future_x", color: "#23ffdd" },
+  { key: "observer", color: "#8888ff" },
+  { key: "satellite", color: "#ccccff" },       // actualizado
+  { key: "router", color: "#ffaaee" },          // actualizado
+  { key: "dtn", color: "#999900" },
+  { key: "mesh_node", color: "#00ff88" },
+  { key: "bridge", color: "#ff66cc" },          // nuevo
+  { key: "trainer", color: "#ffaaee" },         // nuevo
+  { key: "vault", color: "#4444ff" },           // nuevo
+  { key: "forensic", color: "#ffdd00" },  // alias o nuevo si lo separas de "router"
+  { key: "secure_mesh_gateway", color: "#ffcc99" }
+];
+
+
+
+
+function renderNodeGrid() {
+  const container = document.getElementById("node-type-grid");
+  container.innerHTML = "";
+
+  nodeTypes.forEach(({ key, color }) => {
+    const card = document.createElement("div");
+    card.className =
+      "rounded-lg p-4 cursor-pointer transition duration-200 hover:scale-105 shadow-md bg-slate-800 border border-slate-600";
+    card.setAttribute("onclick", `showNodeModal('${key}')`);
+
+    const title = translations[currentLang][`node.${key}.name`] || key;
+    const desc = translations[currentLang][`node.${key}.desc`] || "";
+
+    card.innerHTML = `
+      <div class="w-6 h-6 rounded-full mb-2" style="background-color: ${color}"></div>
+      <h3 class="text-lg font-semibold text-yellow-300 mb-1">${title}</h3>
+      <p class="text-sm text-slate-400">${desc}</p>
+    `;
+
+    container.appendChild(card);
+  });
+
+}
+
+document.addEventListener("DOMContentLoaded", renderNodeGrid);
+
+
       // Función setLang corregida
       function setLang(lang) {
         currentLang = lang;
         document.documentElement.lang = lang;
 
         // Actualizar elementos de texto normal
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-          const key = el.getAttribute("data-i18n");
-          if (translations[lang]?.[key]) {
-            el.textContent = translations[lang][key]; // Usamos textContent en lugar de innerHTML
-          }
-        });
+document.querySelectorAll("[data-i18n]").forEach((el) => {
+  const key = el.getAttribute("data-i18n");
+  if (translations[lang]?.[key]) {
+    el.textContent = translations[lang][key];
+  }
+});
+
+document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+  const key = el.getAttribute("data-i18n-html");
+  if (translations[lang]?.[key]) {
+    el.innerHTML = translations[lang][key]; // aquí sí usamos innerHTML
+  }
+});
 
         // Actualizar elementos que deben renderizar HTML
         document.querySelectorAll("[data-i18n-html]").forEach((el) => {
@@ -1851,6 +2637,7 @@ Cargando licencia TOL...</pre
 
         // Actualizar el footer con una frase aleatoria
         updateFooterPhrase();
+        renderNodeGrid();
       }
 
       function updateFooterPhrase() {
@@ -1870,6 +2657,34 @@ Cargando licencia TOL...</pre
             "Comunicaciones descentralizadas";
         }
       }
+
+
+//modal de tipos de nodos
+
+function showNodeModal(nodeKey) {
+  const title = translations[currentLang][`node.${nodeKey}.modal_title`] || "";
+  const desc = translations[currentLang][`node.${nodeKey}.modal_desc`] || "";
+  const usage = translations[currentLang][`node.${nodeKey}.modal_usage`] || [];
+
+  document.getElementById("modal-title").textContent = title;
+  document.getElementById("modal-desc").textContent = desc;
+
+  const usageList = document.getElementById("modal-usage");
+  usageList.innerHTML = "";
+  usage.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    usageList.appendChild(li);
+  });
+
+  document.getElementById("node-modal").classList.remove("hidden");
+}
+
+function closeNodeModal() {
+  document.getElementById("node-modal").classList.add("hidden");
+}
+
+
 
       document.addEventListener("DOMContentLoaded", () => {
         // Elementos del menú
@@ -1916,6 +2731,7 @@ Cargando licencia TOL...</pre
         loadLicenses();
         showLicense("agpl");
         setLang("es");
+        renderNodeGrid(); // <-- Aquí
         updateFooterPhrase();
         setupContactButtons();
       });
@@ -1936,5 +2752,22 @@ Cargando licencia TOL...</pre
         ⬇️
       </button>
     </div>
+    <!-- Modal para tipo de nodo -->
+<div
+  id="node-modal"
+  class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden"
+>
+  <div class="bg-slate-900 text-white max-w-lg w-full p-6 rounded-lg relative shadow-lg border border-yellow-400">
+    <button
+      onclick="closeNodeModal()"
+      class="absolute top-2 right-3 text-xl text-yellow-400 hover:text-yellow-300"
+    >
+      ✖
+    </button>
+    <h3 id="modal-title" class="text-2xl font-bold text-yellow-300 mb-4"></h3>
+    <p id="modal-desc" class="text-slate-300 mb-4"></p>
+    <ul id="modal-usage" class="list-disc list-inside space-y-2 text-sm text-slate-200"></ul>
+  </div>
+</div>
   </body>
 </html>
