@@ -271,6 +271,84 @@
         <!-- monta tu micro‐bundle justo después de este DIV -->
         <script type="module" src="/simulator/simulator.js"></script>
       </section>
+
+<section
+  id="comparison"
+  class="min-h-screen flex items-center justify-center px-4 py-12 bg-slate-900"
+>
+  <div class="max-w-6xl mx-auto w-full">
+    <h2 class="text-2xl font-bold text-center mb-8 text-yellow-300" data-i18n="comparison.title"></h2>
+    <p class="text-center text-slate-400 mb-6 max-w-3xl mx-auto" data-i18n="comparison.description"></p>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left border-collapse">
+        <thead class="bg-slate-800 text-slate-100">
+          <tr>
+            <th class="p-4 border border-slate-600" data-i18n="comparison.col_feature"></th>
+            <th class="p-4 border border-slate-600">Teethlion</th>
+            <th class="p-4 border border-slate-600">WhatsApp / Telegram</th>
+            <th class="p-4 border border-slate-600" data-i18n="comparison.col_wifi_mesh"></th>
+            <th class="p-4 border border-slate-600">Walkie-Talkies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_offline"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅</td>
+            <td class="p-4 border border-slate-600">❌</td>
+            <td class="p-4 border border-slate-600">✅</td>
+            <td class="p-4 border border-slate-600">✅</td>
+          </tr>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_encryption"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ AES-GCM + P2P</td>
+            <td class="p-4 border border-slate-600">✅</td>
+            <td class="p-4 border border-slate-600">❌</td>
+            <td class="p-4 border border-slate-600">❌</td>
+          </tr>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_decentralized"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ 100%</td>
+            <td class="p-4 border border-slate-600">❌</td>
+            <td class="p-4 border border-slate-600">⚠️</td>
+            <td class="p-4 border border-slate-600">✅</td>
+          </tr>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_multiplatform"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Linux, Win, macOS, Android*</td>
+            <td class="p-4 border border-slate-600">✅</td>
+            <td class="p-4 border border-slate-600">❌</td>
+            <td class="p-4 border border-slate-600">❌</td>
+          </tr>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_content"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Soportado</td>
+            <td class="p-4 border border-slate-600">✅</td>
+            <td class="p-4 border border-slate-600">❌</td>
+            <td class="p-4 border border-slate-600">❌ Solo voz</td>
+          </tr>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_cost"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Gratis uso personal/educativo</td>
+            <td class="p-4 border border-slate-600">"Gratis" (pagas con tus datos)</td>
+            <td class="p-4 border border-slate-600">Alto</td>
+            <td class="p-4 border border-slate-600">Costo medio</td>
+          </tr>
+          <tr class="bg-slate-800 hover:bg-slate-700 transition">
+            <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_evolution"></td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Red viva, actualizaciones anuales</td>
+            <td class="p-4 border border-slate-600">❌</td>
+            <td class="p-4 border border-slate-600">⚠️ Limitado</td>
+            <td class="p-4 border border-slate-600">❌</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+
       <section id="descargas" class="min-h-screen flex items-center px-4">
         <div class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center">
           <h2 class="text-2xl font-bold mb-4" data-i18n="downloads.title">
@@ -444,84 +522,126 @@ Cargando licencia TOL...</pre
 
       <!-- Y así sucesivamente para todas las secciones... -->
 
-      <section
-        id="faq"
-        class="min-h-screen flex items-center justify-center px-4 py-12"
-      >
-        <div class="max-w-4xl mx-auto w-full">
-          <h2
-            class="text-2xl font-bold mb-6 text-center"
-            data-i18n="faq.title_header"
+<section
+  id="faq"
+  class="min-h-screen flex items-center justify-center px-4 py-12"
+>
+  <div class="max-w-4xl mx-auto w-full">
+    <h2
+      class="text-2xl font-bold mb-6 text-center"
+      data-i18n="faq.title_header"
+    >
+      🧠 Preguntas Frecuentes (FAQ)
+    </h2>
+
+    <div class="space-y-6 text-slate-100">
+      <!-- Pregunta 1 -->
+      <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+        <h3
+          class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+          onclick="toggleFAQ(1)"
+        >
+          <span data-i18n="faq.q1_title"
+            >¿Qué necesito para usar Teethlion?</span
           >
-            🧠 Preguntas Frecuentes (FAQ)
-          </h2>
+          <span class="text-xl">+</span>
+        </h3>
+        <p
+          class="mt-2 hidden"
+          id="faq-answer-1"
+          data-i18n="faq.q1_answer"
+        ></p>
+      </div>
 
-          <div class="space-y-6 text-slate-100">
-            <!-- Pregunta 1 -->
-            <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
-              <h3
-                class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
-                onclick="toggleFAQ(1)"
-              >
-                <span data-i18n="faq.q1_title"
-                  >¿Qué necesito para usar Teethlion?</span
-                >
-                <span class="text-xl">+</span>
-              </h3>
-              <p
-                class="mt-2 hidden"
-                id="faq-answer-1"
-                data-i18n="faq.q1_answer"
-              >
-                Solo dispositivos conectados a la misma red LAN. No necesitas
-                internet, servidores ni routers especiales.
-              </p>
-            </div>
+      <!-- Pregunta 2 -->
+      <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+        <h3
+          class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+          onclick="toggleFAQ(2)"
+        >
+          <span data-i18n="faq.q2_title"
+            >¿Qué pasa si alguien viola la licencia?</span
+          >
+          <span class="text-xl">+</span>
+        </h3>
+        <p
+          class="mt-2 hidden"
+          id="faq-answer-2"
+          data-i18n="faq.q2_answer"
+        ></p>
+      </div>
 
-            <!-- Pregunta 2 -->
-            <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
-              <h3
-                class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
-                onclick="toggleFAQ(2)"
-              >
-                <span data-i18n="faq.q2_title"
-                  >¿Qué pasa si alguien viola la licencia?</span
-                >
-                <span class="text-xl">+</span>
-              </h3>
-              <p
-                class="mt-2 hidden"
-                id="faq-answer-2"
-                data-i18n="faq.q2_answer"
-              >
-                Las licencias AGPL y TOL son legalmente vinculantes. El uso no
-                autorizado puede enfrentar acciones legales.
-              </p>
-            </div>
+      <!-- Pregunta 3 -->
+      <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+        <h3
+          class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+          onclick="toggleFAQ(3)"
+        >
+          <span data-i18n="faq.q3_title"
+            >¿Por qué es gratis para algunos y de pago para otros?</span
+          >
+          <span class="text-xl">+</span>
+        </h3>
+        <p
+          class="mt-2 hidden"
+          id="faq-answer-3"
+          data-i18n="faq.q3_answer"
+        ></p>
+      </div>
 
-            <!-- Pregunta 3 -->
-            <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
-              <h3
-                class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
-                onclick="toggleFAQ(3)"
-              >
-                <span data-i18n="faq.q3_title"
-                  >¿Por qué es gratis para algunos y de pago para otros?</span
-                >
-                <span class="text-xl">+</span>
-              </h3>
-              <p
-                class="mt-2 hidden"
-                id="faq-answer-3"
-                data-i18n="faq.q3_answer"
-              >
-                Promovemos acceso libre para educación y hogares. Las licencias
-                comerciales financian el desarrollo.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- Pregunta 4 -->
+      <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+        <h3
+          class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+          onclick="toggleFAQ(4)"
+        >
+          <span data-i18n="faq.q6_title"
+            >¿Qué ventajas tengo si uso Teethlion sobre otros sistemas?</span
+          >
+          <span class="text-xl">+</span>
+        </h3>
+        <p
+          class="mt-2 hidden"
+          id="faq-answer-4"
+          data-i18n="faq.q6_answer"
+        ></p>
+      </div>
+
+      <!-- Pregunta 5 -->
+      <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+        <h3
+          class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+          onclick="toggleFAQ(5)"
+        >
+          <span data-i18n="faq.q7_title">¿Cómo se financia Teethlion?</span>
+          <span class="text-xl">+</span>
+        </h3>
+        <p
+          class="mt-2 hidden"
+          id="faq-answer-5"
+          data-i18n="faq.q7_answer"
+        ></p>
+      </div>
+
+      <!-- Pregunta 6 -->
+      <div class="bg-slate-800 bg-opacity-50 p-4 rounded-lg">
+        <h3
+          class="font-semibold text-yellow-300 flex items-center justify-between cursor-pointer"
+          onclick="toggleFAQ(6)"
+        >
+          <span data-i18n="faq.q8_title">¿Cuándo estará listo Teethlion?</span>
+          <span class="text-xl">+</span>
+        </h3>
+        <p
+          class="mt-2 hidden"
+          id="faq-answer-6"
+          data-i18n="faq.q8_answer"
+        ></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <!-- Formulario con protección avanzada -->
       <section
@@ -1655,7 +1775,28 @@ function initHeroRotation() {
           "faq.q5_title": "¿Puedo contribuir al proyecto?",
           "faq.q5_answer":
             "¡Sí! Puedes contribuir con ideas, código, documentación, pruebas o financiación voluntaria. Consulta la sección de donaciones para apoyar el crecimiento de Teethlion.",
-          "manifesto.title_header": "📜 Teethlion Manifesto",
+"faq.q6_title": "¿Qué ventajas tengo si uso Teethlion sobre otros sistemas de comunicación?",
+"faq.q6_answer": "Nadie tendrá tus datos. Te comunicarás de forma segura de extremo a extremo, y podrás comunicarte incluso sin Internet con otros dispositivos en tu misma red.",
+
+"faq.q7_title": "¿Cómo se financia Teethlion?",
+"faq.q7_answer": "Teethlion se financia mediante programas de I+D, subvenciones y grants, con ayuda de la comunidad internacional, aportes de empresas privadas, adquisición de licencias por parte de gobiernos, empresas y pymes, así como contratos de soporte, mantenimiento y desarrollos personalizados.",
+
+"faq.q8_title": "¿Cuándo estará listo Teethlion en su totalidad?",
+"faq.q8_answer": "Teethlion es una red de nodos evolutiva, por lo que cada año seguirá mejorando. La primera versión multiplataforma oficial estará disponible para descarga en el Q4 de 2025.",
+
+"comparison.title": "🔍 Comparativa con Otras Soluciones",
+  "comparison.description": "Descubre por qué Teethlion es la red de comunicación más flexible, descentralizada, resiliente y evolutiva jamás creada. Soporta voz, video y archivos cifrados punto a punto, incluso sin conexión a Internet.",
+  "comparison.col_feature": "Característica",
+  "comparison.col_wifi_mesh": "Redes Wi-Fi Mesh",
+  "comparison.feature_offline": "Funciona sin Internet",
+  "comparison.feature_encryption": "Cifrado extremo a extremo",
+  "comparison.feature_decentralized": "Descentralización real",
+  "comparison.feature_multiplatform": "Multiplataforma",
+  "comparison.feature_content": "Transmisión de voz, video y archivos",
+  "comparison.feature_cost": "Costo de uso",
+  "comparison.feature_evolution": "Actualizaciones evolutivas anuales",
+
+            "manifesto.title_header": "📜 Teethlion Manifesto",
           "manifesto.mission.title": "💪 Nuestra Misión",
           "manifesto.mission.p1":
             "Teethlion nace como un proyecto libre, audaz y revolucionario, cuyo objetivo es restaurar la soberanía de las comunicaciones humanas en cualquier circunstancia.",
@@ -2045,7 +2186,28 @@ function initHeroRotation() {
           "faq.q5_title": "Can I contribute to the project?",
           "faq.q5_answer":
             "Yes! You can contribute with ideas, code, documentation, testing, or voluntary funding. Check the donations section to support Teethlion's growth.",
-          "manifesto.title_header": "📜 Teethlion Manifesto",
+"faq.q6_title": "What advantages does Teethlion offer over other communication systems?",
+"faq.q6_answer": "No one will have your data. You will communicate securely with end-to-end encryption, and you'll be able to connect even without the Internet to other devices on your same network.",
+
+"faq.q7_title": "How is Teethlion funded?",
+"faq.q7_answer": "Teethlion is funded through R&D programs, public grants, support from the international community, contributions from private companies, license purchases by governments, businesses, and SMEs, as well as support, maintenance, and custom development contracts.",
+
+"faq.q8_title": "When will Teethlion be fully ready?",
+"faq.q8_answer": "Teethlion is an evolving node network that improves every year. The first official multiplatform release will be available for download in Q4 2025.",
+
+"comparison.title": "🔍 Comparison with Other Solutions",
+  "comparison.description": "Discover why Teethlion is the most flexible, decentralized, resilient, and evolving communication network ever created. Supports voice, video, and file sharing with end-to-end encryption—even without an Internet connection.",
+  "comparison.col_feature": "Feature",
+  "comparison.col_wifi_mesh": "Wi-Fi Mesh Networks",
+  "comparison.feature_offline": "Works without Internet",
+  "comparison.feature_encryption": "End-to-End Encryption",
+  "comparison.feature_decentralized": "True Decentralization",
+  "comparison.feature_multiplatform": "Multiplatform",
+  "comparison.feature_content": "Voice, Video, and File Transmission",
+  "comparison.feature_cost": "Usage Cost",
+  "comparison.feature_evolution": "Annual Evolutionary Updates",
+
+            "manifesto.title_header": "📜 Teethlion Manifesto",
           "manifesto.mission.title": "💪 Our Mission",
           "manifesto.mission.p1":
             "Teethlion is born as a free, bold, and revolutionary project, aiming to restore the sovereignty of human communications under any circumstances.",
@@ -2452,7 +2614,27 @@ function initHeroRotation() {
           "faq.q5_title": "Kann ich zum Projekt beitragen?",
           "faq.q5_answer":
             "Ja! Sie können mit Ideen, Code, Dokumentation, Tests oder freiwilliger Finanzierung beitragen. Überprüfen Sie den Spendenbereich, um das Wachstum von Teethlion zu unterstützen.",
-          "manifesto.title_header": "📜 Teethlion Manifest",
+"faq.q6_title": "Welche Vorteile habe ich bei der Nutzung von Teethlion gegenüber anderen Kommunikationssystemen?",
+"faq.q6_answer": "Niemand erhält deine Daten. Du kommunizierst sicher mit Ende-zu-Ende-Verschlüsselung und kannst dich sogar ohne Internet mit anderen Geräten in deinem lokalen Netzwerk verbinden.",
+
+"faq.q7_title": "Wie wird Teethlion finanziert?",
+"faq.q7_answer": "Teethlion wird durch F&E-Programme, öffentliche Fördermittel und internationale Unterstützung finanziert – auch durch Beiträge von privaten Unternehmen, den Erwerb von Lizenzen durch Regierungen, Unternehmen und KMU sowie durch Verträge für Support, Wartung und individuelle Entwicklungen.",
+
+"faq.q8_title": "Wann wird Teethlion vollständig einsatzbereit sein?",
+"faq.q8_answer": "Teethlion ist ein sich weiterentwickelndes Knotennetzwerk, das jedes Jahr verbessert wird. Die erste offizielle plattformübergreifende Version wird im 4. Quartal 2025 zum Download verfügbar sein.",
+
+  "comparison.title": "🔍 Vergleich mit anderen Lösungen",
+  "comparison.description": "Entdecken Sie, warum Teethlion das flexibelste, dezentralste, widerstandsfähigste und fortschrittlichste Kommunikationsnetzwerk ist. Unterstützt Sprache, Video und Dateien mit Ende-zu-Ende-Verschlüsselung – auch ohne Internetverbindung.",
+  "comparison.col_feature": "Funktion",
+  "comparison.col_wifi_mesh": "Wi-Fi-Mesh-Netzwerke",
+  "comparison.feature_offline": "Funktioniert ohne Internet",
+  "comparison.feature_encryption": "Ende-zu-Ende-Verschlüsselung",
+  "comparison.feature_decentralized": "Echte Dezentralisierung",
+  "comparison.feature_multiplatform": "Plattformübergreifend",
+  "comparison.feature_content": "Übertragung von Sprache, Video und Dateien",
+  "comparison.feature_cost": "Nutzungskosten",
+  "comparison.feature_evolution": "Jährliche Weiterentwicklungen",
+            "manifesto.title_header": "📜 Teethlion Manifest",
           "manifesto.mission.title": "💪 Unsere Mission",
           "manifesto.mission.p1":
             "Teethlion entsteht als ein freies, kühnes und revolutionäres Projekt mit dem Ziel, die Souveränität der menschlichen Kommunikation unter allen Umständen wiederherzustellen.",
