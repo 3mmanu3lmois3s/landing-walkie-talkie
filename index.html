@@ -26,6 +26,8 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Teethlion</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+
   </head>
 
   <body class="bg-black text-white relative">
@@ -350,7 +352,159 @@
   </div>
 </section>
 
+<!-- Quickstart para instalarlo-->
 
+<section
+  id="quickstart"
+  class="min-h-screen flex items-center justify-center bg-slate-900 text-white"
+>
+  <div class="max-w-4xl mx-auto px-4">
+    <h2
+      class="text-3xl font-bold text-center mb-8"
+      data-i18n="quickstart.title"
+    >
+      Quickstart: Instala y Prueba en 4 Pasos
+    </h2>
+
+    <!-- Stepper -->
+    <div class="flex justify-between mb-8">
+      <div class="stepper-item text-center flex-1">
+        <div class="stepper-circle bg-yellow-500 text-black">1</div>
+        <p class="mt-2 text-sm" data-i18n="quickstart.step1">Descarga</p>
+      </div>
+      <div class="stepper-item text-center flex-1">
+        <div class="stepper-circle bg-slate-700">2</div>
+        <p class="mt-2 text-sm" data-i18n="quickstart.step2">Instala</p>
+      </div>
+      <div class="stepper-item text-center flex-1">
+        <div class="stepper-circle bg-slate-700">3</div>
+        <p class="mt-2 text-sm" data-i18n="quickstart.step3">Ejecuta</p>
+      </div>
+      <div class="stepper-item text-center flex-1">
+        <div class="stepper-circle bg-slate-700">4</div>
+        <p class="mt-2 text-sm" data-i18n="quickstart.step4">Llama</p>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between">
+      <button
+        id="prev-step"
+        data-i18n="quickstart.prev"
+        class="px-4 py-2 rounded border border-yellow-500 hover:bg-yellow-500 hover:text-black transition-colors"
+        disabled
+      >
+        Anterior
+      </button>
+      <button
+        id="next-step"
+        data-i18n="quickstart.next"
+        class="px-4 py-2 rounded bg-yellow-500 text-black hover:bg-yellow-600 transition-colors"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Modales de Paso -->
+<div id="modals-container">
+  <!-- Paso 1 -->
+  <div
+    class="modal step-modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4"
+  >
+    <div class="bg-slate-800 rounded-lg max-w-md w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-yellow-300 hover:text-yellow-400">
+        &times;
+      </button>
+      <h3 class="text-xl font-bold mb-2" data-i18n="quickstart.modal1.title">
+        Paso 1: Descarga
+      </h3>
+      <p class="mb-4" data-i18n="quickstart.modal1.desc">
+        Descarga Teethlion para tu plataforma (Laptop o Móvil).
+      </p>
+      <a
+        href="#descargas"
+        class="inline-block bg-yellow-500 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-600"
+        data-i18n="quickstart.modal1.cta"
+      >
+        Ir a Descargas
+      </a>
+    </div>
+  </div>
+
+  <!-- Paso 2 -->
+  <div
+    class="modal step-modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4"
+  >
+    <div class="bg-slate-800 rounded-lg max-w-md w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-yellow-300 hover:text-yellow-400">
+        &times;
+      </button>
+      <h3 class="text-xl font-bold mb-2" data-i18n="quickstart.modal2.title">
+        Paso 2: Instala
+      </h3>
+      <p class="mb-4" data-i18n="quickstart.modal2.desc">
+        Ejecuta el instalador y sigue las indicaciones en pantalla para instalar Teethlion.
+      </p>
+      <button
+        onclick="closeModal()"
+        class="mt-2 inline-block bg-yellow-500 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-600"
+        data-i18n="quickstart.modal2.cta"
+      >
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  <!-- Paso 3 -->
+  <div
+    class="modal step-modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4"
+  >
+    <div class="bg-slate-800 rounded-lg max-w-md w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-yellow-300 hover:text-yellow-400">
+        &times;
+      </button>
+      <h3 class="text-xl font-bold mb-2" data-i18n="quickstart.modal3.title">
+        Paso 3: Ejecuta
+      </h3>
+      <p class="mb-4" data-i18n="quickstart.modal3.desc">
+        Abre Teethlion y permite los permisos necesarios para iniciar la aplicación.
+      </p>
+      <button
+        onclick="closeModal()"
+        class="mt-2 inline-block bg-yellow-500 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-600"
+        data-i18n="quickstart.modal3.cta"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+
+  <!-- Paso 4 -->
+  <div
+    class="modal step-modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4"
+  >
+    <div class="bg-slate-800 rounded-lg max-w-md w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-yellow-300 hover:text-yellow-400">
+        &times;
+      </button>
+      <h3 class="text-xl font-bold mb-2" data-i18n="quickstart.modal4.title">
+        Paso 4: Llama
+      </h3>
+      <p class="mb-4" data-i18n="quickstart.modal4.desc">
+        Localiza a tus amigos en la red y haz tu primera llamada descentralizada.
+      </p>
+      <button
+        onclick="closeModal()"
+        class="mt-2 inline-block bg-yellow-500 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-600"
+        data-i18n="quickstart.modal4.cta"
+      >
+        Finalizar
+      </button>
+    </div>
+  </div>
+</div>
 
       <section id="descargas" class="min-h-screen flex items-center px-4">
         <div class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center">
@@ -1430,6 +1584,8 @@ function initHeroRotation() {
         }
       }
 
+
+
       // Internacionalización
       // Traducciones
       const translations = {
@@ -1792,6 +1948,26 @@ function initHeroRotation() {
   "comparison.feature_content": "Transmisión de voz, video y archivos",
   "comparison.feature_cost": "Costo de uso",
   "comparison.feature_evolution": "Actualizaciones evolutivas anuales",
+
+"quickstart.title":      "Quickstart: Instala y Prueba en 4 Pasos",
+"quickstart.step1":      "Descarga",
+"quickstart.step2":      "Instala",
+"quickstart.step3":      "Ejecuta",
+"quickstart.step4":      "Llama",
+"quickstart.prev":       "Anterior",
+"quickstart.next":       "Siguiente",
+"quickstart.modal1.title":"Paso 1: Descarga",
+"quickstart.modal1.desc": "Descarga Teethlion para tu plataforma (Laptop o Móvil).",
+"quickstart.modal1.cta":  "Ir a Descargas",
+"quickstart.modal2.title":"Paso 2: Instala",
+"quickstart.modal2.desc": "Ejecuta el instalador y sigue las indicaciones en pantalla para instalar Teethlion.",
+"quickstart.modal2.cta":  "Entendido",
+"quickstart.modal3.title":"Paso 3: Ejecuta",
+"quickstart.modal3.desc": "Abre Teethlion y permite los permisos necesarios para iniciar la aplicación.",
+"quickstart.modal3.cta":  "Continuar",
+"quickstart.modal4.title":"Paso 4: Llama",
+"quickstart.modal4.desc": "Localiza a tus amigos en la red y haz tu primera llamada descentralizada.",
+"quickstart.modal4.cta":  "Finalizar",
 
             "manifesto.title_header": "📜 Teethlion Manifesto",
           "manifesto.mission.title": "💪 Nuestra Misión",
@@ -2202,6 +2378,26 @@ function initHeroRotation() {
   "comparison.feature_content": "Voice, Video, and File Transmission",
   "comparison.feature_cost": "Usage Cost",
   "comparison.feature_evolution": "Annual Evolutionary Updates",
+
+"quickstart.title":       "Quickstart: Install and Try in 4 Steps",
+"quickstart.step1":       "Download",
+"quickstart.step2":       "Install",
+"quickstart.step3":       "Run",
+"quickstart.step4":       "Call",
+"quickstart.prev":        "Previous",
+"quickstart.next":        "Next",
+"quickstart.modal1.title":"Step 1: Download",
+"quickstart.modal1.desc": "Download Teethlion for your platform (Laptop or Mobile).",
+"quickstart.modal1.cta":  "Go to Downloads",
+"quickstart.modal2.title":"Step 2: Install",
+"quickstart.modal2.desc": "Run the installer and follow the on-screen instructions to install Teethlion.",
+"quickstart.modal2.cta":  "Got it",
+"quickstart.modal3.title":"Step 3: Run",
+"quickstart.modal3.desc": "Open Teethlion and grant the necessary permissions to start the application.",
+"quickstart.modal3.cta":  "Continue",
+"quickstart.modal4.title":"Step 4: Call",
+"quickstart.modal4.desc": "Locate your friends on the network and make your first decentralized call.",
+"quickstart.modal4.cta":  "Finish",
 
             "manifesto.title_header": "📜 Teethlion Manifesto",
           "manifesto.mission.title": "💪 Our Mission",
@@ -2629,7 +2825,26 @@ function initHeroRotation() {
   "comparison.feature_content": "Übertragung von Sprache, Video und Dateien",
   "comparison.feature_cost": "Nutzungskosten",
   "comparison.feature_evolution": "Jährliche Weiterentwicklungen",
-            "manifesto.title_header": "📜 Teethlion Manifest",
+
+"quickstart.title":       "Quickstart: Installation und Test in 4 Schritten",
+"quickstart.step1":       "Herunterladen",
+"quickstart.step2":       "Installieren",
+"quickstart.step3":       "Ausführen",
+"quickstart.step4":       "Anrufen",
+"quickstart.prev":        "Zurück",
+"quickstart.next":        "Weiter",
+"quickstart.modal1.title":"Schritt 1: Herunterladen",
+"quickstart.modal1.desc": "Lade Teethlion für deine Plattform herunter (Laptop oder Mobilgerät).",
+"quickstart.modal1.cta":  "Zu den Downloads",
+"quickstart.modal2.title":"Schritt 2: Installieren",
+"quickstart.modal2.desc": "Führe das Installationsprogramm aus und folge den Anweisungen auf dem Bildschirm, um Teethlion zu installieren.",
+"quickstart.modal2.cta":  "Verstanden",
+"quickstart.modal3.title":"Schritt 3: Ausführen",
+"quickstart.modal3.desc": "Öffne Teethlion und erteile die notwendigen Berechtigungen, um die Anwendung zu starten.",
+"quickstart.modal3.cta":  "Weiter",
+"quickstart.modal4.title":"Schritt 4: Anrufen",
+"quickstart.modal4.desc": "Finde deine Freunde im Netzwerk und führe deinen ersten dezentralen Anruf durch.",
+"quickstart.modal4.cta":  "Abschließen",            "manifesto.title_header": "📜 Teethlion Manifest",
           "manifesto.mission.title": "💪 Unsere Mission",
           "manifesto.mission.p1":
             "Teethlion entsteht als ein freies, kühnes und revolutionäres Projekt mit dem Ziel, die Souveränität der menschlichen Kommunikation unter allen Umständen wiederherzustellen.",
@@ -2869,6 +3084,71 @@ function closeNodeModal() {
         const openBtn = document.getElementById("hamburger");
         const closeBtn = document.getElementById("close-menu");
         const overlay = document.getElementById("overlay");
+
+
+//steps
+
+  // --- 1. Scope exclusivo para el Stepper ---
+  let stepIndex = 0;
+  const circles = document.querySelectorAll('.stepper-item .stepper-circle');
+  const prevBtn = document.getElementById('prev-step');
+  const nextBtn = document.getElementById('next-step');
+
+  // --- 2. Sólo los modales de pasos (añade esta clase a tus divs de modal) ---
+  const stepModals = document.querySelectorAll('#modals-container .modal.step-modal');
+
+  function updateStepper() {
+    circles.forEach((circle, i) => {
+      circle.classList.toggle('bg-yellow-500', i === stepIndex);
+      circle.classList.toggle('bg-slate-700', i !== stepIndex);
+    });
+    prevBtn.disabled = stepIndex === 0;
+    nextBtn.textContent = stepIndex === circles.length - 1 ? 'Finalizar' : 'Siguiente';
+  }
+
+  function openModal(idx) {
+    stepModals[idx].classList.remove('hidden');
+  }
+  function closeModal() {
+    const open = document.querySelector('#modals-container .modal:not(.hidden)');
+    if (open) open.classList.add('hidden');
+  }
+
+  window.openModal  = openModal;
+  window.closeModal = closeModal;
+
+  prevBtn.addEventListener('click', () => {
+    if (stepIndex > 0) {
+      stepIndex--;
+      updateStepper();
+      openModal(stepIndex);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    openModal(stepIndex);
+    if (stepIndex < circles.length - 1) {
+      stepIndex++;
+      // ligero delay para que al abrir el modal no afecte la animación
+      setTimeout(updateStepper, 100);
+    }
+  });
+
+  // Cerrar modal con Escape o clic fuera
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+  stepModals.forEach(m => {
+    m.addEventListener('click', e => {
+      if (e.target === m) closeModal();
+    });
+  });
+
+  // Inicializa el estado del stepper
+  updateStepper();
+
+
+
 
         // Función para abrir el menú
         function openMenu() {
