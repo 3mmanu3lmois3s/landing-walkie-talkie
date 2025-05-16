@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self' http://localhost:* ws://localhost:*;
-             script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com http://localhost:*;
-             style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
-             img-src 'self' data: https://www.transparenttextures.com http://localhost:* https://www.paypalobjects.com https://stripe.com;
-             connect-src 'self' https://formsubmit.co http://localhost:* ws://localhost:*;
-             frame-ancestors 'none'"
-    />
+<meta http-equiv="Content-Security-Policy"
+  content="
+    default-src 'self' http://localhost:* ws://localhost:*;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com http://localhost:*;
+    style-src  'self' 'unsafe-inline' https://cdn.tailwindcss.com;
+    img-src    'self' data: https://www.transparenttextures.com http://localhost:* https://www.paypalobjects.com https://stripe.com;
+    connect-src 'self' https://formsubmit.co http://localhost:* ws://localhost:*;
+  "
+/>
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -25,7 +25,8 @@
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Teethlion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!--<script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="styles/generated.css" />
 
 
   </head>
@@ -1277,8 +1278,17 @@ Cargando licencia TOL...</pre
 
     <!-- SCRIPT MENU + FRASE -->
     <script>
+  // -----------------------------
+  // Cache y helper de traducciones
+  // -----------------------------
+  const translationsCache = {};
+  const translations = translationsCache;  // <<— alias para que translations[...] funcione
+  let currentLang = "es";
 
-        let currentLang = "es"; // o cualquier idioma por defecto que uses
+  function getT() {
+    return translationsCache[currentLang] || {};
+  }
+        //let currentLang = "es"; // o cualquier idioma por defecto que uses
 
 
 //titulo inicial
@@ -1588,1344 +1598,7 @@ function initHeroRotation() {
 
       // Internacionalización
       // Traducciones
-      const translations = {
-        es: {
-          subtitle: "Comunicaciones descentralizadas, libres y soberanas.",
-          "hero.messages": [
-  "Libre para uso personal<sup>*</sup>",
-  "La red más poderosa del mundo P2P * libre para uso personal ha nacido",
-  "Hecho con amor por un ingeniero Venezolano/Español. Tecnología en trámite de patente y marca registrada."
-],
-"hero.note": "<sup>*</sup> Hasta 5 nodos en la misma LAN; en entornos educativos, hasta 30 nodos.",
-"node_types.title": "🧩 Tipos de Nodos en Teethlion",
-"node_types.description":  "Cada nodo en la red Teethlion cumple una función específica. La combinación de estos nodos crea una infraestructura robusta, descentralizada y evolutiva.",          
 
-
-"nav.que_es": "¿Qué es Teethlion?",
-          "nav.descargas": "Descargas",
-          "nav.contacto": "Contacto",
-          "nav.roadmap": "Roadmap",
-          "nav.licencias_menu": "Licencias",
-          "nav.faq": "FAQ",
-          "nav.manifiesto": "Manifiesto",
-          "hero.title": "Teethlion",
-          "hero.slogan": "Comunicaciones descentralizadas, libres y soberanas.",
-          "what_is.title": "¿Qué es Teethlion?",
-          "what_is.p1":
-            "Teethlion es una red de comunicación local descentralizada que funciona sin Internet. Ideal para hogares, escuelas, instituciones y gobiernos.",
-          "what_is.feature1":
-            "Comunicación de voz en tiempo real sobre LAN, MAN, WAN y GAN.",
-          "what_is.feature2": "Sin necesidad de servidores centrales.",
-          "what_is.feature3": "Seguridad mediante cifrado de grado militar.",
-          "what_is.feature4":
-            "Ideal para situaciones de emergencia, contingencias de comunicaciones y soberanía tecnológica.",
-          "what_is.feature5":
-            "Software de uso libre para personas y escuelas pequeñas, con licencias especiales para gobiernos e instituciones.",
-          "licensing_general.title": "Licenciamiento",
-          "licensing_general.p1":
-            "Gratis para uso personal y educativo (hasta 5 dispositivos en la misma red LAN). Para escuelas con más de 30 dispositivos o instituciones, se requiere licencia. La licencia incluye funcionalidades adicionales no presentes en la versión libre.",
-"nodes.title": "🧬 Tipos de Nodos en Teethlion",
-"nodes.description": "Teethlion está compuesto por una red de nodos especializados que cooperan para garantizar comunicaciones descentralizadas, seguras y eficientes. Cada nodo cumple un rol único dentro del ecosistema.",
-            "downloads.title": "Descargas",
-          "downloads.linux": "⬇️ Linux",
-          "downloads.windows": "⬇️ Windows",
-          "downloads.macos": "⬇️ macOS",
-          "downloads.enterprise_prompt":
-            "¿Necesitas funcionalidades móviles, integración SaaS y dispositivos embebidos?",
-            "downloads.contact_us": "Contáctanos",
-          "downloads.enterprise_version": " para la versión empresarial.",
-          "roadmap.title": "Roadmap",
-          "roadmap.v1.title": "✅ Versión 1.0",
-          "roadmap.v1.item1": "CLI + SPA Web",
-          "roadmap.v1.item2": "Audio en tiempo real en LAN",
-          "roadmap.v1.item3": "Chat LAN",
-          "roadmap.v1.item4": "Licencia AGPL",
-          "roadmap.soon.title": "🔜 Próximamente",
-          "roadmap.soon.item1": "Video LAN",
-          "roadmap.soon.item2": "Transcripción experimental",
-          "roadmap.soon.item3": "Modo visual CLI & SDK",
-          "roadmap.private.title": "🛡️ Privado (TOL)",
-          "roadmap.private.desc":
-            "Versión extendida para gobiernos y empresas.",
-            "node.user.name": "Usuario",
-  "node.user.desc": "Nodo estándar para comunicación directa P2P.",
-  "node.relay.name": "Repetidor",
-  "node.relay.desc": "Extiende la señal a otras zonas sin cobertura directa.",
-  "node.bootstrap.name": "Nodo Bootstrap",
-  "node.bootstrap.desc": "Ayuda a nuevos nodos a entrar en la red.",
-  "node.honeypot.name": "Honeypot",
-  "node.honeypot.desc": "Simula nodos reales para detectar actividad maliciosa.",
-  "node.guard.name": "Guardia",
-  "node.guard.desc": "Verifica y filtra el tráfico para evitar intrusiones.",
-  "node.ai.name": "Nodo IA",
-  "node.ai.desc": "Procesa transcripción, traducción o análisis en tiempo real.",
-  "node.relay_bootstrap.name": "Relay-Bootstrap",
-  "node.relay_bootstrap.desc": "Funciona como puente y como punto de entrada para nuevos nodos.",
-  "node.ai_user.name": "AI-User",
-  "node.ai_user.desc": "Nodo de usuario con capacidades de IA para traducción y análisis local.",
-  "node.iot_future_x.name": "IoT-Future-X",
-  "node.iot_future_x.desc": "Nodo experimental para IoT, autos, drones o sensores avanzados.",
-  "node.observer.name": "Observador",
-  "node.observer.desc": "Solo escucha y monitoriza el tráfico sin participar.",
-  "node.satellite.name": "Satélite",
-  "node.satellite.desc": "Nodo espacial o remoto que brinda acceso en zonas extremas.",
-  "node.router.name": "Router Seguro",
-  "node.router.desc": "Nodo intermedio que enruta tráfico entre zonas de la red.",
-  "node.dtn.name": "Nodo Delay Tolerant",
-  "node.dtn.desc": "Ideal para entornos con conectividad intermitente.",
-  "node.mesh_node.name": "Nodo Malla",
-  "node.mesh_node.desc": "Permite una red autoorganizada entre múltiples dispositivos.",
-  "node.bridge.name": "Puente",
-"node.bridge.desc": "Conecta redes Teethlion con redes externas (VPN, Tor, Internet). Ideal para zonas con censura.",
-"node.trainer.name": "Entrenador",
-"node.trainer.desc": "Nodo que entrena modelos de IA localmente sin comprometer privacidad.",
-"node.satellite.name": "Satélite",
-"node.satellite.desc": "Nodo elevado (dron, globo, satélite) que conecta zonas remotas.",
-"node.vault.name": "Bóveda",
-"node.vault.desc": "Guarda claves y credenciales críticas. Requiere múltiples firmas.",
-"node.forensic.name": "Forense",
-"node.forensic.desc": "Nodo auditor que registra actividad sin participar. Ideal para trazabilidad legal.",
-"node.secure_mesh_gateway.name": "Gateway Malla Segura",
-"node.secure_mesh_gateway.desc": "Puerta de enlace híbrida entre Teethlion y otras redes.",
-"node.secure_mesh_gateway.modal_title": "🔌 Gateway Malla Segura",
-"node.secure_mesh_gateway.modal_desc": "Nodo híbrido que conecta Teethlion con redes externas como mallas comunitarias, Wi-Fi públicas o infraestructuras privadas.",
-"node.secure_mesh_gateway.modal_usage": [
-  "Para interconectar Teethlion con una red mesh comunitaria o Wi-Fi pública.",
-  "Para crear puertas de enlace seguras entre sensores IoT y nodos Teethlion.",
-  "Como interfaz entre redes críticas (salud, seguridad) y Teethlion.",
-  "Para sincronizar datos entre redes cerradas y Teethlion sin comprometer seguridad."
-], 
-  "node.user.name": "Usuario",
-  "node.user.desc": "Nodo estándar para comunicación directa P2P.",
-  "node.user.modal_title": "👤 Nodo Usuario",
-  "node.user.modal_desc": "Nodo más común en Teethlion. Participa en chats y llamadas P2P.",
-  "node.user.modal_usage": [
-    "Para usuarios individuales en hogares, escuelas o instituciones.",
-    "Para dispositivos móviles o laptops dentro de la red Teethlion.",
-    "Para participar en comunicaciones cifradas P2P."
-  ],
-
-  "node.relay.name": "Repetidor",
-  "node.relay.desc": "Extiende la señal a otras zonas sin cobertura directa.",
-  "node.relay.modal_title": "📡 Nodo Repetidor",
-  "node.relay.modal_desc": "Amplifica la cobertura de la red Teethlion a zonas alejadas.",
-  "node.relay.modal_usage": [
-    "Para expandir la red Teethlion dentro de un edificio grande o zona amplia.",
-    "Ideal para entornos rurales o urbanos con obstáculos físicos.",
-    "Puede ser instalado en techos o puntos elevados sin requerir interacción directa."
-  ],
-
-  "node.bootstrap.name": "Nodo Bootstrap",
-  "node.bootstrap.desc": "Ayuda a nuevos nodos a entrar en la red.",
-  "node.bootstrap.modal_title": "🚀 Nodo Bootstrap",
-  "node.bootstrap.modal_desc": "Nodo central que facilita el ingreso de nuevos participantes en la red.",
-  "node.bootstrap.modal_usage": [
-    "Para iniciar una nueva red Teethlion en zonas sin infraestructura previa.",
-    "Para garantizar la disponibilidad de peers iniciales.",
-    "Puede estar activo 24/7 en una red local o remota."
-  ],
-
-  "node.honeypot.name": "Honeypot",
-  "node.honeypot.desc": "Simula nodos reales para detectar actividad maliciosa.",
-  "node.honeypot.modal_title": "🕵️ Nodo Honeypot",
-  "node.honeypot.modal_desc": "Nodo señuelo que simula servicios para detectar ataques.",
-  "node.honeypot.modal_usage": [
-    "Para seguridad avanzada en redes sensibles.",
-    "Para detectar escaneos o comportamientos anómalos.",
-    "Ideal para entornos gubernamentales o industriales."
-  ],
-
-  "node.guard.name": "Guardia",
-  "node.guard.desc": "Verifica y filtra el tráfico para evitar intrusiones.",
-  "node.guard.modal_title": "🛡️ Nodo Guardia",
-  "node.guard.modal_desc": "Monitorea y protege la red frente a amenazas internas o externas.",
-  "node.guard.modal_usage": [
-    "Para validar conexiones entrantes o salientes.",
-    "Para bloquear tráfico malicioso o no autorizado.",
-    "Para entornos con alta necesidad de seguridad (salud, defensa, gobierno)."
-  ],
-
-  "node.ai.name": "Nodo IA",
-  "node.ai.desc": "Procesa transcripción, traducción o análisis en tiempo real.",
-  "node.ai.modal_title": "🤖 Nodo Inteligencia Artificial",
-  "node.ai.modal_desc": "Nodo dedicado a tareas de IA como traducción, síntesis de voz y análisis contextual.",
-  "node.ai.modal_usage": [
-    "Para traducir llamadas en tiempo real.",
-    "Para ejecutar modelos de voz o texto sin conexión.",
-    "Para análisis de datos locales sin comprometer privacidad."
-  ],
-
-  "node.relay_bootstrap.name": "Relay-Bootstrap",
-  "node.relay_bootstrap.desc": "Funciona como puente y como punto de entrada para nuevos nodos.",
-  "node.relay_bootstrap.modal_title": "🌐 Relay-Bootstrap",
-  "node.relay_bootstrap.modal_desc": "Nodo mixto que extiende cobertura y ofrece acceso inicial a la red.",
-  "node.relay_bootstrap.modal_usage": [
-    "Ideal para comunidades medianas que requieren cobertura y acceso.",
-    "Para usar en puntos estratégicos como plazas o escuelas.",
-    "Reduce la carga de otros nodos Bootstrap."
-  ],
-
-  "node.ai_user.name": "AI-User",
-  "node.ai_user.desc": "Nodo de usuario con capacidades de IA para traducción y análisis local.",
-  "node.ai_user.modal_title": "🧠 AI-User",
-  "node.ai_user.modal_desc": "Usuario avanzado que integra procesamiento de IA de manera local.",
-  "node.ai_user.modal_usage": [
-    "Ideal para periodistas, diplomáticos o investigadores.",
-    "Permite usar IA sin conexión a internet.",
-    "Traducción de mensajes, detección de emociones o análisis automático."
-  ],
-
-  "node.iot_future_x.name": "IoT-Future-X",
-  "node.iot_future_x.desc": "Nodo experimental para IoT, autos, drones o sensores avanzados.",
-  "node.iot_future_x.modal_title": "🌟 Nodo IoT-Future-X",
-  "node.iot_future_x.modal_desc": "Nodo versátil y modular para dispositivos embebidos y nuevas tecnologías.",
-  "node.iot_future_x.modal_usage": [
-    "Para conectar sensores en ciudades inteligentes.",
-    "Para control de drones o robótica comunitaria.",
-    "En investigación tecnológica con hardware experimental."
-  ],
-
-  "node.observer.name": "Observador",
-  "node.observer.desc": "Solo escucha y monitoriza el tráfico sin participar.",
-  "node.observer.modal_title": "👁️ Nodo Observador",
-  "node.observer.modal_desc": "Nodo pasivo que permite auditoría sin interacción.",
-  "node.observer.modal_usage": [
-    "Para estudios de red, pruebas o auditorías.",
-    "Ideal para análisis forense o educativos.",
-    "No envía tráfico ni responde a peticiones.",
-  ],
-
-  "node.satellite.name": "Satélite",
-  "node.satellite.desc": "Nodo espacial o remoto que brinda acceso en zonas extremas.",
-  "node.satellite.modal_title": "🛰️ Nodo Satélite",
-  "node.satellite.modal_desc": "Nodo remoto (dron, globo, satélite) que conecta zonas de difícil acceso.",
-  "node.satellite.modal_usage": [
-    "Para conectar zonas sin infraestructura terrestre.",
-    "Ideal en montañas, desiertos o emergencias.",
-    "Puede ser alimentado por energía solar y operar de forma autónoma.",
-  ],
-
-  "node.router.name": "Router Seguro",
-  "node.router.desc": "Nodo intermedio que enruta tráfico entre zonas de la red.",
-  "node.router.modal_title": "📶 Router Seguro",
-  "node.router.modal_desc": "Nodo especializado en el enrutamiento seguro de datos dentro de Teethlion.",
-  "node.router.modal_usage": [
-    "Para redes con múltiples segmentos o edificios.",
-    "Para enrutar mensajes entre zonas de distinta cobertura.",
-    "Proporciona eficiencia y segmentación sin comprometer la privacidad."
-  ],
-
-  "node.dtn.name": "Nodo Delay Tolerant",
-  "node.dtn.desc": "Ideal para entornos con conectividad intermitente.",
-  "node.dtn.modal_title": "⏳ Nodo DTN (Delay Tolerant)",
-  "node.dtn.modal_desc": "Nodo diseñado para tolerar desconexiones o retrasos.",
-  "node.dtn.modal_usage": [
-    "Ideal para zonas rurales o móviles.",
-    "Permite almacenamiento temporal de mensajes.",
-    "Inspirado en redes espaciales y sistemas resilientes.",
-  ],
-
-  "node.mesh_node.name": "Nodo Malla",
-  "node.mesh_node.desc": "Permite una red autoorganizada entre múltiples dispositivos.",
-  "node.mesh_node.modal_title": "🌐 Nodo Malla",
-  "node.mesh_node.modal_desc": "Conecta automáticamente con otros nodos cercanos para formar una red dinámica.",
-  "node.mesh_node.modal_usage": [
-    "Ideal para redes comunitarias sin infraestructura previa.",
-    "Permite expansión orgánica y resiliente.",
-    "Se adapta automáticamente a cambios en el entorno físico.",
-  ],
-
-  "node.bridge.name": "Puente",
-  "node.bridge.desc": "Conecta redes Teethlion con redes externas (VPN, Tor, Internet). Ideal para zonas con censura.",
-  "node.bridge.modal_title": "🌉 Nodo Puente",
-  "node.bridge.modal_desc": "Permite el flujo selectivo de datos entre Teethlion y otras redes globales.",
-  "node.bridge.modal_usage": [
-    "Para enviar información al exterior de manera segura.",
-    "Para redirigir tráfico mediante VPN, Tor u otras capas seguras.",
-    "Permite anonimato en entornos censurados.",
-  ],
-
-  "node.trainer.name": "Entrenador",
-  "node.trainer.desc": "Nodo que entrena modelos de IA localmente sin comprometer privacidad.",
-  "node.trainer.modal_title": "📚 Nodo Entrenador",
-  "node.trainer.modal_desc": "Nodo especializado en el entrenamiento descentralizado de modelos de IA.",
-  "node.trainer.modal_usage": [
-    "Para investigación o formación de modelos federados.",
-    "Para uso educativo en ciencia de datos.",
-    "Puede entrenar sin enviar datos a la nube.",
-  ],
-
-  "node.vault.name": "Bóveda",
-  "node.vault.desc": "Guarda claves y credenciales críticas. Requiere múltiples firmas.",
-  "node.vault.modal_title": "🔐 Nodo Bóveda",
-  "node.vault.modal_desc": "Almacena información sensible y requiere consenso para su acceso.",
-  "node.vault.modal_usage": [
-    "Para gestionar llaves privadas y certificados.",
-    "Requiere validación multi-firma para extraer datos.",
-    "Ideal en redes institucionales o gubernamentales.",
-  ],
-
-  "node.forensic.name": "Forense",
-  "node.forensic.desc": "Nodo auditor que registra actividad sin participar. Ideal para trazabilidad legal.",
-  "node.forensic.modal_title": "🧾 Nodo Forense",
-  "node.forensic.modal_desc": "Nodo de auditoría pasiva que graba eventos relevantes sin intervenir.",
-  "node.forensic.modal_usage": [
-    "Para generar evidencia digital firmada.",
-    "Ideal en contextos legales, escolares o gubernamentales.",
-    "Puede exportar reportes para análisis externo.",
-  ],
-"contact.title": "Contacto",
-          "contact.name_placeholder": "Tu nombre",
-          "contact.email_placeholder": "Tu correo",
-          "contact.message_placeholder": "Tu mensaje",
-          "contact.send_button": "Enviar",
-          "contribute.title": "Contribuye a Teethlion",
-          "contribute.description": "Sé parte de la evolución de las comunicaciones. Ayúdanos a extender Teethlion desde tu comunidad o hacia nuevas fronteras.",
-          "contribute.finance_button": "⚡ Financia la red",
-          "contribute.expand_button": "🌐 Amplía la red",
-          "contribute.satellite_button": "🛰️ Compra un satélite",
-          "project_licenses.title": "📜 Licencias del Proyecto",
-          "project_licenses.agpl_button": "AGPL v3",
-          "project_licenses.tol_button": "Teethlion Open License (TOL)",
-          "project_licenses.agpl_v3_title_panel": "Licencia AGPL v3",
-          "project_licenses.tol_title_panel": "Teethlion Open License (TOL)",
-          "calculator.title": "Calculadora de Licenciamiento",
-          "calculator.description":
-            "Usa esta herramienta para estimar el coste único de licencias para gobiernos, instituciones o empresas según el número de personas conectadas a la red Teethlion.",
-          "calculator.entity_type_label": "Tipo de entidad:",
-          "calculator.entity_gov": "Gobierno",
-          "calculator.entity_school": "Escuela",
-          "calculator.entity_enterprise": "Empresa",
-          "calculator.people_label": "Número de personas:",
-          "calculator.calculate_button": "Calcular costo",
-          "calculator.estimated_cost_text":
-            "Costo total estimado: {total} €. {note}",
-          "calculator.school_no_license":
-            "Escuelas con hasta 30 personas no necesitan licencia.",
-          "calculator.lifetime_note": "Pago único, licencia vitalicia.",
-          "calculator.support_fee": "Tarifa de soporte y actualizaciones",
-          "calculator.support_variable": "variable.",
-          "calculator.contact_for_estimate":
-            "Contáctanos para una estimación según tu caso.",
-          "faq.title_header": "🧠 Preguntas Frecuentes (FAQ)",
-          "faq.q1_title": "¿Qué necesito para usar Teethlion?",
-          "faq.q1_answer":
-            "Solo dispositivos conectados a la misma red LAN. No necesitas internet, servidores ni routers especiales.",
-          "faq.q2_title": "¿Qué pasa si alguien viola la licencia?",
-          "faq.q2_answer":
-            "Las licencias AGPL y TOL son legalmente vinculantes. Si alguien utiliza Teethlion sin respetar las condiciones, puede enfrentar acciones legales, especialmente en entornos comerciales o institucionales.",
-          "faq.q3_title":
-            "¿Por qué Teethlion es libre para unos y de pago para otros?",
-          "faq.q3_answer":
-            "Teethlion promueve el acceso libre para hogares y educación. Sin embargo, cuando el software se usa con fines comerciales, institucionales o gubernamentales, se requiere licencia para financiar el desarrollo y garantizar soporte.",
-          "faq.q4_title":
-            "¿Cómo obtener una licencia comercial o institucional?",
-          "faq.q4_answer_p1":
-            "Puedes usar el formulario de contacto o escribirnos a ",
-          "faq.q4_answer_link": "nuestro correo",
-          "faq.q4_answer_p2":
-            ". Evaluamos cada caso según el tamaño de la organización y el área de cobertura.",
-          "faq.q5_title": "¿Puedo contribuir al proyecto?",
-          "faq.q5_answer":
-            "¡Sí! Puedes contribuir con ideas, código, documentación, pruebas o financiación voluntaria. Consulta la sección de donaciones para apoyar el crecimiento de Teethlion.",
-"faq.q6_title": "¿Qué ventajas tengo si uso Teethlion sobre otros sistemas de comunicación?",
-"faq.q6_answer": "Nadie tendrá tus datos. Te comunicarás de forma segura de extremo a extremo, y podrás comunicarte incluso sin Internet con otros dispositivos en tu misma red.",
-
-"faq.q7_title": "¿Cómo se financia Teethlion?",
-"faq.q7_answer": "Teethlion se financia mediante programas de I+D, subvenciones y grants, con ayuda de la comunidad internacional, aportes de empresas privadas, adquisición de licencias por parte de gobiernos, empresas y pymes, así como contratos de soporte, mantenimiento y desarrollos personalizados.",
-
-"faq.q8_title": "¿Cuándo estará listo Teethlion en su totalidad?",
-"faq.q8_answer": "Teethlion es una red de nodos evolutiva, por lo que cada año seguirá mejorando. La primera versión multiplataforma oficial estará disponible para descarga en el Q4 de 2025.",
-
-"comparison.title": "🔍 Comparativa con Otras Soluciones",
-  "comparison.description": "Descubre por qué Teethlion es la red de comunicación más flexible, descentralizada, resiliente y evolutiva jamás creada. Soporta voz, video y archivos cifrados punto a punto, incluso sin conexión a Internet.",
-  "comparison.col_feature": "Característica",
-  "comparison.col_wifi_mesh": "Redes Wi-Fi Mesh",
-  "comparison.feature_offline": "Funciona sin Internet",
-  "comparison.feature_encryption": "Cifrado extremo a extremo",
-  "comparison.feature_decentralized": "Descentralización real",
-  "comparison.feature_multiplatform": "Multiplataforma",
-  "comparison.feature_content": "Transmisión de voz, video y archivos",
-  "comparison.feature_cost": "Costo de uso",
-  "comparison.feature_evolution": "Actualizaciones evolutivas anuales",
-
-"quickstart.title":      "Quickstart: Instala y Prueba en 4 Pasos",
-"quickstart.step1":      "Descarga",
-"quickstart.step2":      "Instala",
-"quickstart.step3":      "Ejecuta",
-"quickstart.step4":      "Llama",
-"quickstart.prev":       "Anterior",
-"quickstart.next":       "Siguiente",
-"quickstart.modal1.title":"Paso 1: Descarga",
-"quickstart.modal1.desc": "Descarga Teethlion para tu plataforma (Laptop o Móvil).",
-"quickstart.modal1.cta":  "Ir a Descargas",
-"quickstart.modal2.title":"Paso 2: Instala",
-"quickstart.modal2.desc": "Ejecuta el instalador y sigue las indicaciones en pantalla para instalar Teethlion.",
-"quickstart.modal2.cta":  "Entendido",
-"quickstart.modal3.title":"Paso 3: Ejecuta",
-"quickstart.modal3.desc": "Abre Teethlion y permite los permisos necesarios para iniciar la aplicación.",
-"quickstart.modal3.cta":  "Continuar",
-"quickstart.modal4.title":"Paso 4: Llama",
-"quickstart.modal4.desc": "Localiza a tus amigos en la red y haz tu primera llamada descentralizada.",
-"quickstart.modal4.cta":  "Finalizar",
-
-            "manifesto.title_header": "📜 Teethlion Manifesto",
-          "manifesto.mission.title": "💪 Nuestra Misión",
-          "manifesto.mission.p1":
-            "Teethlion nace como un proyecto libre, audaz y revolucionario, cuyo objetivo es restaurar la soberanía de las comunicaciones humanas en cualquier circunstancia.",
-          "manifesto.mission.p2":
-            "Queremos que todas las personas, familias, comunidades, escuelas y gobiernos tengan acceso a una red descentralizada, cifrada, autónoma y resiliente.",
-          "manifesto.mission.p3":
-            "Teethlion no depende de proveedores de Internet, ni de infraestructuras centralizadas, ni de servicios en la nube. Es un sistema que respira libertad, inspirado en la naturaleza viva: ágil, colaborativo, indestructible.",
-          "manifesto.principles.title": "🌍 Principios Fundamentales",
-          "manifesto.principles.item1":
-            "Libertad personal: Cada individuo debe poder comunicarse sin censura, espionaje ni dependencia.",
-          "manifesto.principles.item2":
-            "Resiliencia comunitaria: Las comunidades deben ser capaces de mantener redes locales y globales incluso en situaciones críticas.",
-          "manifesto.principles.item3":
-            "Accesibilidad: La tecnología debe ser accesible para todos, sin barreras económicas, especialmente en educación.",
-          "manifesto.principles.item4":
-            "Innovación protegida: La arquitectura y esencia de Teethlion deben ser respetadas para preservar su integridad y visión.",
-          "manifesto.offers.title": "✨ Lo que Teethlion ofrece",
-          "manifesto.offers.item1":
-            "Comunicación P2P cifrada de alta seguridad.",
-          "manifesto.offers.item2":
-            "Redes LAN autónomas que pueden expandirse globalmente.",
-          "manifesto.offers.item3":
-            "Funcionamiento sin necesidad de conexión a Internet.",
-          "manifesto.offers.item4":
-            "Adaptabilidad a distintos entornos: civil, educativo, institucional y gubernamental.",
-          "manifesto.license.title":
-            "📅 Nuestra Licencia (Teethlion Open License)",
-          "manifesto.license.item1":
-            "Uso Personal: Gratis y libre para cualquier persona, para un máximo de 5 dispositivos conectados simultáneamente.",
-          "manifesto.license.item2":
-            "Uso Educativo: Gratis para escuelas y universidades en redes de hasta 30 dispositivos.",
-          "manifesto.license.item3":
-            "Uso Extendido: Para usos de más de 30 dispositivos, o para redes municipales, empresariales o gubernamentales, se requiere una licencia por cada persona/dispositivo.",
-          "manifesto.license.rates_title": "Tarifas Licencia Vitalicia:",
-          "manifesto.license.rate1":
-            "1 € / persona para gobiernos, ciudades o instituciones (&gt;30 usuarios).",
-          "manifesto.license.rate2":
-            "Licencia única de por vida. Sin renovaciones obligatorias.",
-          "manifesto.protection.title": "🔒 Protección de Teethlion",
-          "manifesto.protection.item1":
-            'Marca registrada: "Teethlion" es una marca protegida. No puede ser usada para productos derivados.',
-          "manifesto.protection.item2":
-            "Prohibición de forks comerciales: No está permitido crear, distribuir o vender productos derivados o alternativos basados en la arquitectura, concepto o funcionamiento de Teethlion sin autorización expresa.",
-          "manifesto.protection.item3":
-            "Prohibición de reimplementaciones: No se permite crear variantes en otros lenguajes (Rust, C, Python, etc.) que reproduzcan el concepto Teethlion sin licencia.",
-          "manifesto.dream.title": "🚀 Nuestro Sueño",
-          "manifesto.dream.p1":
-            "Imaginamos un futuro donde cada comunidad humana tenga su red descentralizada de Teethlions rugiendo en red: comunicándose, protegiéndose, sobreviviendo, evolucionando.",
-          "manifesto.dream.p2":
-            "Teethlion es la libertad de comunicar. Es la evolución de las redes humanas.",
-          "manifesto.dream.welcome":
-            "🕊️✨ Bienvenido a Teethlion. Rugimos juntos.",
-          "partners.title": "🤝 Partners y Apoyo Institucional",
-          "partners.description":
-            "Teethlion cuenta con el interés de comunidades, ONGs y entidades educativas que promueven la soberanía tecnológica. Si representas a una institución interesada en apoyar el proyecto, contáctanos.",
-          "partners.cta": "📩 Quiero ser Partner",
-          "instances.title": "🌐 Instancias activas",
-          "instances.description": "Teethlion ha sido instalado en:",
-          "instances.extra_info": "nodos verificados en 7 países",
-          "contact.satellite_message":
-            "Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion. Mi número de contacto es: __________",
-          "contact.satellite_phone_prompt": "Mi número de contacto es:",
-          "contact.expansion_message":
-            "Hola, estamos interesados en financiar Teethlion en nuestra comunidad o en una comunidad de nuestro interés. Se requiere soporte para N nodos en un área de un radio de N kilómetros y nos gustaría que nos brinden el soporte y/o la infraestructura para lograrlo. Aportaremos el pago de las licencias y el costo del proyecto y de la infraestructura. Nuestro número de contacto es: _______________",
-          "contact.expansion_phone_prompt": "Nuestro número de contacto es:",
-          "contribute.donation_10": "Donación €10",
-          "contribute.donation_25": "Donación €25",
-          "contribute.card_donation": "Donación con Tarjeta",
-          "cto.title": "CTO & Fundador",
-          "cto.description":
-            "Líder técnico y arquitecto principal de Teethlion",
-          footer: {
-            phrases: [
-              "Potenciado por tecnología Abierta",
-              "Software libre, seguro y soberano",
-              "Tecnología descentralizada para todos",
-              "Construido con Go, libp2p y corazón",
-            ],
-          },
-          "footer.phrase": "", // Este se actualizará dinámicamente
-        },
-        en: {
-          subtitle: "Decentralised, free and sovereign communications.",
-          "hero.messages": [
-  "Free for personal use<sup>*</sup>",
-  "The most powerful P2P network in the world * free for personal use is born",
-  "Built with love by a Venezuelan/Spanish engineer. Patent-pending technology and trademarked."
-],
-"hero.note": "<sup>*</sup> Up to 5 nodes on the same LAN; up to 30 nodes in educational environments.",
-          "nav.que_es": "What is Teethlion?",
-"node_types.title": "🧩 Node Types in Teethlion",
-"node_types.description":  "Each node in the Teethlion network serves a specific role. Their combination builds a resilient, decentralized, and evolving infrastructure.",
-          "nav.descargas": "Downloads",
-          "nav.contacto": "Contact",
-          "nav.roadmap": "Roadmap",
-          "nav.licencias_menu": "Licenses",
-          "nav.faq": "FAQ",
-          "nav.manifiesto": "Manifesto",
-          "hero.title": "Teethlion",
-          "hero.slogan": "Decentralized, free, and sovereign communications.",
-          "what_is.title": "What is Teethlion?",
-          "what_is.p1":
-            "Teethlion is a decentralized local communication network that works without the Internet. Ideal for homes, schools, institutions, and governments.",
-          "what_is.feature1": "Real-time voice communication over LAN and WAN.",
-          "what_is.feature2": "No need for central servers.",
-          "what_is.feature3": "Security through military-grade encryption.",
-          "what_is.feature4":
-            "Ideal for emergency situations, communication contingencies, and technological sovereignty.",
-          "what_is.feature5":
-            "Free software for individuals and small schools, with special licenses for governments and institutions.",
-          "licensing_general.title": "Licensing",
-          "licensing_general.p1":
-            "Free for personal and educational use (up to 5 devices on the same LAN). For schools with more than 30 devices or institutions, a license is required. The license includes additional features not present in the free version.",
-          "downloads.title": "Downloads",
-          "downloads.linux": "⬇️ Linux",
-          "downloads.windows": "⬇️ Windows",
-          "downloads.macos": "⬇️ macOS",
-          "downloads.enterprise_prompt":
-            "Need mobile functionalities, SaaS integration, and embedded devices?",
-          "downloads.contact_us": "Contact us",
-"nodes.title": "🧬 Knotentypen in Teethlion",
-"nodes.description": "Teethlion besteht aus einem Netzwerk spezialisierter Knoten, die zusammenarbeiten, um dezentrale, sichere und effiziente Kommunikation zu gewährleisten. Jeder Knoten erfüllt eine einzigartige Funktion im Ökosystem.",
-"node.secure_mesh_gateway.name": "Secure Mesh Gateway",
-"node.secure_mesh_gateway.desc": "Hybrid gateway between Teethlion and other networks.",
-"node.secure_mesh_gateway.modal_title": "🔌 Secure Mesh Gateway",
-"node.secure_mesh_gateway.modal_desc": "Hybrid node that connects Teethlion to external networks like community meshes, public Wi-Fi or private infrastructures.",
-"node.secure_mesh_gateway.modal_usage": [
-  "To interconnect Teethlion with a community mesh or public Wi-Fi.",
-  "To create secure gateways between IoT sensors and Teethlion nodes.",
-  "As an interface between critical networks (health, security) and Teethlion.",
-  "To synchronize data between closed networks and Teethlion without compromising security."
-],
-  "node.user.name": "User",
-  "node.user.desc": "Standard node for direct P2P communication.",
-  "node.user.modal_title": "👤 User Node",
-  "node.user.modal_desc": "Most common node in Teethlion. Participates in chats and P2P calls.",
-  "node.user.modal_usage": [
-    "For individual users in homes, schools, or institutions.",
-    "For mobile devices or laptops within the Teethlion network.",
-    "To participate in encrypted P2P communications."
-  ],
-
-  "node.relay.name": "Repeater",
-  "node.relay.desc": "Extends signal to areas without direct coverage.",
-  "node.relay.modal_title": "📡 Repeater Node",
-  "node.relay.modal_desc": "Amplifies Teethlion network coverage to distant areas.",
-  "node.relay.modal_usage": [
-    "To expand Teethlion coverage in large buildings or wide areas.",
-    "Ideal for rural or urban environments with physical obstacles.",
-    "Can be installed on rooftops or high points without user interaction."
-  ],
-
-  "node.bootstrap.name": "Bootstrap Node",
-  "node.bootstrap.desc": "Helps new nodes join the network.",
-  "node.bootstrap.modal_title": "🚀 Bootstrap Node",
-  "node.bootstrap.modal_desc": "Central node that facilitates the entry of new participants.",
-  "node.bootstrap.modal_usage": [
-    "To start a new Teethlion network in areas with no prior infrastructure.",
-    "To ensure availability of initial peers.",
-    "Can run 24/7 on a local or remote network."
-  ],
-
-  "node.honeypot.name": "Honeypot",
-  "node.honeypot.desc": "Simulates real nodes to detect malicious activity.",
-  "node.honeypot.modal_title": "🕵️ Honeypot Node",
-  "node.honeypot.modal_desc": "Decoy node that simulates services to detect attacks.",
-  "node.honeypot.modal_usage": [
-    "For advanced security in sensitive networks.",
-    "To detect scans or anomalous behavior.",
-    "Ideal for government or industrial environments."
-  ],
-
-  "node.guard.name": "Guard",
-  "node.guard.desc": "Verifies and filters traffic to prevent intrusions.",
-  "node.guard.modal_title": "🛡️ Guard Node",
-  "node.guard.modal_desc": "Monitors and protects the network from threats.",
-  "node.guard.modal_usage": [
-    "To validate incoming or outgoing connections.",
-    "To block malicious or unauthorized traffic.",
-    "For high-security environments (healthcare, defense, government)."
-  ],
-
-  "node.ai.name": "AI Node",
-  "node.ai.desc": "Processes transcription, translation, or analysis in real time.",
-  "node.ai.modal_title": "🤖 Artificial Intelligence Node",
-  "node.ai.modal_desc": "Dedicated node for tasks like translation, speech synthesis, and context analysis.",
-  "node.ai.modal_usage": [
-    "To translate calls in real time.",
-    "To run voice or text models offline.",
-    "For local data analysis without compromising privacy."
-  ],
-
-  "node.relay_bootstrap.name": "Relay-Bootstrap",
-  "node.relay_bootstrap.desc": "Acts as a bridge and entry point for new nodes.",
-  "node.relay_bootstrap.modal_title": "🌐 Relay-Bootstrap",
-  "node.relay_bootstrap.modal_desc": "Hybrid node that extends coverage and provides network access.",
-  "node.relay_bootstrap.modal_usage": [
-    "Ideal for medium-sized communities needing access and coverage.",
-    "To deploy in strategic points like plazas or schools.",
-    "Reduces load on other Bootstrap nodes."
-  ],
-
-  "node.ai_user.name": "AI-User",
-  "node.ai_user.desc": "User node with local AI capabilities for translation and analysis.",
-  "node.ai_user.modal_title": "🧠 AI-User",
-  "node.ai_user.modal_desc": "Advanced user with local AI processing.",
-  "node.ai_user.modal_usage": [
-    "Ideal for journalists, diplomats, or researchers.",
-    "Allows AI use without internet.",
-    "For message translation, emotion detection, or auto-analysis."
-  ],
-
-  "node.iot_future_x.name": "IoT-Future-X",
-  "node.iot_future_x.desc": "Experimental node for IoT, cars, drones, or advanced sensors.",
-  "node.iot_future_x.modal_title": "🌟 IoT-Future-X Node",
-  "node.iot_future_x.modal_desc": "Versatile modular node for embedded devices and emerging technologies.",
-  "node.iot_future_x.modal_usage": [
-    "To connect sensors in smart cities.",
-    "For community drone or robotics control.",
-    "In tech research with experimental hardware."
-  ],
-
-  "node.observer.name": "Observer",
-  "node.observer.desc": "Only listens and monitors traffic without participating.",
-  "node.observer.modal_title": "👁️ Observer Node",
-  "node.observer.modal_desc": "Passive node that audits traffic without interacting.",
-  "node.observer.modal_usage": [
-    "For network studies, tests, or audits.",
-    "Ideal for forensic or educational analysis.",
-    "Does not send traffic or reply to requests."
-  ],
-
-  "node.satellite.name": "Satellite",
-  "node.satellite.desc": "Remote or space node that provides access in extreme zones.",
-  "node.satellite.modal_title": "🛰️ Satellite Node",
-  "node.satellite.modal_desc": "Remote node (drone, balloon, satellite) connecting hard-to-reach zones.",
-  "node.satellite.modal_usage": [
-    "To connect areas without terrestrial infrastructure.",
-    "Ideal in mountains, deserts, or emergencies.",
-    "Can be solar-powered and operate autonomously."
-  ],
-
-  "node.router.name": "Secure Router",
-  "node.router.desc": "Intermediate node that routes traffic between network zones.",
-  "node.router.modal_title": "📶 Secure Router",
-  "node.router.modal_desc": "Specialized node for secure routing of data within Teethlion.",
-  "node.router.modal_usage": [
-    "For networks with multiple segments or buildings.",
-    "To route messages between zones with different coverage.",
-    "Ensures efficiency and segmentation without privacy loss."
-  ],
-
-  "node.dtn.name": "Delay Tolerant Node",
-  "node.dtn.desc": "Ideal for environments with intermittent connectivity.",
-  "node.dtn.modal_title": "⏳ DTN (Delay Tolerant Node)",
-  "node.dtn.modal_desc": "Node designed to tolerate disconnections or delays.",
-  "node.dtn.modal_usage": [
-    "Ideal for rural or mobile zones.",
-    "Temporarily stores messages.",
-    "Inspired by space and resilient networks."
-  ],
-
-  "node.mesh_node.name": "Mesh Node",
-  "node.mesh_node.desc": "Enables a self-organizing network among devices.",
-  "node.mesh_node.modal_title": "🌐 Mesh Node",
-  "node.mesh_node.modal_desc": "Automatically connects with nearby nodes to form a dynamic network.",
-  "node.mesh_node.modal_usage": [
-    "Ideal for community networks with no prior infrastructure.",
-    "Enables organic and resilient expansion.",
-    "Adapts to changes in the physical environment."
-  ],
-
-  "node.bridge.name": "Bridge",
-  "node.bridge.desc": "Connects Teethlion with external networks (VPN, Tor, Internet). Ideal in censored areas.",
-  "node.bridge.modal_title": "🌉 Bridge Node",
-  "node.bridge.modal_desc": "Allows selective data flow between Teethlion and global networks.",
-  "node.bridge.modal_usage": [
-    "To securely send information outside the network.",
-    "To reroute traffic through VPN, Tor, or secure layers.",
-    "Enables anonymity in censored environments."
-  ],
-
-  "node.trainer.name": "Trainer",
-  "node.trainer.desc": "Trains AI models locally without compromising privacy.",
-  "node.trainer.modal_title": "📚 Trainer Node",
-  "node.trainer.modal_desc": "Specialized node for decentralized AI training.",
-  "node.trainer.modal_usage": [
-    "For federated learning or AI research.",
-    "For data science education.",
-    "Can train models without sending data to the cloud."
-  ],
-
-  "node.vault.name": "Vault",
-  "node.vault.desc": "Stores critical credentials and keys. Requires multi-signature.",
-  "node.vault.modal_title": "🔐 Vault Node",
-  "node.vault.modal_desc": "Stores sensitive information and requires consensus for access.",
-  "node.vault.modal_usage": [
-    "To manage private keys and certificates.",
-    "Requires multi-signature validation to extract data.",
-    "Ideal for institutional or government networks."
-  ],
-
-  "node.forensic.name": "Forensic",
-  "node.forensic.desc": "Audits activity without participation. Ideal for legal traceability.",
-  "node.forensic.modal_title": "🧾 Forensic Node",
-  "node.forensic.modal_desc": "Passive audit node that records relevant events without intervening.",
-  "node.forensic.modal_usage": [
-    "To generate signed digital evidence.",
-    "Ideal in legal, academic, or government contexts.",
-    "Can export reports for external analysis."
-  ],
-          "downloads.enterprise_version": " for the enterprise version.",
-          tooltip: "Próximamente Q3 2025",
-          "roadmap.title": "Roadmap",
-          "roadmap.v1.title": "✅ Version 1.0",
-          "roadmap.v1.item1": "CLI + SPA Web",
-          "roadmap.v1.item2": "Real-time audio on LAN",
-          "roadmap.v1.item3": "LAN Chat",
-          "roadmap.v1.item4": "AGPL License",
-          "roadmap.soon.title": "🔜 Coming Soon",
-          "roadmap.soon.item1": "LAN Video",
-          "roadmap.soon.item2": "Experimental transcription",
-          "roadmap.soon.item3": "Visual CLI mode  & SDK",
-          "roadmap.private.title": "🛡️ Private (TOL)",
-          "roadmap.private.desc":
-            "Extended version for governments and companies.",
-"node.bridge.name": "Bridge",
-"node.bridge.desc": "Connects Teethlion networks to external ones (VPN, Tor, regulated Internet). Useful in censored zones.",
-"node.trainer.name": "Trainer",
-"node.trainer.desc": "Specialized node for local AI training without exposing data.",
-"node.satellite.name": "Satellite",
-"node.satellite.desc": "High-altitude node (drone, balloon, satellite) for remote region access.",
-"node.vault.name": "Vault",
-"node.vault.desc": "Stores critical credentials and keys. Requires multisig for access.",
-"node.forensic.name": "Forensic",
-"node.forensic.desc": "Audit-only node. Records network traffic for legal or regulatory purposes.",
-
-          "contact.title": "Contact",
-          "contact.name_placeholder": "Your name",
-          "contact.email_placeholder": "Your email",
-          "contact.message_placeholder": "Your message",
-          "contact.send_button": "Send",
-          "contribute.title": "Contribute to Teethlion",
-       "contribute.description": "Be part of the evolution of communication. Help us expand Teethlion from your community or to new frontiers.",
-          "contribute.finance_button": "⚡ Finance the network",
-          "contribute.expand_button": "🌐 Expand the network",
-          "contribute.satellite_button": "🛰️ Buy a satellite",
-          "project_licenses.title": "📜 Project Licenses",
-          "project_licenses.agpl_button": "AGPL v3",
-          "project_licenses.tol_button": "Teethlion Open License (TOL)",
-          "project_licenses.agpl_v3_title_panel": "AGPL v3 License",
-          "project_licenses.tol_title_panel": "Teethlion Open License (TOL)",
-          "calculator.title": "Licensing Calculator",
-          "calculator.description":
-            "Use this tool to estimate the one-time license cost for governments, institutions, or companies based on the number of people connected to the Teethlion network.",
-          "calculator.entity_type_label": "Entity type:",
-          "calculator.entity_gov": "Government",
-          "calculator.entity_school": "School",
-          "calculator.entity_enterprise": "Enterprise",
-          "calculator.people_label": "Number of people:",
-          "calculator.calculate_button": "Calculate cost",
-          "calculator.estimated_cost_text":
-            "Estimated total cost: {total} €. {note}",
-          "calculator.school_no_license":
-            "Schools with up to 30 people do not need a license.",
-          "calculator.lifetime_note": "One-time payment, lifetime license.",
-          "calculator.support_fee": "Support and updates fee",
-          "calculator.support_variable": "variable.",
-          "calculator.contact_for_estimate":
-            "Contact us for a case-specific estimate.",
-          "faq.title_header": "🧠 Frequently Asked Questions (FAQ)",
-          "faq.q1_title": "What do I need to use Teethlion?",
-          "faq.q1_answer":
-            "Only devices connected to the same LAN network. You don't need internet, servers, or special routers.",
-          "faq.q2_title": "What happens if someone violates the license?",
-          "faq.q2_answer":
-            "The AGPL and TOL licenses are legally binding. If someone uses Teethlion without respecting the conditions, they may face legal action, especially in commercial or institutional environments.",
-          "faq.q3_title": "Why is Teethlion free for some and paid for others?",
-          "faq.q3_answer":
-            "Teethlion promotes free access for homes and education. However, when the software is used for commercial, institutional, or governmental purposes, a license is required to fund development and ensure support.",
-          "faq.q4_title": "How to get a commercial or institutional license?",
-          "faq.q4_answer_p1": "You can use the contact form or write to ",
-          "faq.q4_answer_link": "our email",
-          "faq.q4_answer_p2":
-            ". We evaluate each case according to the size of the organization and the coverage area.",
-          "faq.q5_title": "Can I contribute to the project?",
-          "faq.q5_answer":
-            "Yes! You can contribute with ideas, code, documentation, testing, or voluntary funding. Check the donations section to support Teethlion's growth.",
-"faq.q6_title": "What advantages does Teethlion offer over other communication systems?",
-"faq.q6_answer": "No one will have your data. You will communicate securely with end-to-end encryption, and you'll be able to connect even without the Internet to other devices on your same network.",
-
-"faq.q7_title": "How is Teethlion funded?",
-"faq.q7_answer": "Teethlion is funded through R&D programs, public grants, support from the international community, contributions from private companies, license purchases by governments, businesses, and SMEs, as well as support, maintenance, and custom development contracts.",
-
-"faq.q8_title": "When will Teethlion be fully ready?",
-"faq.q8_answer": "Teethlion is an evolving node network that improves every year. The first official multiplatform release will be available for download in Q4 2025.",
-
-"comparison.title": "🔍 Comparison with Other Solutions",
-  "comparison.description": "Discover why Teethlion is the most flexible, decentralized, resilient, and evolving communication network ever created. Supports voice, video, and file sharing with end-to-end encryption—even without an Internet connection.",
-  "comparison.col_feature": "Feature",
-  "comparison.col_wifi_mesh": "Wi-Fi Mesh Networks",
-  "comparison.feature_offline": "Works without Internet",
-  "comparison.feature_encryption": "End-to-End Encryption",
-  "comparison.feature_decentralized": "True Decentralization",
-  "comparison.feature_multiplatform": "Multiplatform",
-  "comparison.feature_content": "Voice, Video, and File Transmission",
-  "comparison.feature_cost": "Usage Cost",
-  "comparison.feature_evolution": "Annual Evolutionary Updates",
-
-"quickstart.title":       "Quickstart: Install and Try in 4 Steps",
-"quickstart.step1":       "Download",
-"quickstart.step2":       "Install",
-"quickstart.step3":       "Run",
-"quickstart.step4":       "Call",
-"quickstart.prev":        "Previous",
-"quickstart.next":        "Next",
-"quickstart.modal1.title":"Step 1: Download",
-"quickstart.modal1.desc": "Download Teethlion for your platform (Laptop or Mobile).",
-"quickstart.modal1.cta":  "Go to Downloads",
-"quickstart.modal2.title":"Step 2: Install",
-"quickstart.modal2.desc": "Run the installer and follow the on-screen instructions to install Teethlion.",
-"quickstart.modal2.cta":  "Got it",
-"quickstart.modal3.title":"Step 3: Run",
-"quickstart.modal3.desc": "Open Teethlion and grant the necessary permissions to start the application.",
-"quickstart.modal3.cta":  "Continue",
-"quickstart.modal4.title":"Step 4: Call",
-"quickstart.modal4.desc": "Locate your friends on the network and make your first decentralized call.",
-"quickstart.modal4.cta":  "Finish",
-
-            "manifesto.title_header": "📜 Teethlion Manifesto",
-          "manifesto.mission.title": "💪 Our Mission",
-          "manifesto.mission.p1":
-            "Teethlion is born as a free, bold, and revolutionary project, aiming to restore the sovereignty of human communications under any circumstances.",
-          "manifesto.mission.p2":
-            "We want all people, families, communities, schools, and governments to have access to a decentralized, encrypted, autonomous, and resilient network.",
-          "manifesto.mission.p3":
-            "Teethlion does not depend on Internet providers, centralized infrastructures, or cloud services. It is a system that breathes freedom, inspired by living nature: agile, collaborative, indestructible.",
-          "manifesto.principles.title": "🌍 Fundamental Principles",
-          "manifesto.principles.item1":
-            "Personal freedom: Every individual must be able to communicate without censorship, espionage, or dependency.",
-          "manifesto.principles.item2":
-            "Community resilience: Communities must be able to maintain local and global networks even in critical situations.",
-          "manifesto.principles.item3":
-            "Accessibility: Technology must be accessible to everyone, without economic barriers, especially in education.",
-          "manifesto.principles.item4":
-            "Protected innovation: The architecture and essence of Teethlion must be respected to preserve its integrity and vision.",
-          "manifesto.offers.title": "✨ What Teethlion offers",
-          "manifesto.offers.item1":
-            "High-security encrypted P2P communication.",
-          "manifesto.offers.item2":
-            "Autonomous LAN networks that can expand globally.",
-          "manifesto.offers.item3":
-            "Operation without needing an Internet connection.",
-          "manifesto.offers.item4":
-            "Adaptability to different environments: civil, educational, institutional, and governmental.",
-          "manifesto.license.title": "📅 Our License (Teethlion Open License)",
-          "manifesto.license.item1":
-            "Personal Use: Free for anyone, for a maximum of 5 simultaneously connected devices.",
-          "manifesto.license.item2":
-            "Educational Use: Free for schools and universities in networks of up to 30 devices.",
-          "manifesto.license.item3":
-            "Extended Use: For uses of more than 30 devices, or for municipal, business, or governmental networks, a license is required per person/device.",
-          "manifesto.license.rates_title": "Lifetime License Fees:",
-          "manifesto.license.rate1":
-            "€1 / person for governments, cities, or institutions (>30 users).",
-          "manifesto.license.rate2":
-            "One-time lifetime license. No mandatory renewals.",
-          "manifesto.protection.title": "🔒 Protection of Teethlion",
-          "manifesto.protection.item1":
-            'Trademark: "Teethlion" is a protected trademark. It cannot be used for derivative products.',
-          "manifesto.protection.item2":
-            "Prohibition of commercial forks: Creating, distributing, or selling derivative or alternative products based on Teethlion's architecture, concept, or operation without express authorization is not allowed.",
-          "manifesto.protection.item3":
-            "Prohibition of reimplementations: Creating variants in other languages (Rust, C, Python, etc.) that replicate the Teethlion concept without a license is not permitted.",
-          "manifesto.dream.title": "🚀 Our Dream",
-          "manifesto.dream.p1":
-            "We envision a future where every human community has its decentralized network of Teethlions roaring online: communicating, protecting, surviving, evolving.",
-          "manifesto.dream.p2":
-            "Teethlion is the freedom to communicate. It is the evolution of human networks.",
-          "manifesto.dream.welcome":
-            "🕊️✨ Welcome to Teethlion. We roar together.",
-          "partners.title": "🤝 Partners and Institutional Support",
-          "partners.description":
-            "Teethlion has the interest of communities, NGOs and educational entities that promote technological sovereignty. If you represent an institution interested in supporting the project, please contact us.",
-          "partners.cta": "📩 I want to become a Partner.",
-          "instances.title": "🌐 Active instances",
-          "instances.description": "Teethlion was installed on::",
-          "instances.extra_info": "verified nodes in 7 countries",
-          "contact.satellite_message":
-            "I'm interested in making a significant donation or collaborating with your project by deploying my own satellite or providing access to my satellite(s)/relay nodes to the Teethlion network. My contact number is: __________",
-          "contact.satellite_phone_prompt": "My contact number is:",
-          "contact.expansion_message":
-            "Hello, we are interested in funding Teethlion in our community or in a community of our interest. Support is required for N nodes in an area with a radius of N kilometers, and we would like you to provide the support and/or infrastructure to achieve this. We will contribute payment for the licenses and the project and infrastructure costs. Our contact number is: _______________",
-          "contact.expansion_phone_prompt": "Our contact number is:",
-          "contribute.donation_10": "Donate €10",
-          "contribute.donation_25": "Donate €25",
-          "contribute.card_donation": "Card Donation",
-          "cto.title": "CTO & Founder",
-          "cto.description": "Technical lead and chief architect of Teethlion",
-
-          footer: {
-            phrases: [
-              "Powered by Open technology",
-              "Free, secure and sovereign software",
-              "Decentralized technology for everyone",
-              "Built with Go, libp2p and heart",
-            ],
-          },
-          "footer.phrase": "", // Este se actualizará dinámicamente
-        },
-        de: {
-          subtitle: "Dezentralisierte, freie und souveräne Kommunikation.",
-          "hero.messages": [
-  "Kostenlos für den persönlichen Gebrauch<sup>*</sup>",
-  "Das mächtigste Peer-to-Peer-Netzwerk der Welt * kostenlos für den persönlichen Gebrauch ist geboren",
-  "Mit Liebe gefertigt von einem venezolanisch/spanischen Ingenieur. Patentiertechnologie in Prüfung und eingetragene Marke."
-],
-"hero.note": "<sup>*</sup> Bis zu 5 Knoten im selben LAN; in Bildungseinrichtungen bis zu 30 Knoten.",
-          "nav.que_es": "Was ist Teethlion?",
-          "node_types.title": "🧩 Knotentypen in Teethlion",
-          "node_types.description":  "Jeder Knoten im Teethlion-Netzwerk hat eine bestimmte Aufgabe. Durch ihre Kombination entsteht eine robuste, dezentrale und sich entwickelnde Infrastruktur.",
-          "nav.descargas": "Downloads",
-          "nav.contacto": "Kontakt",
-          "nav.roadmap": "Roadmap",
-          "nav.licencias_menu": "Lizenzen",
-          "nav.faq": "FAQ",
-          "nav.manifiesto": "Manifest",
-          "hero.title": "Teethlion",
-          "hero.slogan": "Dezentrale, freie und souveräne Kommunikation.",
-          "what_is.title": "Was ist Teethlion?",
-          "what_is.p1":
-            "Teethlion ist ein dezentrales lokales Kommunikationsnetzwerk, das ohne Internet funktioniert. Ideal für Haushalte, Schulen, Institutionen und Regierungen.",
-          "what_is.feature1": "Echtzeit-Sprachkommunikation über LAN und WAN.",
-          "what_is.feature2": "Keine Notwendigkeit für zentrale Server.",
-          "what_is.feature3": "Sicherheit durch militärische Verschlüsselung.",
-          "what_is.feature4":
-            "Ideal für Notfallsituationen, Kommunikationsausfälle und technologische Souveränität.",
-          "what_is.feature5":
-            "Freie Software für Einzelpersonen und kleine Schulen, mit Sonderlizenzen für Regierungen und Institutionen.",
-          "licensing_general.title": "Lizenzierung",
-          "licensing_general.p1":
-            "Kostenlos für den privaten und pädagogischen Gebrauch (bis zu 5 Geräte im selben LAN). Für Schulen mit mehr als 30 Geräten oder Institutionen ist eine Lizenz erforderlich. Die Lizenz enthält zusätzliche Funktionen, die in der kostenlosen Version nicht vorhanden sind.",
-          "downloads.title": "Downloads",
-          "downloads.linux": "⬇️ Linux",
-          "downloads.windows": "⬇️ Windows",
-          "downloads.macos": "⬇️ macOS",
-          "downloads.enterprise_prompt":
-            "Benötigen Sie mobile Funktionen, SaaS-Integration und eingebettete Geräte?",
-          "downloads.contact_us": "Kontaktieren Sie uns",
-          "downloads.enterprise_version": " für die Unternehmensversion.",
-          tooltip: "Verfügbar ab Q3 2025",
-          "roadmap.title": "Roadmap",
-          "roadmap.v1.title": "✅ Version 1.0",
-          "roadmap.v1.item1": "CLI + SPA Web",
-          "roadmap.v1.item2": "Echtzeit-Audio im LAN",
-          "roadmap.v1.item3": "LAN-Chat",
-          "roadmap.v1.item4": "AGPL-Lizenz",
-          "roadmap.soon.title": "🔜 Demnächst verfügbar",
-          "roadmap.soon.item1": "LAN-Video",
-          "roadmap.soon.item2": "Experimentelle Transkription",
-          "roadmap.soon.item3": "Visueller CLI-Modus  & SDK",
-          "roadmap.private.title": "🛡️ Privat (TOL)",
-          "roadmap.private.desc":
-            "Erweiterte Version für Regierungen und Unternehmen.",
- "node.user.name": "Benutzer",
-  "node.user.desc": "Standardknoten für direkte P2P-Kommunikation.",
-  "node.relay.name": "Relay",
-  "node.relay.desc": "Erweitert das Signal in nicht abgedeckte Bereiche.",
-  "node.bootstrap.name": "Bootstrap-Knoten",
-  "node.bootstrap.desc": "Hilft neuen Knoten beim Netzwerkeinstieg.",
-  "node.honeypot.name": "Honeypot",
-  "node.honeypot.desc": "Simuliert reale Knoten zur Erkennung von Angriffen.",
-  "node.guard.name": "Wächter",
-  "node.guard.desc": "Überwacht und schützt den Netzwerkverkehr.",
-  "node.ai.name": "KI-Knoten",
-  "node.ai.desc": "Übersetzt, transkribiert oder analysiert in Echtzeit.",
-  "node.relay_bootstrap.name": "Relay-Bootstrap",
-  "node.relay_bootstrap.desc": "Dient als Brücke und Einstiegspunkt.",
-  "node.ai_user.name": "KI-Benutzer",
-  "node.ai_user.desc": "Benutzerknoten mit lokaler KI-Funktion.",
-  "node.iot_future_x.name": "IoT-Future-X",
-  "node.iot_future_x.desc": "Experimenteller Knoten für IoT und Sensorik.",
-  "node.observer.name": "Beobachter",
-  "node.observer.desc": "Hört passiv mit, ohne zu senden.",
-  "node.satellite.name": "Satellit",
-  "node.satellite.desc": "Fernknoten für schwer erreichbare Gebiete.",
-  "node.router.name": "Sicherer Router",
-  "node.router.desc": "Leitet Daten zwischen Netzsegmenten weiter.",
-  "node.dtn.name": "DTN-Knoten",
-  "node.dtn.desc": "Für Netze mit unregelmäßiger Verbindung geeignet.",
-  "node.mesh_node.name": "Mesh-Knoten",
-  "node.mesh_node.desc": "Ermöglicht selbstorganisierende Netzwerke.",
-  "node.bridge.name": "Brücke",
-"node.bridge.desc": "Verbindet Teethlion mit externen Netzwerken (VPN, Tor, reguliertes Internet). Nützlich bei Zensur.",
-"node.trainer.name": "Trainer",
-"node.trainer.desc": "Spezialisierter Knoten für lokales KI-Training ohne Datenschutzrisiken.",
-"node.satellite.name": "Satellit",
-"node.satellite.desc": "Hochgelegener Knoten (Drohne, Ballon, Satellit) für abgelegene Regionen.",
-"node.vault.name": "Tresor",
-"node.vault.desc": "Speichert kritische Schlüssel und Zertifikate. Multisignatur erforderlich.",
-"node.forensic.name": "Forensisch",
-"node.forensic.desc": "Audit-Knoten zur passiven Überwachung für rechtliche Zwecke.",
- "node.secure_mesh_gateway.name": "Secure Mesh Gateway",
-"node.secure_mesh_gateway.desc": "Hybrid gateway between Teethlion and other networks.",
-"node.secure_mesh_gateway.modal_title": "🔌 Secure Mesh Gateway",
-"node.secure_mesh_gateway.modal_desc": "Hybrid node that connects Teethlion to external networks like community meshes, public Wi-Fi or private infrastructures.",
-"node.secure_mesh_gateway.modal_usage": [
-  "To interconnect Teethlion with a community mesh or public Wi-Fi.",
-  "To create secure gateways between IoT sensors and Teethlion nodes.",
-  "As an interface between critical networks (health, security) and Teethlion.",
-  "To synchronize data between closed networks and Teethlion without compromising security."
-],
-  "node.user.name": "Benutzer",
-  "node.user.desc": "Standardknoten für direkte P2P-Kommunikation.",
-  "node.user.modal_title": "👤 Benutzerknoten",
-  "node.user.modal_desc": "Der gebräuchlichste Knoten in Teethlion. Nimmt an Chats und P2P-Anrufen teil.",
-  "node.user.modal_usage": [
-    "Für einzelne Benutzer in Haushalten, Schulen oder Institutionen.",
-    "Für mobile Geräte oder Laptops innerhalb des Teethlion-Netzwerks.",
-    "Zur Teilnahme an verschlüsselten P2P-Kommunikationen."
-  ],
-
-  "node.relay.name": "Repeater",
-  "node.relay.desc": "Erweitert das Signal auf Bereiche ohne direkte Abdeckung.",
-  "node.relay.modal_title": "📡 Repeater-Knoten",
-  "node.relay.modal_desc": "Verstärkt die Abdeckung des Teethlion-Netzwerks auf entfernte Bereiche.",
-  "node.relay.modal_usage": [
-    "Zur Erweiterung der Teethlion-Abdeckung in großen Gebäuden oder weiten Gebieten.",
-    "Ideal für ländliche oder urbane Umgebungen mit physischen Hindernissen.",
-    "Kann auf Dächern oder hohen Punkten ohne Benutzerinteraktion installiert werden."
-  ],
-
-  "node.bootstrap.name": "Bootstrap-Knoten",
-  "node.bootstrap.desc": "Hilft neuen Knoten, dem Netzwerk beizutreten.",
-  "node.bootstrap.modal_title": "🚀 Bootstrap-Knoten",
-  "node.bootstrap.modal_desc": "Zentraler Knoten, der den Eintritt neuer Teilnehmer erleichtert.",
-  "node.bootstrap.modal_usage": [
-    "Zum Starten eines neuen Teethlion-Netzwerks in Bereichen ohne vorherige Infrastruktur.",
-    "Zur Sicherstellung der Verfügbarkeit initialer Peers.",
-    "Kann rund um die Uhr in einem lokalen oder entfernten Netzwerk betrieben werden."
-  ],
-
-  "node.honeypot.name": "Honeypot",
-  "node.honeypot.desc": "Simuliert reale Knoten, um bösartige Aktivitäten zu erkennen.",
-  "node.honeypot.modal_title": "🕵️ Honeypot-Knoten",
-  "node.honeypot.modal_desc": "Köderknoten, der Dienste simuliert, um Angriffe zu erkennen.",
-  "node.honeypot.modal_usage": [
-    "Für fortschrittliche Sicherheit in sensiblen Netzwerken.",
-    "Zur Erkennung von Scans oder anomalem Verhalten.",
-    "Ideal für Regierungs- oder Industrieumgebungen."
-  ],
-
-  "node.guard.name": "Wächter",
-  "node.guard.desc": "Überprüft und filtert den Datenverkehr, um Eindringlinge zu verhindern.",
-  "node.guard.modal_title": "🛡️ Wächter-Knoten",
-  "node.guard.modal_desc": "Überwacht und schützt das Netzwerk vor Bedrohungen.",
-  "node.guard.modal_usage": [
-    "Zur Validierung eingehender oder ausgehender Verbindungen.",
-    "Zum Blockieren von bösartigem oder unautorisiertem Datenverkehr.",
-    "Für Hochsicherheitsumgebungen (Gesundheitswesen, Verteidigung, Regierung)."
-  ],
-
-  "node.ai.name": "KI-Knoten",
-  "node.ai.desc": "Verarbeitet Transkription, Übersetzung oder Analyse in Echtzeit.",
-  "node.ai.modal_title": "🤖 Künstliche Intelligenz-Knoten",
-  "node.ai.modal_desc": "Dedizierter Knoten für Aufgaben wie Übersetzung, Sprachausgabe und Kontextanalyse.",
-  "node.ai.modal_usage": [
-    "Zur Echtzeitübersetzung von Anrufen.",
-    "Zum Ausführen von Sprach- oder Textmodellen offline.",
-    "Für lokale Datenanalyse ohne Beeinträchtigung der Privatsphäre."
-  ],
-
-  "node.relay_bootstrap.name": "Relay-Bootstrap",
-  "node.relay_bootstrap.desc": "Fungiert als Brücke und Einstiegspunkt für neue Knoten.",
-  "node.relay_bootstrap.modal_title": "🌐 Relay-Bootstrap",
-  "node.relay_bootstrap.modal_desc": "Hybrider Knoten, der die Abdeckung erweitert und Netzwerkzugang bietet.",
-  "node.relay_bootstrap.modal_usage": [
-    "Ideal für mittelgroße Gemeinschaften, die Zugang und Abdeckung benötigen.",
-    "Zur Bereitstellung an strategischen Punkten wie Plätzen oder Schulen.",
-    "Reduziert die Belastung anderer Bootstrap-Knoten."
-  ],
-
-  "node.ai_user.name": "KI-Benutzer",
-  "node.ai_user.desc": "Benutzerknoten mit lokalen KI-Fähigkeiten für Übersetzung und Analyse.",
-  "node.ai_user.modal_title": "🧠 KI-Benutzer",
-  "node.ai_user.modal_desc": "Fortgeschrittener Benutzer mit lokaler KI-Verarbeitung.",
-  "node.ai_user.modal_usage": [
-    "Ideal für Journalisten, Diplomaten oder Forscher.",
-    "Ermöglicht die Nutzung von KI ohne Internetverbindung.",
-    "Für Nachrichtenübersetzung, Emotionserkennung oder automatische Analyse."
-  ],
-
-  "node.iot_future_x.name": "IoT-Future-X",
-  "node.iot_future_x.desc": "Experimenteller Knoten für IoT, Autos, Drohnen oder fortschrittliche Sensoren.",
-  "node.iot_future_x.modal_title": "🌟 IoT-Future-X-Knoten",
-  "node.iot_future_x.modal_desc": "Vielseitiger modularer Knoten für eingebettete Geräte und neue Technologien.",
-  "node.iot_future_x.modal_usage": [
-    "Zur Verbindung von Sensoren in intelligenten Städten.",
-    "Für die Steuerung von Drohnen oder gemeinschaftlicher Robotik.",
-    "In technologischer Forschung mit experimenteller Hardware."
-  ],
-
-  "node.observer.name": "Beobachter",
-  "node.observer.desc": "Hört nur zu und überwacht den Datenverkehr ohne Teilnahme.",
-  "node.observer.modal_title": "👁️ Beobachter-Knoten",
-  "node.observer.modal_desc": "Passiver Knoten, der den Datenverkehr ohne Interaktion überprüft.",
-  "node.observer.modal_usage": [
-    "Für Netzwerkstudien, Tests oder Audits.",
-    "Ideal für forensische oder pädagogische Analysen.",
-    "Sendet keinen Datenverkehr und antwortet nicht auf Anfragen."
-  ],
-
-  "node.satellite.name": "Satellit",
-  "node.satellite.desc": "Entfernter oder Weltraumknoten, der Zugang in extremen Zonen bietet.",
-  "node.satellite.modal_title": "🛰️ Satelliten-Knoten",
-  "node.satellite.modal_desc": "Entfernter Knoten (Drohne, Ballon, Satellit), der schwer zugängliche Zonen verbindet.",
-  "node.satellite.modal_usage": [
-    "Zur Verbindung von Bereichen ohne terrestrische Infrastruktur.",
-    "Ideal in Bergen, Wüsten oder Notfällen.",
-    "Kann solarbetrieben und autonom betrieben werden."
-  ],
-
-  "node.router.name": "Sicherer Router",
-  "node.router.desc": "Zwischenknoten, der den Datenverkehr zwischen Netzwerkzonen weiterleitet.",
-  "node.router.modal_title": "📶 Sicherer Router",
-  "node.router.modal_desc": "Spezialisierter Knoten für die sichere Weiterleitung von Daten innerhalb von Teethlion.",
-  "node.router.modal_usage": [
-    "Für Netzwerke mit mehreren Segmenten oder Gebäuden.",
-    "Zur Weiterleitung von Nachrichten zwischen Zonen mit unterschiedlicher Abdeckung.",
-    "Gewährleistet Effizienz und Segmentierung ohne Verlust der Privatsphäre."
-  ],
-
-  "node.dtn.name": "Verzögerungstoleranter Knoten",
-  "node.dtn.desc": "Ideal für Umgebungen mit intermittierender Konnektivität.",
-  "node.dtn.modal_title": "⏳ DTN (Verzögerungstoleranter Knoten)",
-  "node.dtn.modal_desc": "Knoten, der für Unterbrechungen oder Verzögerungen ausgelegt ist.",
-  "node.dtn.modal_usage": [
-    "Ideal für ländliche oder mobile Zonen.",
-    "Speichert Nachrichten vorübergehend.",
-    "Inspiriert von Weltraum- und resilienten Netzwerken."
-  ],
-
-  "node.mesh_node.name": "Mesh-Knoten",
-  "node.mesh_node.desc": "Ermöglicht ein selbstorganisierendes Netzwerk zwischen Geräten.",
-  "node.mesh_node.modal_title": "🌐 Mesh-Knoten",
-  "node.mesh_node.modal_desc": "Verbindet sich automatisch mit nahegelegenen Knoten, um ein dynamisches Netzwerk zu bilden.",
-  "node.mesh_node.modal_usage": [
-    "Ideal für Gemeinschaftsnetzwerke ohne vorherige Infrastruktur.",
-    "Ermöglicht organische und resiliente Erweiterung.",
-    "Passt sich Änderungen in der physischen Umgebung an."
-  ],
-
-  "node.bridge.name": "Brücke",
-  "node.bridge.desc": "Verbindet Teethlion mit externen Netzwerken (VPN, Tor, Internet). Ideal in zensierten Bereichen.",
-  "node.bridge.modal_title": "🌉 Brücken-Knoten",
-  "node.bridge.modal_desc": "Ermöglicht selektiven Datenfluss zwischen Teethlion und globalen Netzwerken.",
-  "node.bridge.modal_usage": [
-    "Um Informationen sicher außerhalb des Netzwerks zu senden.",
-    "Zur Umleitung von Datenverkehr über VPN, Tor oder sichere Schichten.",
-    "Ermöglicht Anonymität in zensierten Umgebungen."
-  ],
-
-  "node.trainer.name": "Trainer",
-  "node.trainer.desc": "Trainiert KI-Modelle lokal, ohne die Privatsphäre zu beeinträchtigen.",
-  "node.trainer.modal_title": "📚 Trainer-Knoten",
-  "node.trainer.modal_desc": "Spezialisierter Knoten für dezentrales KI-Training.",
-  "node.trainer.modal_usage": [
-    "Für föderiertes Lernen oder KI-Forschung.",
-    "Für die Ausbildung in Datenwissenschaft.",
-    "Kann Modelle trainieren, ohne Daten in die Cloud zu senden."
-  ],
-
-  "node.vault.name": "Tresor",
-  "node.vault.desc": "Speichert kritische Anmeldeinformationen und Schlüssel. Erfordert Mehrfachsignatur.",
-  "node.vault.modal_title": "🔐 Tresor-Knoten",
-  "node.vault.modal_desc": "Speichert sensible Informationen und erfordert Konsens für den Zugriff.",
-  "node.vault.modal_usage": [
-    "Zur Verwaltung privater Schlüssel und Zertifikate.",
-    "Erfordert Mehrfachsignaturvalidierung zum Extrahieren von Daten.",
-    "Ideal für institutionelle oder Regierungsnetzwerke."
-],           
-          "contact.title": "Kontakt",
-          "contact.name_placeholder": "Ihr Name",
-          "contact.email_placeholder": "Ihre E-Mail",
-          "contact.message_placeholder": "Ihre Nachricht",
-          "contact.send_button": "Senden",
-          "contribute.title": "Unterstütze Teethlion",
-          "contribute.description": "Sei Teil der Evolution der Kommunikation. Hilf uns, Teethlion von deiner Gemeinschaft aus oder bis zu neuen Grenzen auszubauen.",
-          "contribute.finance_button": "⚡ Netzwerk finanzieren",
-          "contribute.expand_button": "🌐 Netzwerk erweitern",
-          "contribute.satellite_button": "🛰️ Einen Satelliten kaufen",
-          "project_licenses.title": "📜 Projektlizenzen",
-          "project_licenses.agpl_button": "AGPL v3",
-          "project_licenses.tol_button": "Teethlion Open License (TOL)",
-          "project_licenses.agpl_v3_title_panel": "AGPL v3 Lizenz",
-          "project_licenses.tol_title_panel": "Teethlion Open License (TOL)",
-          "calculator.title": "Lizenzrechner",
-          "calculator.description":
-            "Verwenden Sie dieses Tool, um die einmaligen Lizenzkosten für Regierungen, Institutionen oder Unternehmen basierend auf der Anzahl der mit dem Teethlion-Netzwerk verbundenen Personen zu schätzen.",
-          "calculator.entity_type_label": "Einheitstyp:",
-          "calculator.entity_gov": "Regierung",
-          "calculator.entity_school": "Schule",
-          "calculator.entity_enterprise": "Unternehmen",
-          "calculator.people_label": "Anzahl der Personen:",
-          "calculator.calculate_button": "Kosten berechnen",
-          "calculator.estimated_cost_text":
-            "Geschätzte Gesamtkosten: {total} €. {note}",
-          "calculator.school_no_license":
-            "Schulen mit bis zu 30 Personen benötigen keine Lizenz.",
-          "calculator.lifetime_note": "Einmalzahlung, lebenslange Lizenz.",
-          "calculator.support_fee": "Support- und Update-Gebühr",
-          "calculator.support_variable": "variabel.",
-          "calculator.contact_for_estimate":
-            "Kontaktieren Sie uns für eine fallbezogene Schätzung.",
-          "faq.title_header": "🧠 Häufig gestellte Fragen (FAQ)",
-          "faq.q1_title": "Was benötige ich, um Teethlion zu verwenden?",
-          "faq.q1_answer":
-            "Nur Geräte, die mit demselben LAN-Netzwerk verbunden sind. Sie benötigen kein Internet, keine Server oder spezielle Router.",
-          "faq.q2_title": "Was passiert, wenn jemand die Lizenz verletzt?",
-          "faq.q2_answer":
-            "Die AGPL- und TOL-Lizenzen sind rechtsverbindlich. Wenn jemand Teethlion ohne Einhaltung der Bedingungen verwendet, können rechtliche Schritte drohen, insbesondere in kommerziellen oder institutionellen Umgebungen.",
-          "faq.q3_title":
-            "Warum ist Teethlion für einige kostenlos und für andere kostenpflichtig?",
-          "faq.q3_answer":
-            "Teethlion fördert den freien Zugang für Haushalte und Bildungseinrichtungen. Wenn die Software jedoch für kommerzielle, institutionelle oder staatliche Zwecke verwendet wird, ist eine Lizenz erforderlich, um die Entwicklung zu finanzieren und Support zu gewährleisten.",
-          "faq.q4_title":
-            "Wie erhalte ich eine kommerzielle oder institutionelle Lizenz?",
-          "faq.q4_answer_p1":
-            "Sie können das Kontaktformular verwenden oder an ",
-          "faq.q4_answer_link": "unsere E-Mail-Adresse",
-          "faq.q4_answer_p2":
-            " schreiben. Wir bewerten jeden Fall entsprechend der Größe der Organisation und des Abdeckungsbereichs.",
-          "faq.q5_title": "Kann ich zum Projekt beitragen?",
-          "faq.q5_answer":
-            "Ja! Sie können mit Ideen, Code, Dokumentation, Tests oder freiwilliger Finanzierung beitragen. Überprüfen Sie den Spendenbereich, um das Wachstum von Teethlion zu unterstützen.",
-"faq.q6_title": "Welche Vorteile habe ich bei der Nutzung von Teethlion gegenüber anderen Kommunikationssystemen?",
-"faq.q6_answer": "Niemand erhält deine Daten. Du kommunizierst sicher mit Ende-zu-Ende-Verschlüsselung und kannst dich sogar ohne Internet mit anderen Geräten in deinem lokalen Netzwerk verbinden.",
-
-"faq.q7_title": "Wie wird Teethlion finanziert?",
-"faq.q7_answer": "Teethlion wird durch F&E-Programme, öffentliche Fördermittel und internationale Unterstützung finanziert – auch durch Beiträge von privaten Unternehmen, den Erwerb von Lizenzen durch Regierungen, Unternehmen und KMU sowie durch Verträge für Support, Wartung und individuelle Entwicklungen.",
-
-"faq.q8_title": "Wann wird Teethlion vollständig einsatzbereit sein?",
-"faq.q8_answer": "Teethlion ist ein sich weiterentwickelndes Knotennetzwerk, das jedes Jahr verbessert wird. Die erste offizielle plattformübergreifende Version wird im 4. Quartal 2025 zum Download verfügbar sein.",
-
-  "comparison.title": "🔍 Vergleich mit anderen Lösungen",
-  "comparison.description": "Entdecken Sie, warum Teethlion das flexibelste, dezentralste, widerstandsfähigste und fortschrittlichste Kommunikationsnetzwerk ist. Unterstützt Sprache, Video und Dateien mit Ende-zu-Ende-Verschlüsselung – auch ohne Internetverbindung.",
-  "comparison.col_feature": "Funktion",
-  "comparison.col_wifi_mesh": "Wi-Fi-Mesh-Netzwerke",
-  "comparison.feature_offline": "Funktioniert ohne Internet",
-  "comparison.feature_encryption": "Ende-zu-Ende-Verschlüsselung",
-  "comparison.feature_decentralized": "Echte Dezentralisierung",
-  "comparison.feature_multiplatform": "Plattformübergreifend",
-  "comparison.feature_content": "Übertragung von Sprache, Video und Dateien",
-  "comparison.feature_cost": "Nutzungskosten",
-  "comparison.feature_evolution": "Jährliche Weiterentwicklungen",
-
-"quickstart.title":       "Quickstart: Installation und Test in 4 Schritten",
-"quickstart.step1":       "Herunterladen",
-"quickstart.step2":       "Installieren",
-"quickstart.step3":       "Ausführen",
-"quickstart.step4":       "Anrufen",
-"quickstart.prev":        "Zurück",
-"quickstart.next":        "Weiter",
-"quickstart.modal1.title":"Schritt 1: Herunterladen",
-"quickstart.modal1.desc": "Lade Teethlion für deine Plattform herunter (Laptop oder Mobilgerät).",
-"quickstart.modal1.cta":  "Zu den Downloads",
-"quickstart.modal2.title":"Schritt 2: Installieren",
-"quickstart.modal2.desc": "Führe das Installationsprogramm aus und folge den Anweisungen auf dem Bildschirm, um Teethlion zu installieren.",
-"quickstart.modal2.cta":  "Verstanden",
-"quickstart.modal3.title":"Schritt 3: Ausführen",
-"quickstart.modal3.desc": "Öffne Teethlion und erteile die notwendigen Berechtigungen, um die Anwendung zu starten.",
-"quickstart.modal3.cta":  "Weiter",
-"quickstart.modal4.title":"Schritt 4: Anrufen",
-"quickstart.modal4.desc": "Finde deine Freunde im Netzwerk und führe deinen ersten dezentralen Anruf durch.",
-"quickstart.modal4.cta":  "Abschließen",            "manifesto.title_header": "📜 Teethlion Manifest",
-          "manifesto.mission.title": "💪 Unsere Mission",
-          "manifesto.mission.p1":
-            "Teethlion entsteht als ein freies, kühnes und revolutionäres Projekt mit dem Ziel, die Souveränität der menschlichen Kommunikation unter allen Umständen wiederherzustellen.",
-          "manifesto.mission.p2":
-            "Wir möchten, dass alle Menschen, Familien, Gemeinschaften, Schulen und Regierungen Zugang zu einem dezentralen, verschlüsselten, autonomen und widerstandsfähigen Netzwerk haben.",
-          "manifesto.mission.p3":
-            "Teethlion ist nicht von Internetanbietern, zentralisierten Infrastrukturen oder Cloud-Diensten abhängig. Es ist ein System, das Freiheit atmet, inspiriert von der lebendigen Natur: agil, kollaborativ, unzerstörbar.",
-          "manifesto.principles.title": "🌍 Grundprinzipien",
-          "manifesto.principles.item1":
-            "Persönliche Freiheit: Jeder Einzelne muss ohne Zensur, Spionage oder Abhängigkeit kommunizieren können.",
-          "manifesto.principles.item2":
-            "Gemeinschaftliche Widerstandsfähigkeit: Gemeinschaften müssen in der Lage sein, lokale und globale Netzwerke auch in kritischen Situationen aufrechtzuerhalten.",
-          "manifesto.principles.item3":
-            "Zugänglichkeit: Technologie muss für alle zugänglich sein, ohne wirtschaftliche Barrieren, insbesondere im Bildungsbereich.",
-          "manifesto.principles.item4":
-            "Geschützte Innovation: Die Architektur und das Wesen von Teethlion müssen respektiert werden, um seine Integrität und Vision zu wahren.",
-          "manifesto.offers.title": "✨ Was Teethlion bietet",
-          "manifesto.offers.item1":
-            "Hochsichere verschlüsselte P2P-Kommunikation.",
-          "manifesto.offers.item2":
-            "Autonome LAN-Netzwerke, die global erweitert werden können.",
-          "manifesto.offers.item3": "Betrieb ohne Internetverbindung.",
-          "manifesto.offers.item4":
-            "Anpassungsfähigkeit an verschiedene Umgebungen: zivil, pädagogisch, institutionell und staatlich.",
-          "manifesto.license.title":
-            "📅 Unsere Lizenz (Teethlion Open License)",
-          "manifesto.license.item1":
-            "Private Nutzung: Kostenlos und frei für jedermann, für maximal 5 gleichzeitig verbundene Geräte.",
-          "manifesto.license.item2":
-            "Pädagogische Nutzung: Kostenlos für Schulen und Universitäten in Netzwerken mit bis zu 30 Geräten.",
-          "manifesto.license.item3":
-            "Erweiterte Nutzung: Für Nutzungen mit mehr als 30 Geräten oder für kommunale, unternehmerische oder staatliche Netzwerke ist eine Lizenz pro Person/Gerät erforderlich.",
-          "manifesto.license.rates_title": "Gebühren für lebenslange Lizenz:",
-          "manifesto.license.rate1":
-            "1 € / Person für Regierungen, Städte oder Institutionen (>30 Benutzer).",
-          "manifesto.license.rate2":
-            "Einmalige lebenslange Lizenz. Keine obligatorischen Verlängerungen.",
-          "manifesto.protection.title": "🔒 Schutz von Teethlion",
-          "manifesto.protection.item1":
-            'Markenzeichen: "Teethlion" ist eine geschützte Marke. Sie darf nicht für abgeleitete Produkte verwendet werden.',
-          "manifesto.protection.item2":
-            "Verbot kommerzieller Forks: Es ist nicht gestattet, abgeleitete oder alternative Produkte, die auf der Architektur, dem Konzept oder der Funktionsweise von Teethlion basieren, ohne ausdrückliche Genehmigung zu erstellen, zu vertreiben oder zu verkaufen.",
-          "manifesto.protection.item3":
-            "Verbot von Reimplementierungen: Es ist nicht gestattet, Varianten in anderen Sprachen (Rust, C, Python usw.) zu erstellen, die das Teethlion-Konzept ohne Lizenz reproduzieren.",
-          "manifesto.dream.title": "🚀 Unser Traum",
-          "manifesto.dream.p1":
-            "Wir stellen uns eine Zukunft vor, in der jede menschliche Gemeinschaft ihr dezentrales Netzwerk von Teethlions hat, das im Netz brüllt: kommuniziert, schützt, überlebt, sich entwickelt.",
-          "manifesto.dream.p2":
-            "Teethlion ist die Freiheit zu kommunizieren. Es ist die Evolution menschlicher Netzwerke.",
-          "manifesto.dream.welcome":
-            "🕊️✨ Willkommen bei Teethlion. Wir brüllen zusammen.",
-          "partners.title": "🤝 Partner und institutionelle Unterstützung",
-          "partners.description":
-            "Teethlion hat das Interesse von Gemeinden, Nichtregierungsorganisationen und Bildungseinrichtungen, die technologische Souveränität fördern. Wenn Sie eine Institution vertreten, die an einer Unterstützung des Projekts interessiert ist, kontaktieren Sie uns bitte.",
-          "partners.cta": "📩 Ich möchte ein Partner werden.",
-          "instances.title": "🌐 Aktive Instanzen",
-          "instances.description": "Teethlion wurde installiert auf:",
-          "instances.extra_info": "verifizierte Knoten in 7 Ländern",
-          "contact.satellite_message":
-            "Ich interessiere mich für eine große Spende oder die Zusammenarbeit mit Ihrem Projekt durch den Einsatz eines eigenen Satelliten oder den Zugang zu meinem/m Satelliten/Relay-Knoten zum Teethlion-Netzwerk. Meine Kontaktnummer lautet: __________",
-          "contact.satellite_phone_prompt": "Meine Kontaktnummer ist:",
-          "contact.expansion_message":
-            "Hallo, wir sind daran interessiert, Teethlion in unserer Gemeinde oder in einer Gemeinde unseres Interesses zu finanzieren. Unterstützung wird für N Knoten in einem Gebiet mit einem Radius von N Kilometern benötigt, und wir möchten, dass Sie die Unterstützung und/oder Infrastruktur bereitstellen, um dies zu erreichen. Wir werden die Zahlung der Lizenzen und die Projekt- und Infrastrukturkosten übernehmen. Unsere Kontaktnummer lautet: _______________",
-          "contact.expansion_phone_prompt": "Unsere Kontaktnummer ist:",
-          "contribute.donation_10": "Spende €10",
-          "contribute.donation_25": "Spende €25",
-          "contribute.card_donation": "Kartenspende",
-          "cto.title": "CTO & Gründer",
-          "cto.description":
-            "Technischer Leiter und Hauptarchitekt von Teethlion",
-          footer: {
-            phrases: [
-              "Unterstützt durch Open-Technology",
-              "Freie, sichere und souveräne Software",
-              "Dezentrale Technologie für alle",
-              "Erbaut mit Go, libp2p und Herz",
-            ],
-          },
-          "footer.phrase": "", // Este se actualizará dinámicamente
-        },
-      };
 
 
 const nodeTypes = [
@@ -2977,96 +1650,98 @@ function renderNodeGrid() {
 
 }
 
-document.addEventListener("DOMContentLoaded", renderNodeGrid);
+//document.addEventListener("DOMContentLoaded", renderNodeGrid);
 
+/*
+// -----------------------------
+// Cache y helper de traducciones
+// -----------------------------
+const translationsCache = {};
+let currentLang = "es"; // Idioma por defecto
 
-      // Función setLang corregida
-      function setLang(lang) {
-        currentLang = lang;
-        document.documentElement.lang = lang;
+function getT() {
+  return translationsCache[currentLang] || {};
+}
+*/
+// -----------------------------
+// Carga y aplicación de idioma
+// -----------------------------
+async function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
 
-        // Actualizar elementos de texto normal
-document.querySelectorAll("[data-i18n]").forEach((el) => {
-  const key = el.getAttribute("data-i18n");
-  if (translations[lang]?.[key]) {
-    el.textContent = translations[lang][key];
+  // 1) Si no está en cache, lo traemos
+  if (!translationsCache[lang]) {
+    try {
+      const res = await fetch(`/i18n/${lang}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      translationsCache[lang] = await res.json();
+    } catch (err) {
+      console.error("Error cargando traducciones para", lang, err);
+      return;
+    }
   }
-});
 
-document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-  const key = el.getAttribute("data-i18n-html");
-  if (translations[lang]?.[key]) {
-    el.innerHTML = translations[lang][key]; // aquí sí usamos innerHTML
+  // 2) Objeto de traducciones activo
+  const t = translationsCache[lang];
+
+  // 3) Texto plano
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (t[key] != null) el.textContent = t[key];
+  });
+
+  // 4) HTML (innerHTML)
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const key = el.getAttribute("data-i18n-html");
+    if (t[key] != null) el.innerHTML = t[key];
+  });
+
+  // 5) Placeholders
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (t[key] != null) el.placeholder = t[key];
+  });
+
+  // 6) Footer y grid de nodos
+  updateFooterPhrase();
+  renderNodeGrid();
+}
+
+// -----------------------------
+// Frase aleatoria en el footer
+// -----------------------------
+function updateFooterPhrase() {
+  const t = getT();
+  const fallback = translationsCache["es"]?.footer?.phrases || [];
+  const phrases = t.footer?.phrases || fallback;
+  const el = document.getElementById("footer-phrase");
+
+  if (phrases.length) {
+    el.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  } else {
+    el.textContent = "Comunicaciones descentralizadas";
   }
-});
+}
 
-        // Actualizar elementos que deben renderizar HTML
-        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-          const key = el.getAttribute("data-i18n-html");
-          if (translations[lang]?.[key]) {
-            el.innerHTML = translations[lang][key]; // Usamos innerHTML solo donde sea necesario
-          }
-        });
-
-        //tooltip de descargas
-        function showDownloadTooltip() {
-          const tooltip = document.getElementById("download-tooltip");
-          const message =
-            translations[currentLang]?.downloads?.tooltip ||
-            "Próximamente Q3 2025";
-          tooltip.textContent = message;
-          tooltip.classList.remove("hidden");
-          setTimeout(() => tooltip.classList.add("hidden"), 3000);
-        }
-
-        // Actualizar placeholders
-        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-          const key = el.getAttribute("data-i18n-placeholder");
-          if (translations[lang]?.[key]) {
-            el.placeholder = translations[lang][key];
-          }
-        });
-
-        // Actualizar el footer con una frase aleatoria
-        updateFooterPhrase();
-        renderNodeGrid();
-      }
-
-      function updateFooterPhrase() {
-        // Obtener las frases del idioma actual, con fallback a español si no existen
-        const phrases =
-          translations[currentLang]?.footer?.phrases ||
-          translations[currentLang]?.phrases ||
-          translations["es"].footer.phrases;
-
-        if (phrases && phrases.length > 0) {
-          const randomPhrase =
-            phrases[Math.floor(Math.random() * phrases.length)];
-          document.getElementById("footer-phrase").textContent = randomPhrase;
-        } else {
-          // Fallback en caso de que no haya frases disponibles
-          document.getElementById("footer-phrase").textContent =
-            "Comunicaciones descentralizadas";
-        }
-      }
-
-
-//modal de tipos de nodos
-
+// -----------------------------
+// Modal de detalles de nodo
+// -----------------------------
 function showNodeModal(nodeKey) {
-  const title = translations[currentLang][`node.${nodeKey}.modal_title`] || "";
-  const desc = translations[currentLang][`node.${nodeKey}.modal_desc`] || "";
-  const usage = translations[currentLang][`node.${nodeKey}.modal_usage`] || [];
+  const t = getT();
+  const title = t[`node.${nodeKey}.modal_title`] || "";
+  const desc  = t[`node.${nodeKey}.modal_desc`]  || "";
+  const usage = t[`node.${nodeKey}.modal_usage`] || [];
 
   document.getElementById("modal-title").textContent = title;
-  document.getElementById("modal-desc").textContent = desc;
+  document.getElementById("modal-desc").textContent  = desc;
 
-  const usageList = document.getElementById("modal-usage");
-  usageList.innerHTML = "";
-  usage.forEach((item) => {
+  const ul = document.getElementById("modal-usage");
+  ul.innerHTML = "";
+  usage.forEach(item => {
     const li = document.createElement("li");
     li.textContent = item;
-    usageList.appendChild(li);
+    ul.appendChild(li);
   });
 
   document.getElementById("node-modal").classList.remove("hidden");
@@ -3076,122 +1751,105 @@ function closeNodeModal() {
   document.getElementById("node-modal").classList.add("hidden");
 }
 
+// -----------------------------
+// Stepper
+// -----------------------------
+let stepIndex = 0;
+const circles = document.querySelectorAll('.stepper-item .stepper-circle');
+const prevBtn = document.getElementById('prev-step');
+const nextBtn = document.getElementById('next-step');
+const stepModals = document.querySelectorAll('#modals-container .modal.step-modal');
 
-
-      document.addEventListener("DOMContentLoaded", () => {
-        // Elementos del menú
-        const menu = document.getElementById("offcanvas");
-        const openBtn = document.getElementById("hamburger");
-        const closeBtn = document.getElementById("close-menu");
-        const overlay = document.getElementById("overlay");
-
-
-//steps
-
-  // --- 1. Scope exclusivo para el Stepper ---
-  let stepIndex = 0;
-  const circles = document.querySelectorAll('.stepper-item .stepper-circle');
-  const prevBtn = document.getElementById('prev-step');
-  const nextBtn = document.getElementById('next-step');
-
-  // --- 2. Sólo los modales de pasos (añade esta clase a tus divs de modal) ---
-  const stepModals = document.querySelectorAll('#modals-container .modal.step-modal');
-
-  function updateStepper() {
-    circles.forEach((circle, i) => {
-      circle.classList.toggle('bg-yellow-500', i === stepIndex);
-      circle.classList.toggle('bg-slate-700', i !== stepIndex);
-    });
-    prevBtn.disabled = stepIndex === 0;
-    nextBtn.textContent = stepIndex === circles.length - 1 ? 'Finalizar' : 'Siguiente';
-  }
-
-  function openModal(idx) {
-    stepModals[idx].classList.remove('hidden');
-  }
-  function closeModal() {
-    const open = document.querySelector('#modals-container .modal:not(.hidden)');
-    if (open) open.classList.add('hidden');
-  }
-
-  window.openModal  = openModal;
-  window.closeModal = closeModal;
-
-  prevBtn.addEventListener('click', () => {
-    if (stepIndex > 0) {
-      stepIndex--;
-      updateStepper();
-      openModal(stepIndex);
-    }
+function updateStepper() {
+  circles.forEach((circle, i) => {
+    circle.classList.toggle('bg-yellow-500', i === stepIndex);
+    circle.classList.toggle('bg-slate-700', i !== stepIndex);
   });
+  prevBtn.disabled = stepIndex === 0;
+  nextBtn.textContent = stepIndex === circles.length - 1 ? 'Finalizar' : 'Siguiente';
+}
 
-  nextBtn.addEventListener('click', () => {
+function openModal(idx) {
+  stepModals[idx].classList.remove('hidden');
+}
+function closeModal() {
+  const open = document.querySelector('#modals-container .modal:not(.hidden)');
+  if (open) open.classList.add('hidden');
+}
+
+window.openModal  = openModal;
+window.closeModal = closeModal;
+
+prevBtn.addEventListener('click', () => {
+  if (stepIndex > 0) {
+    stepIndex--;
+    updateStepper();
     openModal(stepIndex);
-    if (stepIndex < circles.length - 1) {
-      stepIndex++;
-      // ligero delay para que al abrir el modal no afecte la animación
-      setTimeout(updateStepper, 100);
-    }
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  openModal(stepIndex);
+  if (stepIndex < circles.length - 1) {
+    stepIndex++;
+    setTimeout(updateStepper, 100);
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+stepModals.forEach(m => {
+  m.addEventListener('click', e => {
+    if (e.target === m) closeModal();
+  });
+});
+
+updateStepper();
+
+// -----------------------------
+// Menú offcanvas
+// -----------------------------
+function openMenu() {
+  menu.classList.remove("-translate-x-full");
+  overlay.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  menu.classList.add("-translate-x-full");
+  overlay.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+// -----------------------------
+// Inicialización al cargar la página
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  // referencias del menú (defínelas aquí)
+  const menu     = document.getElementById("offcanvas");
+  const openBtn  = document.getElementById("hamburger");
+  const closeBtn = document.getElementById("close-menu");
+  const overlay  = document.getElementById("overlay");
+
+  // event listeners menú
+  if (openBtn)  openBtn.addEventListener("click", openMenu);
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+  if (overlay)  overlay.addEventListener("click", closeMenu);
+  document.querySelectorAll("#offcanvas a").forEach(link => {
+    link.addEventListener("click", closeMenu);
   });
 
-  // Cerrar modal con Escape o clic fuera
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
-  stepModals.forEach(m => {
-    m.addEventListener('click', e => {
-      if (e.target === m) closeModal();
-    });
-  });
+  // licencias y simulador
+  loadLicenses();
+  showLicense("agpl");
 
-  // Inicializa el estado del stepper
-  updateStepper();
+  // aquí cargamos el idioma **antes** de renderizar grid/footer
+  setLang("es");
 
-
-
-
-        // Función para abrir el menú
-        function openMenu() {
-          menu.classList.remove("-translate-x-full");
-          overlay.classList.remove("hidden");
-          document.body.style.overflow = "hidden"; // Previene el scroll del body
-        }
-
-        // Función para cerrar el menú
-        function closeMenu() {
-          menu.classList.add("-translate-x-full");
-          overlay.classList.add("hidden");
-          document.body.style.overflow = ""; // Restaura el scroll del body
-        }
-
-        // Event listeners
-        if (openBtn) openBtn.addEventListener("click", openMenu);
-        if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-        if (overlay) overlay.addEventListener("click", closeMenu);
-
-        // Cerrar con tecla Escape
-        document.addEventListener("keydown", (e) => {
-          if (
-            e.key === "Escape" &&
-            !menu.classList.contains("-translate-x-full")
-          ) {
-            closeMenu();
-          }
-        });
-
-        // Cerrar al hacer clic en enlaces del menú
-        document.querySelectorAll("#offcanvas a").forEach((link) => {
-          link.addEventListener("click", closeMenu);
-        });
-
-        // Resto de inicializaciones...
-        loadLicenses();
-        showLicense("agpl");
-        setLang("es");
-        renderNodeGrid(); // <-- Aquí
-        updateFooterPhrase();
-        setupContactButtons();
-      });
+  // setup resto de botones dependientes de contenido traducido
+  setupContactButtons();
+});
     </script>
     <div class="fixed right-4 bottom-6 flex flex-col gap-4 z-50">
       <button

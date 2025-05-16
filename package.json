@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./styles/generated.css --minify",
+    "watch:css": "tailwindcss -i ./styles/tailwind.css -o ./styles/generated.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,7 +16,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/3mmanu3lmois3s/landing-walkie-talkie/issues"
   },
