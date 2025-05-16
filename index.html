@@ -1811,17 +1811,15 @@ updateStepper();
 // Menú offcanvas
 // -----------------------------
 function openMenu() {
-  menu.classList.remove("-translate-x-full");
-  overlay.classList.remove("hidden");
+  document.getElementById("offcanvas").classList.remove("-translate-x-full");
+  document.getElementById("overlay").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
-
 function closeMenu() {
-  menu.classList.add("-translate-x-full");
-  overlay.classList.add("hidden");
+  document.getElementById("offcanvas").classList.add("-translate-x-full");
+  document.getElementById("overlay").classList.add("hidden");
   document.body.style.overflow = "";
 }
-
 // -----------------------------
 // Inicialización al cargar la página
 // -----------------------------
