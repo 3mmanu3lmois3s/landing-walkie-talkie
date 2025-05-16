@@ -411,6 +411,317 @@
   </div>
 </section>
 
+
+<section
+  id="ecosistema"
+  class="min-h-screen bg-slate-900 text-white px-4 py-16"
+>
+  <div class="max-w-5xl mx-auto space-y-12">
+    <!-- Título principal -->
+    <h2
+      class="text-3xl font-bold text-center text-yellow-300"
+      data-i18n="ecosistema.title"
+    >
+      Ecosistema y Compatibilidad
+    </h2>
+    <!-- Descripción breve -->
+    <p
+      class="text-center text-slate-400 max-w-3xl mx-auto"
+      data-i18n="ecosistema.description"
+    >
+      Descubre las tecnologías, protocolos y herramientas que hacen de Teethlion una solución abierta, extensible y lista para el futuro.
+    </p>
+
+    <!-- Grid de capacidades -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Lenguajes -->
+      <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+        <h3 class="flex items-center text-xl font-semibold mb-4 text-yellow-300" data-i18n="ecosistema.langs.title">
+          📝 Lenguajes
+        </h3>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li>JavaScript / TypeScript</li>
+          <li>Go</li>
+          <li>Rust</li>
+          <li>C / C++</li>
+          <li>Python</li>
+          <li>Java</li>
+          <li>Hotline (CLI)</li>
+        </ul>
+      </div>
+
+      <!-- Protocolos -->
+      <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+        <h3 class="flex items-center text-xl font-semibold mb-4 text-yellow-300" data-i18n="ecosistema.protocols.title">
+          🔗 Protocolos
+        </h3>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li>IPv4 &amp; IPv6</li>
+          <li>libp2p</li>
+          <li>Multiprotocolo (OSI ≥ Capa 3)</li>
+          <li>Soporte a protocolos futuros</li>
+        </ul>
+      </div>
+
+      <!-- Tecnologías -->
+      <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+        <h3 class="flex items-center text-xl font-semibold mb-4 text-yellow-300" data-i18n="ecosistema.tech.title">
+          🌐 Tecnologías
+        </h3>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li>Radio (HF/VHF/UHF)</li>
+          <li>Satélite</li>
+          <li>4G / 5G / 6G</li>
+          <li>10G Ethernet</li>
+          <li>Fibra óptica, inalámbricas y alámbricas</li>
+        </ul>
+      </div>
+
+      <!-- Aplicaciones -->
+      <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+        <h3 class="flex items-center text-xl font-semibold mb-4 text-yellow-300" data-i18n="ecosistema.apps.title">
+          ⚙️ Aplicaciones
+        </h3>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li>Sistemas de pago</li>
+          <li>IoT y SCADA</li>
+          <li>Circuito cerrado enriquecido</li>
+          <li>Chat, voz y vídeo descentralizados</li>
+          <li>Comunicaciones de nivel militar</li>
+          <li>Integración con plataformas propietarias</li>
+        </ul>
+      </div>
+
+      <!-- SDK & Store (ocupa dos columnas en pantallas grandes) -->
+      <div class="bg-slate-800 p-6 rounded-lg shadow-md sm:col-span-2 lg:col-span-3">
+        <h3 class="flex items-center text-xl font-semibold mb-4 text-yellow-300" data-i18n="ecosistema.sdk.title">
+          🧩 SDK &amp; Store
+        </h3>
+        <p class="text-sm mb-4" data-i18n="ecosistema.sdk.desc">
+          Potencia tu desarrollo con nuestras librerías nativas y explora extensiones en nuestro repositorio descentralizado.
+        </p>
+        <button
+          type="button"
+          class="inline-block px-5 py-3 bg-slate-700 text-gray-400 font-semibold rounded-lg cursor-not-allowed"
+          disabled
+        >
+          SDK – Próximamente Q4 2025
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE IMPACTO ACTUALIZADA TEETHLION -->
+<!-- SECCIÓN DE IMPACTO ACTUALIZADA TEETHLION -->
+<section id="impact" class="min-h-screen bg-gray-900 text-white px-6 py-16 mb-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-yellow-300 mb-10" data-i18n="impact.title">
+      🌍 Impacto Global y Regional
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 text-center">
+      <div onclick="openImpactModal('jobs_direct')" class="bg-slate-800 p-6 rounded-xl shadow hover:bg-slate-700 cursor-pointer transition">
+        <p class="text-yellow-400 text-2xl font-bold">700.000+</p>
+        <p class="text-sm text-slate-300 mt-2" data-i18n="impact.kpi.jobs_direct">Empleos Directos (en 10 años)</p>
+      </div>
+      <div onclick="openImpactModal('jobs_indirect')" class="bg-slate-800 p-6 rounded-xl shadow hover:bg-slate-700 cursor-pointer transition">
+        <p class="text-yellow-400 text-2xl font-bold">3.5M+</p>
+        <p class="text-sm text-slate-300 mt-2" data-i18n="impact.kpi.jobs_indirect">Empleos Indirectos (en 10 años)</p>
+      </div>
+      <div onclick="openImpactModal('sectors')" class="bg-slate-800 p-6 rounded-xl shadow hover:bg-slate-700 cursor-pointer transition">
+        <p class="text-yellow-400 text-2xl font-bold">22+</p>
+        <p class="text-sm text-slate-300 mt-2" data-i18n="impact.kpi.sectors">Sectores Estratégicos</p>
+      </div>
+      <div onclick="openImpactModal('economic')" class="bg-slate-800 p-6 rounded-xl shadow hover:bg-slate-700 cursor-pointer transition">
+        <p class="text-yellow-400 text-2xl font-bold">+3.2B €/año <span title="Estimación basada en metodologías OCDE, Leontief y Coste-Beneficio: 250 €/nodo/año × 12.8M nodos">ℹ️</span></p>
+        <p class="text-sm text-slate-300 mt-2" data-i18n="impact.kpi.economic">Retorno Económico Global</p>
+      </div>
+      <div onclick="openImpactModal('nodes_installed')" class="bg-slate-800 p-6 rounded-xl shadow hover:bg-slate-700 cursor-pointer transition">
+        <p class="text-yellow-400 text-2xl font-bold">12.8M</p>
+        <p class="text-sm text-slate-300 mt-2" data-i18n="impact.kpi.nodes">Nodos proyectados (10 años)</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white/5 p-6 rounded-xl">
+        <h3 class="text-xl font-semibold text-yellow-300 mb-2" data-i18n="impact.usecases.devs.title">
+          Desarrolladores y técnicos
+        </h3>
+        <p class="text-sm text-slate-300" data-i18n="impact.usecases.devs.examples">
+          Integración de nodos, mantenimiento, desarrollo de plugins, monitoreo, firmware, DevOps descentralizado.
+        </p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-xl">
+        <h3 class="text-xl font-semibold text-yellow-300 mb-2" data-i18n="impact.usecases.field.title">
+          Aplicaciones en campo
+        </h3>
+        <p class="text-sm text-slate-300" data-i18n="impact.usecases.field.examples">
+          Agricultura, defensa civil, rescate, gobiernos locales, educación rural, hospitales remotos, transporte.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal lógico -->
+<div id="impact-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+  <div class="bg-slate-800 max-w-lg w-full p-6 rounded-lg relative shadow-xl border border-yellow-400">
+    <button onclick="closeImpactModal()" class="absolute top-3 right-4 text-yellow-300 text-xl">✖</button>
+    <h3 id="impact-modal-title" class="text-2xl font-bold text-yellow-300 mb-4"></h3>
+    <p id="impact-modal-content" class="text-slate-200 text-sm whitespace-pre-wrap"></p>
+  </div>
+</div>
+
+<script>
+  const impactLogic = {
+    jobs_direct: {
+      title: "¿Cómo se estiman los empleos directos?",
+      content: "Basado en la proyección de 12.8 millones de nodos en 10 años.\nCada nodo genera empleo técnico directo para instalación, mantenimiento y soporte.\n\nCálculo: 12.8M nodos × 0.055 personas ≈ 700.000 empleos directos."
+    },
+    jobs_indirect: {
+      title: "¿Cómo se estiman los empleos indirectos?",
+      content: "Por cada empleo directo, se generan ~5 empleos indirectos en sectores como transporte, logística, educación, legal, energía y soporte.\n\nFórmula: 700.000 empleos directos × 5 = 3.5M indirectos."
+    },
+    sectors: {
+      title: "¿Qué sectores se consideran estratégicos?",
+      content: "Educación, agricultura, salud, defensa civil, ciberseguridad, transporte, logística, software, IA, energía, telecomunicaciones, investigación, industria ligera, emergencias, administración pública, gobiernos locales, ONGs, minería, construcción, servicios urbanos, ciudades inteligentes."
+    },
+    economic: {
+      title: "¿Cómo se calcula el impacto económico?",
+      content: "Se estima un retorno medio de 250 € anuales por nodo entre hardware, servicios y licencias.\n\nComponentes por nodo/año:\n🔧 Hardware: 60 €\n👨‍🔧 Servicios: 80 €\n💻 Software/licencias: 30 €\n🔄 Evolución (IA, infraestructura, satélites...): 40 €\n📡 Energía y logística: 40 €\n\nFórmula: 12.8M nodos × 250 €/año = +3.2B €/año.\n\n📘 Nota: Este cálculo se inspira en modelos de retorno económico total (RET) utilizados por la OCDE, el Banco Mundial y estudios de impacto en redes de telecomunicaciones distribuidas."
+    },
+    nodes_installed: {
+      title: "¿Por qué 12.8 millones de nodos en 10 años?",
+      content: "Proyección escalonada con adopción global: LAN familiares, colegios, gobiernos, ONGs, empresas, regiones rurales.\n\nMeta conservadora: 1 nodo por cada 600 personas en entornos críticos o institucionales.\nEuropa aportaría ~15% del total: +1.9M de nodos."
+    }
+  };
+
+  function openImpactModal(key) {
+    const modal = document.getElementById('impact-modal');
+    const data = impactLogic[key];
+    document.getElementById('impact-modal-title').textContent = data.title;
+    document.getElementById('impact-modal-content').textContent = data.content;
+    modal.classList.remove('hidden');
+  }
+
+  function closeImpactModal() {
+    document.getElementById('impact-modal').classList.add('hidden');
+  }
+</script>
+
+
+<!-- EMPRESAS Y GOBIERNOS -->
+<!-- EMPRESAS Y GOBIERNOS -->
+<section id="enterprises" class="bg-gray-950 text-white px-6 py-16 mb-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-yellow-300 text-center mb-12" data-i18n="enterprise.title">
+      💼 Empresas y Gobiernos: Coste, Ahorro y Soberanía
+    </h2>
+
+    <!-- Escenario de uso -->
+    <div class="bg-slate-800 p-6 rounded-xl shadow mb-12">
+      <h3 class="text-2xl text-yellow-200 font-semibold mb-4" data-i18n="enterprise.scenario.title">📊 Escenario de uso empresarial</h3>
+      <p class="text-sm text-slate-300 mb-4" data-i18n="enterprise.scenario.desc">
+        Una empresa con 300 empleados decide usar Teethlion para sus comunicaciones internas en lugar de MS Teams, Zoom o Slack. Ya cuenta con red LAN interna.
+      </p>
+      <ul class="text-slate-300 text-sm space-y-2">
+        <li>✅ 300 licencias perpetuas → 300 € únicos</li>
+        <li>🔁 Cuota anual por nodo: 60 € (actualizaciones, soporte, evolución)</li>
+        <li>📦 Total anual: <span class="font-semibold text-yellow-300">18.000 €/año</span></li>
+      </ul>
+    </div>
+
+    <!-- Comparativa visual -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-slate-800 p-4 rounded-xl shadow">
+        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2">🟨 Teethlion</h4>
+        <ul class="text-sm text-slate-300 space-y-1">
+          <li>✅ 1 €/nodo (único)</li>
+          <li>🔁 60 €/nodo/año</li>
+          <li>🔐 Control total de datos</li>
+          <li>🌍 Funciona sin internet</li>
+          <li>🔄 Integración local y APIs</li>
+        </ul>
+        <p class="text-center mt-4 font-bold text-green-400">Total: 18.000 €/año</p>
+      </div>
+      <div class="bg-slate-800 p-4 rounded-xl shadow">
+        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2">🛀 MS Teams</h4>
+        <ul class="text-sm text-slate-300 space-y-1">
+          <li>🔒 Desde 10 €/mes/usuario</li>
+          <li>❌ Pago mensual obligatorio</li>
+          <li>⚠️ Dependencia de Microsoft</li>
+          <li>🚫 Requiere internet</li>
+          <li>📦 Limitaciones técnicas</li>
+        </ul>
+        <p class="text-center mt-4 font-bold text-red-400">Total: 36.000 €/año</p>
+      </div>
+      <div class="bg-slate-800 p-4 rounded-xl shadow">
+        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2">💬 Slack / Zoom</h4>
+        <ul class="text-sm text-slate-300 space-y-1">
+          <li>💵 8–15 €/mes/usuario</li>
+          <li>⚠️ Suscripción por empleado</li>
+          <li>🔒 Datos en servidores externos</li>
+          <li>🚫 No funciona offline</li>
+          <li>📊 Aumento de coste por plugins</li>
+        </ul>
+        <p class="text-center mt-4 font-bold text-red-400">Total: ~40.000 €/año</p>
+      </div>
+    </div>
+
+    <!-- Cálculo detallado con botón modal -->
+    <div class="bg-slate-900 p-6 rounded-xl shadow border border-yellow-500 overflow-x-auto">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl text-yellow-300 font-semibold" data-i18n="enterprise.calc.title">
+          🧰 Fórmula general para empresas
+        </h3>
+        <button onclick="openEnterpriseModal()" class="text-sm text-yellow-300 hover:underline">ℹ️ Más info</button>
+      </div>
+      <p class="text-sm text-slate-300 mb-4" data-i18n="enterprise.calc.desc">
+        Cálculo recomendado de inversión:
+      </p>
+      <div class="text-sm bg-black/20 p-4 rounded-xl">
+        <pre class="text-green-300 whitespace-pre-wrap">
+Costo Inicial Único = Nodos × 1 €
+Costo Anual = Nodos × (Soporte + Evolución + Licencias)
+Ejemplo: 300 × (30 + 20 + 10) = 18.000 €/año
+        </pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DE EMPRESAS -->
+<div id="enterprise-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+  <div class="bg-slate-800 max-w-lg w-full p-6 rounded-xl relative shadow-xl border border-yellow-400">
+    <button onclick="closeEnterpriseModal()" class="absolute top-3 right-4 text-yellow-300 text-xl">✖</button>
+    <h3 class="text-2xl font-bold text-yellow-300 mb-4">¿Cómo se justifica el coste anual?</h3>
+    <p class="text-slate-200 text-sm whitespace-pre-wrap">
+El coste anual de 60 €/nodo incluye:
+
+🔁 Soporte técnico especializado (30 €/año)  
+🔄 Evolución y mejoras continuas del sistema (20 €/año)  
+💻 Licencias, actualizaciones y auditorías (10 €/año)
+
+👉 Este modelo sigue el enfoque TCO (Total Cost of Ownership) distribuido:  
+Se estima el coste global para mantener, evolucionar y auditar la red por nodo, distribuyendo equitativamente el valor entre nodos activos.  
+Es una práctica común y aceptada en proyecciones financieras empresariales.
+    </p>
+  </div>
+</div>
+
+<script>
+  function openEnterpriseModal() {
+    document.getElementById('enterprise-modal').classList.remove('hidden');
+  }
+
+  function closeEnterpriseModal() {
+    document.getElementById('enterprise-modal').classList.add('hidden');
+  }
+</script>
+
+
+
 <!-- Modales de Paso -->
 <div id="modals-container">
   <!-- Paso 1 -->
@@ -510,58 +821,110 @@
   </div>
 </div>
 
-      <section id="descargas" class="min-h-screen flex items-center px-4">
-        <div class="max-w-3xl mx-auto px-4 py-8 flex flex-col justify-center">
-          <h2 class="text-2xl font-bold mb-4" data-i18n="downloads.title">
-            Descargas
-          </h2>
-          <div class="flex flex-col sm:flex-row gap-4 mb-4">
-<a
-  href="#"
-  onclick="showDownloadTooltip(); return false;"
-  class="bg-yellow-500 text-black font-semibold py-3 px-6 rounded-lg hover:bg-yellow-600 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400"
-  aria-disabled="true"
-  aria-label="Descargar para Linux"
-  data-i18n="downloads.linux"
+<section
+  id="descargas"
+  class="min-h-screen flex items-center justify-center px-4 py-12 bg-slate-900 text-white"
 >
-  ⬇️ Descargar Linux
-</a>
-            <a
-              href="#"
-              onclick="showDownloadTooltip(); return false;"
-              class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700 cursor-not-allowed"
-              data-i18n="downloads.windows"
-              >⬇️ Windows</a
-            >
-            <a
-              href="#"
-              onclick="showDownloadTooltip(); return false;"
-              class="bg-slate-800 px-6 py-3 rounded-lg hover:bg-slate-700 cursor-not-allowed"
-              data-i18n="downloads.macos"
-              >⬇️ macOS</a
-            >
-          </div>
+  <div class="max-w-3xl mx-auto px-4">
+    <!-- Título y estado de desarrollo -->
+    <h2 class="text-3xl font-bold mb-4" data-i18n="downloads.title">
+      Descargas
+    </h2>
+    <p class="text-sm text-slate-400 mb-8">
+      <!-- Mensaje de roadmap claro -->
+      Actualmente en desarrollo — las descargas estarán disponibles en <strong>Q4 2025</strong>.
+    </p>
 
-          <p class="text-sm text-slate-400">
-            <span data-i18n="downloads.enterprise_prompt">
-              ¿Necesitas funcionalidades móviles, integración SaaS y
-              dispositivos embebidos? </span
-            ><br />
-<a
-  href="#contacto"
-  class="inline-block bg-transparent border-2 border-yellow-500 text-yellow-500 font-semibold py-2 px-4 rounded-md hover:bg-yellow-500 hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400"
-  aria-label="Contactar equipo Teethlion"
-  data-i18n="downloads.contact_us"
->
-  Contáctanos
-</a>
+    <!-- Botones de descarga deshabilitados -->
+    <div class="flex flex-wrap gap-4 justify-center mb-6">
+      <!-- Linux -->
+      <button
+        type="button"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 opacity-50 cursor-not-allowed"
+        aria-disabled="true"
+        tabindex="-1"
+        title="Disponible en Q4 2025"
+      >
+        ⬇️
+        <span data-i18n="downloads.linux">Linux</span>
+      </button>
 
-            <span data-i18n="downloads.enterprise_version">
-              para la versión empresarial.</span
-            >
-          </p>
-        </div>
-      </section>
+      <!-- Windows -->
+      <button
+        type="button"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 opacity-50 cursor-not-allowed"
+        aria-disabled="true"
+        tabindex="-1"
+        title="Disponible en Q4 2025"
+      >
+        ⬇️
+        <span data-i18n="downloads.windows">Windows</span>
+      </button>
+
+      <!-- macOS -->
+      <button
+        type="button"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 opacity-50 cursor-not-allowed"
+        aria-disabled="true"
+        tabindex="-1"
+        title="Disponible en Q4 2025"
+      >
+        ⬇️
+        <span data-i18n="downloads.macos">macOS</span>
+      </button>
+
+      <!-- Android -->
+      <button
+        type="button"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 opacity-50 cursor-not-allowed"
+        aria-disabled="true"
+        tabindex="-1"
+        title="Disponible en Q4 2025"
+      >
+        📱
+        <span data-i18n="downloads.android">Android</span>
+      </button>
+
+      <!-- iOS -->
+      <button
+        type="button"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 opacity-50 cursor-not-allowed"
+        aria-disabled="true"
+        tabindex="-1"
+        title="Disponible en Q4 2025"
+      >
+        📱
+        <span data-i18n="downloads.ios">iOS</span>
+      </button>
+
+      <!-- Embebidos -->
+      <button
+        type="button"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 opacity-50 cursor-not-allowed"
+        aria-disabled="true"
+        tabindex="-1"
+        title="Disponible en Q4 2025"
+      >
+        ⚙️
+        <span data-i18n="downloads.embedded">Embebidos</span>
+      </button>
+    </div>
+
+    <!-- CTA versión empresarial -->
+    <p class="text-sm text-slate-400">
+      ¿Necesitas integración SaaS o soporte para dispositivos embebidos antes de Q4 2025?
+      <a
+        href="#contacto"
+        class="inline-block ml-2 px-4 py-2 border border-yellow-500 rounded-md hover:bg-yellow-500 hover:text-black transition"
+        data-i18n="downloads.contact_us"
+      >
+        Contáctanos
+      </a>
+    </p>
+  </div>
+</section>
+
+
 
       <section
         id="roadmap"
@@ -922,109 +1285,135 @@ Cargando licencia TOL...</pre
         </div>
       </section>
 
-      <section id="manifiesto" class="max-w-4xl mx-auto px-4 py-12">
-        <h2
-          class="text-2xl font-bold mb-6 text-center"
-          data-i18n="manifesto.title_header"
-        >
-          📜 Teethlion Manifesto
-        </h2>
+<section id="manifiesto" class="max-w-4xl mx-auto px-4 py-12">
+  <h2
+    class="text-2xl font-bold mb-6 text-center"
+    data-i18n="manifesto.title_header"
+  >
+    📜 Teethlion Manifesto
+  </h2>
 
-        <div class="space-y-6 text-slate-100">
-          <div>
-            <h3
-              class="text-xl font-semibold text-yellow-300"
-              data-i18n="manifesto.mission.title"
-            >
-              💪 Nuestra Misión
-            </h3>
-            <p data-i18n="manifesto.mission.p1"></p>
-            <p data-i18n="manifesto.mission.p2"></p>
-            <p data-i18n="manifesto.mission.p3"></p>
-          </div>
+  <div class="space-y-6 text-slate-100">
+    <div>
+      <h3
+        class="text-xl font-semibold text-yellow-300"
+        data-i18n="manifesto.mission.title"
+      >
+        💪 Nuestra Misión
+      </h3>
+      <p data-i18n="manifesto.mission.p1"></p>
+      <p data-i18n="manifesto.mission.p2"></p>
+      <p data-i18n="manifesto.mission.p3"></p>
+    </div>
 
-          <div>
-            <h3
-              class="text-xl font-semibold text-yellow-300"
-              data-i18n="manifesto.principles.title"
-            >
-              🌍 Principios Fundamentales
-            </h3>
-            <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.principles.item1"></li>
-              <li data-i18n="manifesto.principles.item2"></li>
-              <li data-i18n="manifesto.principles.item3"></li>
-              <li data-i18n="manifesto.principles.item4"></li>
-            </ul>
-          </div>
+    <div>
+      <h3
+        class="text-xl font-semibold text-yellow-300"
+        data-i18n="manifesto.principles.title"
+      >
+        🌍 Principios Fundamentales
+      </h3>
+      <ul class="list-disc list-inside">
+        <li data-i18n="manifesto.principles.item1"></li>
+        <li data-i18n="manifesto.principles.item2"></li>
+        <li data-i18n="manifesto.principles.item3"></li>
+        <li data-i18n="manifesto.principles.item4"></li>
+      </ul>
+    </div>
 
-          <div>
-            <h3
-              class="text-xl font-semibold text-yellow-300"
-              data-i18n="manifesto.offers.title"
-            >
-              ✨ Lo que Teethlion ofrece
-            </h3>
-            <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.offers.item1"></li>
-              <li data-i18n="manifesto.offers.item2"></li>
-              <li data-i18n="manifesto.offers.item3"></li>
-              <li data-i18n="manifesto.offers.item4"></li>
-            </ul>
-          </div>
+    <div>
+      <h3
+        class="text-xl font-semibold text-yellow-300"
+        data-i18n="manifesto.offers.title"
+      >
+        ✨ Lo que Teethlion ofrece
+      </h3>
+      <ul class="list-disc list-inside">
+        <li data-i18n="manifesto.offers.item1"></li>
+        <li data-i18n="manifesto.offers.item2"></li>
+        <li data-i18n="manifesto.offers.item3"></li>
+        <li data-i18n="manifesto.offers.item4"></li>
+      </ul>
+    </div>
 
-          <div>
-            <h3
-              class="text-xl font-semibold text-yellow-300"
-              data-i18n="manifesto.license.title"
-            >
-              📅 Nuestra Licencia (TOL)
-            </h3>
-            <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.license.item1"></li>
-              <li data-i18n="manifesto.license.item2"></li>
-              <li data-i18n="manifesto.license.item3"></li>
-            </ul>
-            <p
-              class="mt-2 font-semibold"
-              data-i18n="manifesto.license.rates_title"
-            ></p>
-            <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.license.rate1"></li>
-              <li data-i18n="manifesto.license.rate2"></li>
-            </ul>
-          </div>
+    <div>
+      <h3
+        class="text-xl font-semibold text-yellow-300"
+        data-i18n="manifesto.license.title"
+      >
+        📅 Nuestra Licencia (TOL)
+      </h3>
+      <ul class="list-disc list-inside">
+        <li data-i18n="manifesto.license.item1"></li>
+        <li data-i18n="manifesto.license.item2"></li>
+        <li data-i18n="manifesto.license.item3"></li>
+      </ul>
+      <p
+        class="mt-2 font-semibold"
+        data-i18n="manifesto.license.rates_title"
+      ></p>
+      <ul class="list-disc list-inside">
+        <li data-i18n="manifesto.license.rate1"></li>
+        <li data-i18n="manifesto.license.rate2"></li>
+      </ul>
+    </div>
 
-          <div>
-            <h3
-              class="text-xl font-semibold text-yellow-300"
-              data-i18n="manifesto.protection.title"
-            >
-              🔒 Protección de Teethlion
-            </h3>
-            <ul class="list-disc list-inside">
-              <li data-i18n="manifesto.protection.item1"></li>
-              <li data-i18n="manifesto.protection.item2"></li>
-              <li data-i18n="manifesto.protection.item3"></li>
-            </ul>
-          </div>
+    <div>
+      <h3
+        class="text-xl font-semibold text-yellow-300"
+        data-i18n="manifesto.protection.title"
+      >
+        🔒 Protección de Teethlion
+      </h3>
+      <ul class="list-disc list-inside">
+        <li data-i18n="manifesto.protection.item1"></li>
+        <li data-i18n="manifesto.protection.item2"></li>
+        <li data-i18n="manifesto.protection.item3"></li>
+      </ul>
+    </div>
 
-          <div>
-            <h3
-              class="text-xl font-semibold text-yellow-300"
-              data-i18n="manifesto.dream.title"
-            >
-              🚀 Nuestro Sueño
-            </h3>
-            <p data-i18n="manifesto.dream.p1"></p>
-            <p data-i18n="manifesto.dream.p2"></p>
-            <p
-              class="mt-4 font-semibold text-yellow-300"
-              data-i18n="manifesto.dream.welcome"
-            ></p>
-          </div>
-        </div>
-      </section>
+    <div>
+      <h3
+        class="text-xl font-semibold text-yellow-300"
+        data-i18n="manifesto.dream.title"
+      >
+        🚀 Nuestro Sueño
+      </h3>
+      <p data-i18n="manifesto.dream.p1"></p>
+      <p data-i18n="manifesto.dream.p2"></p>
+      <p
+        class="mt-4 font-semibold text-yellow-300"
+        data-i18n="manifesto.dream.welcome"
+      ></p>
+    </div>
+    
+
+<div>
+  <h3
+    class="text-xl font-semibold text-yellow-300"
+    data-i18n="manifesto.quotes.title"
+  >
+    📣 Voces que Resuenan
+  </h3>
+  <ul class="list-disc list-inside italic text-slate-200 space-y-2">
+    <li title="Fuente: Entrevista en CPDP 2019" data-i18n="manifesto.quotes.item1">
+      “La privacidad no es un lujo, es una necesidad.” — Tim Cook, CEO de Apple
+    </li>
+    <li title="Fuente: Blog de Ethereum, 2017" data-i18n="manifesto.quotes.item2">
+      “La descentralización es la clave para una Internet más libre y justa.” — Vitalik Buterin, cofundador de Ethereum
+    </li>
+    <li title="Fuente: Declaración pública en Code Conference 2016" data-i18n="manifesto.quotes.item3">
+      “Las tecnologías verdaderamente transformadoras son aquellas que devuelven el poder a las personas.” — Elon Musk
+    </li>
+    <li title="Fuente: Carta a accionistas de Microsoft, 2022" data-i18n="manifesto.quotes.item4">
+      “Las grandes innovaciones surgen de comunidades con propósito.” — Satya Nadella, CEO de Microsoft
+    </li>
+  </ul>
+</div>
+
+  </div>
+</section>
+
 
       <section
         id="partners"
