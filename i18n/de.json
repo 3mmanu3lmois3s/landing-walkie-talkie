@@ -354,7 +354,10 @@
   "instances.title": "🌐 Aktive Instanzen",
   "instances.description": "Teethlion wurde installiert auf:",
   "instances.extra_info": "verifizierte Knoten in 7 Ländern",
-
+  "downloads.android": "📱 Android",
+  "downloads.ios": "📱 iOS",
+  "downloads.embedded": "⚙️ Eingebettet",
+  "downloads.enterprise_question": "Benötigen Sie SaaS-Integration oder Unterstützung für Embedded-Geräte vor Q4 2025?",
   "downloads.note": "* Multiplattform-Version kommt bald. Einige Funktionen können je nach Betriebssystem variieren.",
   "downloads.help_link": "Weitere Details finden Sie in der Dokumentation.",
   "contact.name_label": "Name",
