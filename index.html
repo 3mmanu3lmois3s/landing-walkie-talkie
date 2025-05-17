@@ -244,10 +244,10 @@
 <!-- Sección de los tipos de nodos -->
 <section id="tipos-nodo" class="min-h-screen flex items-center justify-center px-4 py-12 bg-slate-900">
   <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-yellow-300 mb-8" data-i18n="nodes.title">🧬 Tipos de Nodos en Teethlion</h2>
-    <p class="text-slate-300 mb-12 max-w-3xl mx-auto" data-i18n="nodes.description">
-      Teethlion está compuesto por una red de nodos especializados que cooperan para garantizar comunicaciones descentralizadas, seguras y eficientes. Cada nodo cumple un rol único dentro del ecosistema.
-    </p>
+<h2 class="text-3xl font-bold text-yellow-300 mb-8" data-i18n="node_types.title">🧩 Tipos de Nodos en Teethlion</h2>
+<p class="text-slate-300 mb-12 max-w-3xl mx-auto" data-i18n="node_types.description">
+  Cada nodo en la red Teethlion cumple una función específica. La combinación de estos nodos crea una infraestructura robusta, descentralizada y evolutiva.
+</p>
     <div id="node-type-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 text-left"></div>
   </div>
 </section>
@@ -263,9 +263,10 @@
         class="relative min-h-screen flex flex-col items-center py-12"
       >
         <div class="max-w-4xl w-full">
-          <h2 class="text-2xl font-bold text-white text-center mb-6">
-            Demostración de Teethlion
-          </h2>
+<h2 class="text-2xl font-bold text-white text-center mb-6" data-i18n="simulator.title">
+  Demostración de Teethlion
+</h2>
+
 
           <!-- Aquí monta React -->
           <div
@@ -293,9 +294,9 @@
             <th class="p-4 border border-slate-600" data-i18n="comparison.col_feature"></th>
             <th class="p-4 border border-slate-600">Teethlion</th>
             <th class="p-4 border border-slate-600">
-     Servicios centralizados<br/>
-     (WhatsApp, Telegram, Zoom, Teams)
-   </th>
+              Servicios centralizados<br />
+              (WhatsApp, Telegram, Zoom, Teams)
+            </th>
             <th class="p-4 border border-slate-600" data-i18n="comparison.col_wifi_mesh"></th>
             <th class="p-4 border border-slate-600">Walkie-Talkies</th>
           </tr>
@@ -310,14 +311,14 @@
           </tr>
           <tr class="bg-slate-800 hover:bg-slate-700 transition">
             <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_encryption"></td>
-            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ AES-GCM + P2P</td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold" data-i18n="comparison.value.encryption"></td>
             <td class="p-4 border border-slate-600">✅</td>
             <td class="p-4 border border-slate-600">❌</td>
             <td class="p-4 border border-slate-600">❌</td>
           </tr>
           <tr class="bg-slate-800 hover:bg-slate-700 transition">
             <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_decentralized"></td>
-            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ 100%</td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold" data-i18n="comparison.value.100"></td>
             <td class="p-4 border border-slate-600">❌</td>
             <td class="p-4 border border-slate-600">⚠️</td>
             <td class="p-4 border border-slate-600">✅</td>
@@ -331,23 +332,23 @@
           </tr>
           <tr class="bg-slate-800 hover:bg-slate-700 transition">
             <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_content"></td>
-            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Soportado</td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold" data-i18n="comparison.value.supported"></td>
             <td class="p-4 border border-slate-600">✅</td>
             <td class="p-4 border border-slate-600">❌</td>
-            <td class="p-4 border border-slate-600">❌ Solo voz</td>
+            <td class="p-4 border border-slate-600" data-i18n="comparison.value.voice_only"></td>
           </tr>
           <tr class="bg-slate-800 hover:bg-slate-700 transition">
             <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_cost"></td>
-            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Gratis uso personal/educativo</td>
-            <td class="p-4 border border-slate-600">"Gratis" (pagas con tus datos)</td>
-            <td class="p-4 border border-slate-600">Alto</td>
-            <td class="p-4 border border-slate-600">Costo medio</td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold" data-i18n="comparison.value.free"></td>
+<td class="p-4 border border-slate-600" data-i18n="comparison.value.freemium_data"></td>
+            <td class="p-4 border border-slate-600" data-i18n="comparison.value.high"></td>
+            <td class="p-4 border border-slate-600" data-i18n="comparison.value.avg"></td>
           </tr>
           <tr class="bg-slate-800 hover:bg-slate-700 transition">
             <td class="p-4 border border-slate-600 text-slate-300" data-i18n="comparison.feature_evolution"></td>
-            <td class="p-4 border border-slate-600 text-green-400 font-semibold">✅ Red viva, actualizaciones anuales</td>
+            <td class="p-4 border border-slate-600 text-green-400 font-semibold" data-i18n="comparison.value.updates"></td>
             <td class="p-4 border border-slate-600">❌</td>
-            <td class="p-4 border border-slate-600">⚠️ Limitado</td>
+            <td class="p-4 border border-slate-600" data-i18n="comparison.value.limited"></td>
             <td class="p-4 border border-slate-600">❌</td>
           </tr>
         </tbody>
@@ -355,6 +356,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Quickstart para instalarlo-->
 
@@ -424,6 +426,7 @@
     >
       Ecosistema y Compatibilidad
     </h2>
+
     <!-- Descripción breve -->
     <p
       class="text-center text-slate-400 max-w-3xl mx-auto"
@@ -440,13 +443,13 @@
           📝 Lenguajes
         </h3>
         <ul class="list-disc list-inside space-y-1 text-sm">
-          <li>JavaScript / TypeScript</li>
-          <li>Go</li>
-          <li>Rust</li>
-          <li>C / C++</li>
-          <li>Python</li>
-          <li>Java</li>
-          <li>Hotline (CLI)</li>
+          <li data-i18n="ecosistema.langs.item1">JavaScript / TypeScript</li>
+          <li data-i18n="ecosistema.langs.item2">Go</li>
+          <li data-i18n="ecosistema.langs.item3">Rust</li>
+          <li data-i18n="ecosistema.langs.item4">C / C++</li>
+          <li data-i18n="ecosistema.langs.item5">Python</li>
+          <li data-i18n="ecosistema.langs.item6">Java</li>
+          <li data-i18n="ecosistema.langs.item7">Hotline (CLI)</li>
         </ul>
       </div>
 
@@ -456,10 +459,10 @@
           🔗 Protocolos
         </h3>
         <ul class="list-disc list-inside space-y-1 text-sm">
-          <li>IPv4 &amp; IPv6</li>
-          <li>libp2p</li>
-          <li>Multiprotocolo (OSI ≥ Capa 3)</li>
-          <li>Soporte a protocolos futuros</li>
+          <li data-i18n="ecosistema.protocols.item1">IPv4 & IPv6</li>
+          <li data-i18n="ecosistema.protocols.item2">libp2p</li>
+          <li data-i18n="ecosistema.protocols.item3">Multiprotocolo (OSI ≥ Capa 3)</li>
+          <li data-i18n="ecosistema.protocols.item4">Soporte a protocolos futuros</li>
         </ul>
       </div>
 
@@ -469,11 +472,11 @@
           🌐 Tecnologías
         </h3>
         <ul class="list-disc list-inside space-y-1 text-sm">
-          <li>Radio (HF/VHF/UHF)</li>
-          <li>Satélite</li>
-          <li>4G / 5G / 6G</li>
-          <li>10G Ethernet</li>
-          <li>Fibra óptica, inalámbricas y alámbricas</li>
+          <li data-i18n="ecosistema.tech.item1">Radio (HF/VHF/UHF)</li>
+          <li data-i18n="ecosistema.tech.item2">Satélite</li>
+          <li data-i18n="ecosistema.tech.item3">4G / 5G / 6G</li>
+          <li data-i18n="ecosistema.tech.item4">10G Ethernet</li>
+          <li data-i18n="ecosistema.tech.item5">Fibra óptica, inalámbricas y alámbricas</li>
         </ul>
       </div>
 
@@ -483,19 +486,19 @@
           ⚙️ Aplicaciones
         </h3>
         <ul class="list-disc list-inside space-y-1 text-sm">
-          <li>Sistemas de pago</li>
-          <li>IoT y SCADA</li>
-          <li>Circuito cerrado enriquecido</li>
-          <li>Chat, voz y vídeo descentralizados</li>
-          <li>Comunicaciones de nivel militar</li>
-          <li>Integración con plataformas propietarias</li>
+          <li data-i18n="ecosistema.apps.item1">Sistemas de pago</li>
+          <li data-i18n="ecosistema.apps.item2">IoT y SCADA</li>
+          <li data-i18n="ecosistema.apps.item3">Circuito cerrado enriquecido</li>
+          <li data-i18n="ecosistema.apps.item4">Chat, voz y vídeo descentralizados</li>
+          <li data-i18n="ecosistema.apps.item5">Comunicaciones de nivel militar</li>
+          <li data-i18n="ecosistema.apps.item6">Integración con plataformas propietarias</li>
         </ul>
       </div>
 
-      <!-- SDK & Store (ocupa dos columnas en pantallas grandes) -->
+      <!-- SDK & Store -->
       <div class="bg-slate-800 p-6 rounded-lg shadow-md sm:col-span-2 lg:col-span-3">
         <h3 class="flex items-center text-xl font-semibold mb-4 text-yellow-300" data-i18n="ecosistema.sdk.title">
-          🧩 SDK &amp; Store
+          🧩 SDK & Store
         </h3>
         <p class="text-sm mb-4" data-i18n="ecosistema.sdk.desc">
           Potencia tu desarrollo con nuestras librerías nativas y explora extensiones en nuestro repositorio descentralizado.
@@ -511,6 +514,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- SECCIÓN DE IMPACTO ACTUALIZADA TEETHLION -->
 <!-- SECCIÓN DE IMPACTO ACTUALIZADA TEETHLION -->
@@ -574,31 +578,39 @@
 </div>
 
 <script>
-  const impactLogic = {
-    jobs_direct: {
-      title: "¿Cómo se estiman los empleos directos?",
-      content: "Basado en la proyección de 12.8 millones de nodos en 10 años.\nCada nodo genera empleo técnico directo para instalación, mantenimiento y soporte.\n\nCálculo: 12.8M nodos × 0.055 personas ≈ 700.000 empleos directos."
-    },
-    jobs_indirect: {
-      title: "¿Cómo se estiman los empleos indirectos?",
-      content: "Por cada empleo directo, se generan ~5 empleos indirectos en sectores como transporte, logística, educación, legal, energía y soporte.\n\nFórmula: 700.000 empleos directos × 5 = 3.5M indirectos."
-    },
-    sectors: {
-      title: "¿Qué sectores se consideran estratégicos?",
-      content: "Educación, agricultura, salud, defensa civil, ciberseguridad, transporte, logística, software, IA, energía, telecomunicaciones, investigación, industria ligera, emergencias, administración pública, gobiernos locales, ONGs, minería, construcción, servicios urbanos, ciudades inteligentes."
-    },
-    economic: {
-      title: "¿Cómo se calcula el impacto económico?",
-      content: "Se estima un retorno medio de 250 € anuales por nodo entre hardware, servicios y licencias.\n\nComponentes por nodo/año:\n🔧 Hardware: 60 €\n👨‍🔧 Servicios: 80 €\n💻 Software/licencias: 30 €\n🔄 Evolución (IA, infraestructura, satélites...): 40 €\n📡 Energía y logística: 40 €\n\nFórmula: 12.8M nodos × 250 €/año = +3.2B €/año.\n\n📘 Nota: Este cálculo se inspira en modelos de retorno económico total (RET) utilizados por la OCDE, el Banco Mundial y estudios de impacto en redes de telecomunicaciones distribuidas."
-    },
-    nodes_installed: {
-      title: "¿Por qué 12.8 millones de nodos en 10 años?",
-      content: "Proyección escalonada con adopción global: LAN familiares, colegios, gobiernos, ONGs, empresas, regiones rurales.\n\nMeta conservadora: 1 nodo por cada 600 personas en entornos críticos o institucionales.\nEuropa aportaría ~15% del total: +1.9M de nodos."
-    }
-  };
-
   function openImpactModal(key) {
     const modal = document.getElementById('impact-modal');
+
+    // Evita errores si no está cargado aún
+    if (typeof translations === 'undefined' || typeof currentLang === 'undefined') {
+      console.warn("Traducciones no cargadas o idioma no definido.");
+      return;
+    }
+
+    // Objeto dinámico
+    const impactLogic = {
+      jobs_direct: {
+        title: translations[currentLang]["impact.modal.jobs_direct.title"],
+        content: translations[currentLang]["impact.modal.jobs_direct.content"]
+      },
+      jobs_indirect: {
+        title: translations[currentLang]["impact.modal.jobs_indirect.title"],
+        content: translations[currentLang]["impact.modal.jobs_indirect.content"]
+      },
+      sectors: {
+        title: translations[currentLang]["impact.modal.sectors.title"],
+        content: translations[currentLang]["impact.modal.sectors.content"]
+      },
+      economic: {
+        title: translations[currentLang]["impact.modal.economic.title"],
+        content: translations[currentLang]["impact.modal.economic.content"]
+      },
+      nodes_installed: {
+        title: translations[currentLang]["impact.modal.nodes_installed.title"],
+        content: translations[currentLang]["impact.modal.nodes_installed.content"]
+      }
+    };
+
     const data = impactLogic[key];
     document.getElementById('impact-modal-title').textContent = data.title;
     document.getElementById('impact-modal-content').textContent = data.content;
@@ -626,46 +638,46 @@
         Una empresa con 300 empleados decide usar Teethlion para sus comunicaciones internas en lugar de MS Teams, Zoom o Slack. Ya cuenta con red LAN interna.
       </p>
       <ul class="text-slate-300 text-sm space-y-2">
-        <li>✅ 300 licencias perpetuas → 300 € únicos</li>
-        <li>🔁 Cuota anual por nodo: 60 € (actualizaciones, soporte, evolución)</li>
-        <li>📦 Total anual: <span class="font-semibold text-yellow-300">18.000 €/año</span></li>
+        <li data-i18n="enterprise.scenario.item1">✅ 300 licencias perpetuas → 300 € únicos</li>
+        <li data-i18n="enterprise.scenario.item2">🔁 Cuota anual por nodo: 60 € (actualizaciones, soporte, evolución)</li>
+        <li data-i18n="enterprise.scenario.item3">📦 Total anual: <span class="font-semibold text-yellow-300">18.000 €/año</span></li>
       </ul>
     </div>
 
     <!-- Comparativa visual -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
       <div class="bg-slate-800 p-4 rounded-xl shadow">
-        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2">🟨 Teethlion</h4>
+        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2" data-i18n="enterprise.teethlion.label">🟨 Teethlion</h4>
         <ul class="text-sm text-slate-300 space-y-1">
-          <li>✅ 1 €/nodo (único)</li>
-          <li>🔁 60 €/nodo/año</li>
-          <li>🔐 Control total de datos</li>
-          <li>🌍 Funciona sin internet</li>
-          <li>🔄 Integración local y APIs</li>
+          <li data-i18n="enterprise.teethlion.advantage1"></li>
+          <li data-i18n="enterprise.teethlion.advantage2"></li>
+          <li data-i18n="enterprise.teethlion.advantage3"></li>
+          <li data-i18n="enterprise.teethlion.advantage4"></li>
+          <li data-i18n="enterprise.teethlion.advantage5"></li>
         </ul>
-        <p class="text-center mt-4 font-bold text-green-400">Total: 18.000 €/año</p>
+        <p class="text-center mt-4 font-bold text-green-400" data-i18n="enterprise.teethlion.total">Total: 18.000 €/año</p>
       </div>
       <div class="bg-slate-800 p-4 rounded-xl shadow">
-        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2">🛀 MS Teams</h4>
+        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2" data-i18n="enterprise.teams.label">🛀 MS Teams</h4>
         <ul class="text-sm text-slate-300 space-y-1">
-          <li>🔒 Desde 10 €/mes/usuario</li>
-          <li>❌ Pago mensual obligatorio</li>
-          <li>⚠️ Dependencia de Microsoft</li>
-          <li>🚫 Requiere internet</li>
-          <li>📦 Limitaciones técnicas</li>
+          <li data-i18n="enterprise.teams.advantage1"></li>
+          <li data-i18n="enterprise.teams.advantage2"></li>
+          <li data-i18n="enterprise.teams.advantage3"></li>
+          <li data-i18n="enterprise.teams.advantage4"></li>
+          <li data-i18n="enterprise.teams.advantage5"></li>
         </ul>
-        <p class="text-center mt-4 font-bold text-red-400">Total: 36.000 €/año</p>
+        <p class="text-center mt-4 font-bold text-red-400" data-i18n="enterprise.teams.total">Total: 36.000 €/año</p>
       </div>
       <div class="bg-slate-800 p-4 rounded-xl shadow">
-        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2">💬 Slack / Zoom</h4>
+        <h4 class="text-yellow-300 text-lg font-bold text-center mb-2" data-i18n="enterprise.slack.label">💬 Slack / Zoom</h4>
         <ul class="text-sm text-slate-300 space-y-1">
-          <li>💵 8–15 €/mes/usuario</li>
-          <li>⚠️ Suscripción por empleado</li>
-          <li>🔒 Datos en servidores externos</li>
-          <li>🚫 No funciona offline</li>
-          <li>📊 Aumento de coste por plugins</li>
+          <li data-i18n="enterprise.slack.advantage1"></li>
+          <li data-i18n="enterprise.slack.advantage2"></li>
+          <li data-i18n="enterprise.slack.advantage3"></li>
+          <li data-i18n="enterprise.slack.advantage4"></li>
+          <li data-i18n="enterprise.slack.advantage5"></li>
         </ul>
-        <p class="text-center mt-4 font-bold text-red-400">Total: ~40.000 €/año</p>
+        <p class="text-center mt-4 font-bold text-red-400" data-i18n="enterprise.slack.total">Total: ~40.000 €/año</p>
       </div>
     </div>
 
@@ -675,13 +687,15 @@
         <h3 class="text-xl text-yellow-300 font-semibold" data-i18n="enterprise.calc.title">
           🧰 Fórmula general para empresas
         </h3>
-        <button onclick="openEnterpriseModal()" class="text-sm text-yellow-300 hover:underline">ℹ️ Más info</button>
+        <button onclick="openEnterpriseModal()" class="text-sm text-yellow-300 hover:underline" data-i18n="enterprise.calc.button">
+          ℹ️ Más info
+        </button>
       </div>
       <p class="text-sm text-slate-300 mb-4" data-i18n="enterprise.calc.desc">
         Cálculo recomendado de inversión:
       </p>
       <div class="text-sm bg-black/20 p-4 rounded-xl">
-        <pre class="text-green-300 whitespace-pre-wrap">
+        <pre class="text-green-300 whitespace-pre-wrap" data-i18n="enterprise.calc.formula">
 Costo Inicial Único = Nodos × 1 €
 Costo Anual = Nodos × (Soporte + Evolución + Licencias)
 Ejemplo: 300 × (30 + 20 + 10) = 18.000 €/año
@@ -695,17 +709,9 @@ Ejemplo: 300 × (30 + 20 + 10) = 18.000 €/año
 <div id="enterprise-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
   <div class="bg-slate-800 max-w-lg w-full p-6 rounded-xl relative shadow-xl border border-yellow-400">
     <button onclick="closeEnterpriseModal()" class="absolute top-3 right-4 text-yellow-300 text-xl">✖</button>
-    <h3 class="text-2xl font-bold text-yellow-300 mb-4">¿Cómo se justifica el coste anual?</h3>
-    <p class="text-slate-200 text-sm whitespace-pre-wrap">
-El coste anual de 60 €/nodo incluye:
-
-🔁 Soporte técnico especializado (30 €/año)  
-🔄 Evolución y mejoras continuas del sistema (20 €/año)  
-💻 Licencias, actualizaciones y auditorías (10 €/año)
-
-👉 Este modelo sigue el enfoque TCO (Total Cost of Ownership) distribuido:  
-Se estima el coste global para mantener, evolucionar y auditar la red por nodo, distribuyendo equitativamente el valor entre nodos activos.  
-Es una práctica común y aceptada en proyecciones financieras empresariales.
+    <h3 class="text-2xl font-bold text-yellow-300 mb-4" data-i18n="enterprise.modal.title">¿Cómo se justifica el coste anual?</h3>
+    <p class="text-slate-200 text-sm whitespace-pre-wrap" data-i18n="enterprise.modal.content">
+      El coste anual de 60 €/nodo incluye...
     </p>
   </div>
 </div>
