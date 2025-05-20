@@ -518,6 +518,7 @@
 
 <!--Donde Brilla Teethlion?-->
 <!--Donde Brilla Teethlion?-->
+<!-- ¿Dónde brilla Teethlion? -->
 <section id="sectores-brillantes" class="min-h-screen bg-slate-900 px-4 py-12 text-center">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold text-yellow-300 mb-8" data-i18n="shine.title">🧩 ¿Dónde brilla Teethlion?</h2>
@@ -526,10 +527,10 @@
     </p>
 
     <div id="shine-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <!-- Las tarjetas se inyectan dinámicamente con JS usando un array "sectors" -->
+      <!-- Tarjetas generadas dinámicamente -->
     </div>
 
-    <!-- Modal reutilizable con estilo actualizado -->
+    <!-- Modal con mismo estilo que nodos -->
     <div id="shine-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
       <div class="bg-slate-900 text-white max-w-lg w-full p-6 rounded-lg relative shadow-lg border border-yellow-400">
         <button onclick="closeShineModal()" class="absolute top-2 right-3 text-xl text-yellow-400 hover:text-yellow-300">✖</button>
@@ -541,63 +542,46 @@
 </section>
 
 <script>
-  const sectors = [
-    {
-      icon: "🌐",
-      title: "Zonas sin internet",
-      short: "Comunicación sin necesidad de conexión a internet.",
-      long: "Ideal para comunidades rurales, refugios y embarcaciones sin cobertura. Teethlion permite mantener la comunicación sin depender de ningún proveedor."
-    },
-    {
-      icon: "🛡️",
-      title: "Fuerzas de seguridad y defensa",
-      short: "Comunicaciones seguras y descentralizadas.",
-      long: "Perfecto para operaciones especiales, brigadas en zonas de conflicto o vigilancia en regiones remotas."
-    },
-    {
-      icon: "✊",
-      title: "Protestas y libertad de expresión",
-      short: "Comunicación resistente a la censura.",
-      long: "Funciona sin servidores centrales, ideal para contextos de represión digital donde la privacidad y soberanía son esenciales."
-    },
-    {
-      icon: "🛰️",
-      title: "Entornos espaciales o satelitales",
-      short: "Comunicación en entornos aislados.",
-      long: "Útil en estaciones espaciales, submarinos, drones o zonas de difícil acceso donde las redes tradicionales fallan."
-    },
-    {
-      icon: "🚑",
-      title: "Salud y emergencias desconectadas",
-      short: "Comunicación en situaciones de desastre.",
-      long: "Permite a equipos médicos y de rescate mantener contacto en zonas sin infraestructura operativa."
-    },
-    {
-      icon: "🎓",
-      title: "Educación alternativa y redes privadas",
-      short: "Redes educativas sin necesidad de internet.",
-      long: "Ideal para escuelas rurales, campamentos científicos o eventos formativos donde se requiere conexión local segura."
-    }
+  const sectorKeys = [
+    "zone",
+    "defense",
+    "protest",
+    "space",
+    "emergency",
+    "education"
   ];
 
+  const icons = {
+    zone: "🌐",
+    defense: "🛡️",
+    protest: "✊",
+    space: "🛰️",
+    emergency: "🚑",
+    education: "🎓"
+  };
+
   function renderShineCards() {
+    const t = getT();
     const grid = document.getElementById("shine-grid");
-    sectors.forEach((sector) => {
+    grid.innerHTML = "";
+
+    sectorKeys.forEach((key) => {
       const card = document.createElement("div");
       card.className = "bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg cursor-pointer transition";
-      card.onclick = () => openShineModal(sector);
+      card.onclick = () => openShineModal(key);
       card.innerHTML = `
-        <div class="text-4xl mb-2">${sector.icon}</div>
-        <h3 class="text-lg font-bold text-yellow-300">${sector.title}</h3>
-        <p class="text-slate-200 mt-1 text-sm">${sector.short}</p>
+        <div class="text-4xl mb-2">${icons[key]}</div>
+        <h3 class="text-lg font-bold text-yellow-300">${t[`shine.${key}.title`] || key}</h3>
+        <p class="text-slate-200 mt-1 text-sm">${t[`shine.${key}.desc`] || ""}</p>
       `;
       grid.appendChild(card);
     });
   }
 
-  function openShineModal(sector) {
-    document.getElementById("shine-modal-title").textContent = sector.title;
-    document.getElementById("shine-modal-desc").textContent = sector.long;
+  function openShineModal(key) {
+    const t = getT();
+    document.getElementById("shine-modal-title").textContent = t[`shine.${key}.modal_title`] || "";
+    document.getElementById("shine-modal-desc").textContent = t[`shine.${key}.modal_desc`] || "";
     document.getElementById("shine-modal").classList.remove("hidden");
   }
 
@@ -605,8 +589,9 @@
     document.getElementById("shine-modal").classList.add("hidden");
   }
 
-  document.addEventListener("DOMContentLoaded", renderShineCards);
+  //document.addEventListener("DOMContentLoaded", renderShineCards);
 </script>
+
 
 
 
@@ -2193,6 +2178,7 @@ async function setLang(lang) {
   // 6) Footer y grid de nodos
   updateFooterPhrase();
   renderNodeGrid();
+  renderShineCards();
 }
 
 // -----------------------------
