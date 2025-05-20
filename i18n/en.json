@@ -379,8 +379,6 @@
   "partners.title": "🤝 Partners and Institutional Support",
   "partners.description": "Teethlion has the interest of communities, NGOs and educational entities that promote technological sovereignty. If you represent an institution interested in supporting the project, please contact us.",
   "partners.cta": "📩 I want to become a Partner.",
-  "instances.title": "🌐 Active instances",
-  "instances.description": "Teethlion was installed on::",
   "instances.extra_info": "verified nodes in 7 countries",
   "contact.name_label": "Name",
   "contact.email_label": "Email",
@@ -514,5 +512,8 @@
   "ecosistema.apps.item3": "Enriched closed-circuit systems",
   "ecosistema.apps.item4": "Decentralized chat, voice, and video",
   "ecosistema.apps.item5": "Military-grade communications",
-  "ecosistema.apps.item6": "Integration with proprietary platforms"
+  "ecosistema.apps.item6": "Integration with proprietary platforms",
+  "instances.title": "🌐 First Real-World Tests",
+  "instances.description": "Teethlion has already undergone initial transcontinental testing, including a Venezuela ↔ Spain connection with promising voice transmission results.",
+  "instances.status": "We are currently in an experimental deployment phase, validating certified relay nodes."
 }

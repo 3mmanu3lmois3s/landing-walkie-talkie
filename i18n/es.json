@@ -425,8 +425,6 @@
   "partners.title": "🤝 Partners y Apoyo Institucional",
   "partners.description": "Teethlion cuenta con el interés de comunidades, ONGs y entidades educativas que promueven la soberanía tecnológica. Si representas a una institución interesada en apoyar el proyecto, contáctanos.",
   "partners.cta": "📩 Quiero ser Partner",
-  "instances.title": "🌐 Instancias activas",
-  "instances.description": "Teethlion ha sido instalado en:",
   "instances.extra_info": "nodos verificados en 7 países",
   "contact.satellite_message": "Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion. Mi número de contacto es: __________",
   "contact.satellite_phone_prompt": "Mi número de contacto es:",
@@ -513,5 +511,8 @@
   "ecosistema.apps.item3": "Circuito cerrado enriquecido",
   "ecosistema.apps.item4": "Chat, voz y vídeo descentralizados",
   "ecosistema.apps.item5": "Comunicaciones de nivel militar",
-  "ecosistema.apps.item6": "Integración con plataformas propietarias"
+  "ecosistema.apps.item6": "Integración con plataformas propietarias",
+  "instances.title": "🌐 Primeras pruebas reales",
+  "instances.description": "Ya se han realizado las primeras pruebas de Teethlion entre continentes, incluyendo una conexión Venezuela ↔ España con resultados prometedores en transmisión de voz.",
+  "instances.status": "Actualmente estamos en fase de despliegue experimental, validando nodos relay certificados."
 }

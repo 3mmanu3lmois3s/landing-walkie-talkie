@@ -368,8 +368,6 @@
   "partners.title": "🤝 Partner und institutionelle Unterstützung",
   "partners.description": "Teethlion hat das Interesse von Gemeinden, Nichtregierungsorganisationen und Bildungseinrichtungen, die technologische Souveränität fördern. Wenn Sie eine Institution vertreten, die an einer Unterstützung des Projekts interessiert ist, kontaktieren Sie uns bitte.",
   "partners.cta": "📩 Ich möchte ein Partner werden.",
-  "instances.title": "🌐 Aktive Instanzen",
-  "instances.description": "Teethlion wurde installiert auf:",
   "instances.extra_info": "verifizierte Knoten in 7 Ländern",
   "downloads.android": "📱 Android",
   "downloads.ios": "📱 iOS",
@@ -504,5 +502,8 @@
   "ecosistema.apps.item3": "Erweitertes geschlossenes Kreislaufsystem",
   "ecosistema.apps.item4": "Dezentrale Chat-, Sprach- und Videokommunikation",
   "ecosistema.apps.item5": "Kommunikation auf Militärniveau",
-  "ecosistema.apps.item6": "Integration mit proprietären Plattformen"
+  "ecosistema.apps.item6": "Integration mit proprietären Plattformen",
+  "instances.title": "🌐 Erste reale Tests",
+  "instances.description": "Teethlion wurde bereits in ersten transkontinentalen Tests erprobt, darunter eine Verbindung Venezuela ↔ Spanien mit vielversprechender Sprachübertragung.",
+  "instances.status": "Derzeit befinden wir uns in einer experimentellen Implementierungsphase und validieren zertifizierte Relaisknoten."
 }

@@ -516,6 +516,100 @@
 </section>
 
 
+<!--Donde Brilla Teethlion?-->
+<!--Donde Brilla Teethlion?-->
+<section id="sectores-brillantes" class="min-h-screen bg-slate-900 px-4 py-12 text-center">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-yellow-300 mb-8" data-i18n="shine.title">🧩 ¿Dónde brilla Teethlion?</h2>
+    <p class="text-slate-300 mb-12 max-w-3xl mx-auto" data-i18n="shine.description">
+      Explora los sectores donde Teethlion ofrece ventajas únicas gracias a su arquitectura descentralizada, segura y sin necesidad de internet.
+    </p>
+
+    <div id="shine-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Las tarjetas se inyectan dinámicamente con JS usando un array "sectors" -->
+    </div>
+
+    <!-- Modal reutilizable con estilo actualizado -->
+    <div id="shine-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+      <div class="bg-slate-900 text-white max-w-lg w-full p-6 rounded-lg relative shadow-lg border border-yellow-400">
+        <button onclick="closeShineModal()" class="absolute top-2 right-3 text-xl text-yellow-400 hover:text-yellow-300">✖</button>
+        <h3 id="shine-modal-title" class="text-2xl font-bold text-yellow-300 mb-4"></h3>
+        <p id="shine-modal-desc" class="text-slate-300"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const sectors = [
+    {
+      icon: "🌐",
+      title: "Zonas sin internet",
+      short: "Comunicación sin necesidad de conexión a internet.",
+      long: "Ideal para comunidades rurales, refugios y embarcaciones sin cobertura. Teethlion permite mantener la comunicación sin depender de ningún proveedor."
+    },
+    {
+      icon: "🛡️",
+      title: "Fuerzas de seguridad y defensa",
+      short: "Comunicaciones seguras y descentralizadas.",
+      long: "Perfecto para operaciones especiales, brigadas en zonas de conflicto o vigilancia en regiones remotas."
+    },
+    {
+      icon: "✊",
+      title: "Protestas y libertad de expresión",
+      short: "Comunicación resistente a la censura.",
+      long: "Funciona sin servidores centrales, ideal para contextos de represión digital donde la privacidad y soberanía son esenciales."
+    },
+    {
+      icon: "🛰️",
+      title: "Entornos espaciales o satelitales",
+      short: "Comunicación en entornos aislados.",
+      long: "Útil en estaciones espaciales, submarinos, drones o zonas de difícil acceso donde las redes tradicionales fallan."
+    },
+    {
+      icon: "🚑",
+      title: "Salud y emergencias desconectadas",
+      short: "Comunicación en situaciones de desastre.",
+      long: "Permite a equipos médicos y de rescate mantener contacto en zonas sin infraestructura operativa."
+    },
+    {
+      icon: "🎓",
+      title: "Educación alternativa y redes privadas",
+      short: "Redes educativas sin necesidad de internet.",
+      long: "Ideal para escuelas rurales, campamentos científicos o eventos formativos donde se requiere conexión local segura."
+    }
+  ];
+
+  function renderShineCards() {
+    const grid = document.getElementById("shine-grid");
+    sectors.forEach((sector) => {
+      const card = document.createElement("div");
+      card.className = "bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg cursor-pointer transition";
+      card.onclick = () => openShineModal(sector);
+      card.innerHTML = `
+        <div class="text-4xl mb-2">${sector.icon}</div>
+        <h3 class="text-lg font-bold text-yellow-300">${sector.title}</h3>
+        <p class="text-slate-200 mt-1 text-sm">${sector.short}</p>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function openShineModal(sector) {
+    document.getElementById("shine-modal-title").textContent = sector.title;
+    document.getElementById("shine-modal-desc").textContent = sector.long;
+    document.getElementById("shine-modal").classList.remove("hidden");
+  }
+
+  function closeShineModal() {
+    document.getElementById("shine-modal").classList.add("hidden");
+  }
+
+  document.addEventListener("DOMContentLoaded", renderShineCards);
+</script>
+
+
+
 <!-- SECCIÓN DE IMPACTO ACTUALIZADA TEETHLION -->
 <!-- SECCIÓN DE IMPACTO ACTUALIZADA TEETHLION -->
 <section id="impact" class="min-h-screen bg-gray-900 text-white px-6 py-16 mb-20">
@@ -1445,31 +1539,26 @@ Cargando licencia TOL...</pre
         </a>
       </section>
 
-      <section
-        id="instancias"
-        class="flex items-center justify-center text-center min-h-screen px-4 py-12 bg-opacity-20"
-      >
-        <div>
-          <h2
-            class="text-2xl font-bold text-yellow-300 mb-4"
-            data-i18n="instances.title"
-          >
-            🌐 Instancias activas
-          </h2>
-          <p class="text-slate-100 mb-2" data-i18n="instances.description">
-            Teethlion ha sido instalado en:
-          </p>
-          <div
-            class="text-6xl font-extrabold text-yellow-400 mb-2"
-            id="instance-count"
-          >
-            8
-          </div>
-          <p class="text-slate-300" data-i18n="instances.extra_info">
-            nodos verificados en 5 países
-          </p>
-        </div>
-      </section>
+<section
+  id="instancias"
+  class="flex items-center justify-center text-center min-h-screen px-4 py-12 bg-opacity-20"
+>
+  <div class="max-w-3xl">
+    <h2
+      class="text-2xl font-bold text-yellow-300 mb-4"
+      data-i18n="instances.title"
+    >
+      🌐 Primeras pruebas reales
+    </h2>
+    <p class="text-slate-100 mb-4" data-i18n="instances.description">
+      Ya se han realizado las primeras pruebas de Teethlion entre continentes, incluyendo una conexión Venezuela ↔ España con resultados prometedores en transmisión de voz.
+    </p>
+    <p class="text-slate-300" data-i18n="instances.status">
+      Actualmente estamos en fase de despliegue experimental, validando nodos relay certificados.
+    </p>
+  </div>
+</section>
+
 
 <section
   id="contribuye"
