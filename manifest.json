@@ -1,0 +1,15 @@
+{
+  "name": "Teethlion – Comunicaciones descentralizadas",
+  "short_name": "Teethlion",
+  "description": "Red de comunicación libre, cifrada y sin necesidad de Internet.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#facc15",
+  "categories": ["communications", "privacy", "p2p", "decentralized"],
+  "related_applications": [],
+  "note": "Esta PWA incluye un Service Worker adicional (tracker-sw.js) para análisis anónimo de comportamiento según RGPD. No recolecta IP ni identifica al usuario."
+}
