@@ -35,8 +35,12 @@ navigator.geolocation?.getCurrentPosition(
       );
       const data = await res.json();
       geoLocation = {
-        city: data.city || "unknown",
-        country: data.country || "unknown",
+        city:
+          data.city && !data.city.includes("Throttled") ? data.city : "unknown",
+        country:
+          data.country && !data.country.includes("Throttled")
+            ? data.country
+            : "unknown",
       };
     } catch (err) {
       console.warn("🌍 Fallo al obtener ubicación:", err);
@@ -82,24 +86,16 @@ function sendTrackingData(section, duration) {
     country: geoLocation.country,
   };
 
-  if (navigator.serviceWorker.controller) {
-    console.log("📨 Enviando tracking via SW:", payload);
-    navigator.serviceWorker.controller.postMessage({
-      action: "track",
-      ...payload,
-    });
-  } else {
-    console.warn("⚠️ SW no disponible aún, enviando directo...");
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyonJ_L8EMs2Vpt10RAAscqqcikuYISZj0D5x8bdrvgVF2vzQm8-LZyG04Oz3U7Y0Nq/exec",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }
-    )
-      .then((res) => res.text())
-      .then((txt) => console.log("📊 Tracking directo enviado a GAS:", txt))
-      .catch((err) => console.error("🚨 Error al enviar directo a GAS:", err));
-  }
+  // Enviar directamente a Google Apps Script
+  fetch(
+    "https://script.google.com/macros/s/AKfycbyonJ_L8EMs2Vpt10RAAscqqcikuYISZj0D5x8bdrvgVF2vzQm8-LZyG04Oz3U7Y0Nq/exec",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }
+  )
+    .then((res) => res.text())
+    .then((txt) => console.log("📊 Tracking enviado a GAS:", txt))
+    .catch((err) => console.error("🚨 Error al enviar a GAS:", err));
 }
