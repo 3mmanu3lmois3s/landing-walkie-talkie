@@ -87,4 +87,4 @@ function sendTrackingData(section, duration) {
       ...payload,
     });
   }
-
+}
