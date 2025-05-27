@@ -1,42 +1,48 @@
+// === Registro del Service Worker ===
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/tracker-sw.js").then(() => {
     console.log("📡 Tracker Service Worker registrado");
   });
 }
 
+// === Variables de tiempo por sección ===
 let sectionEntryTime = {};
 let sectionExitTime = {};
 let geoLocation = { city: "unknown", country: "unknown" };
 
-// Aviso de privacidad (RGPD)
+// === Aviso RGPD ===
 window.addEventListener("load", () => {
   const banner = document.createElement("div");
   banner.innerHTML = `
     <div style="position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:10px;text-align:center;z-index:9999">
-      Este sitio utiliza un sistema de análisis anónimo de secciones visitadas para mejorar la experiencia.
+      Este sitio utiliza recolección anónima de la ubicación geografica desde donde nos visita, ejemplo : Madrid, España y de las secciones visitadas para mejorar la experiencia.
       <button style="margin-left:20px;background:#ff0;color:#000;padding:5px 10px;border:none;cursor:pointer" onclick="this.parentElement.remove()">Aceptar</button>
     </div>`;
   document.body.appendChild(banner);
 });
 
-// Intenta obtener ubicación aproximada (si el usuario da permiso)
+// === Geolocalización (opcional) ===
 navigator.geolocation?.getCurrentPosition(
   async (pos) => {
     const { latitude, longitude } = pos.coords;
-    const res = await fetch(
-      `https://geocode.xyz/${latitude},${longitude}?json=1`
-    );
-    const data = await res.json();
-    geoLocation = {
-      city: data.city || "unknown",
-      country: data.country || "unknown",
-    };
+    try {
+      const res = await fetch(
+        `https://geocode.xyz/${latitude},${longitude}?json=1`
+      );
+      const data = await res.json();
+      geoLocation = {
+        city: data.city || "unknown",
+        country: data.country || "unknown",
+      };
+    } catch (err) {
+      console.warn("🌍 Fallo al obtener ubicación:", err);
+    }
   },
-  () => {}, // fallo => no hacer nada
+  () => {}, // falló => no hacer nada
   { timeout: 5000 }
 );
 
-// Detectar secciones visibles
+// === Observer para detectar sección visible ===
 const observer = new IntersectionObserver(
   (entries) => {
     const now = Date.now();
@@ -58,12 +64,12 @@ const observer = new IntersectionObserver(
   { threshold: 0.5 }
 );
 
-// Inicia observador en todas las secciones
+// === Observa todas las secciones visibles ===
 document.querySelectorAll("main > section, section[id]").forEach((section) => {
   observer.observe(section);
 });
 
-// Enviar datos al SW
+// === Envío de datos ===
 function sendTrackingData(section, duration) {
   const payload = {
     timestamp: new Date().toISOString(),
@@ -74,6 +80,7 @@ function sendTrackingData(section, duration) {
     country: geoLocation.country,
   };
 
+  // Intenta con el Service Worker
   if (navigator.serviceWorker.controller) {
     navigator.serviceWorker.controller.postMessage({
       action: "track",
