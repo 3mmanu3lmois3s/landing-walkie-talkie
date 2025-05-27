@@ -1,0 +1,24 @@
+console.log("🛰️ Tracker SW activo");
+
+self.addEventListener("message", async (event) => {
+  console.log("📨 Mensaje recibido en SW:", event.data);
+  if (event.data?.action !== "track") return;
+
+  try {
+    const data = event.data;
+
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbyonJ_L8EMs2Vpt10RAAscqqcikuYISZj0D5x8bdrvgVF2vzQm8-LZyG04Oz3U7Y0Nq/exec",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const text = await response.text();
+    console.log("📊 Tracking enviado a GAS:", text);
+  } catch (err) {
+    console.error("🚨 Error al enviar a GAS:", err);
+  }
+});
