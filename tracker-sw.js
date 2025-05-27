@@ -5,10 +5,9 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       (async () => {
         try {
-          const cloned = event.request.clone();
-          const data = await cloned.json();
+          const data = await event.request.clone().json();
 
-          const res = await fetch(
+          const response = await fetch(
             "https://script.google.com/macros/s/AKfycbyonJ_L8EMs2Vpt10RAAscqqcikuYISZj0D5x8bdrvgVF2vzQm8-LZyG04Oz3U7Y0Nq/exec",
             {
               method: "POST",
@@ -17,15 +16,19 @@ self.addEventListener("fetch", (event) => {
             }
           );
 
-          const txt = await res.text();
-          return new Response(JSON.stringify({ status: "ok", msg: txt }), {
-            status: 200,
-            headers: { "Content-Type": "application/json" },
-          });
+          const text = await response.text();
+
+          return new Response(
+            JSON.stringify({ status: "ok", response: text }),
+            {
+              status: 200,
+              headers: { "Content-Type": "application/json" },
+            }
+          );
         } catch (err) {
           console.error("🚨 Error al reenviar a GAS:", err);
           return new Response(
-            JSON.stringify({ status: "error", err: err.message }),
+            JSON.stringify({ status: "error", message: err.message }),
             {
               status: 500,
               headers: { "Content-Type": "application/json" },
