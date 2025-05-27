@@ -536,5 +536,6 @@
   "epilogue.p1": "Der Name <strong>Teethlion</strong> entstand aus einer Konvergenz bedeutungsvoller Elemente. Inspiriert von der Pusteblume – deren Samen sich wie drahtlose Signale über vernetzte Systeme verbreiten – und vom Brüllen eines Löwen, das sich wie Sprachwellen über ein globales Mesh ausbreitet.",
   "epilogue.p2": "Teethlion symbolisiert auch eine Fusion: <strong>tech</strong> + <strong>ETH</strong> + <strong>lion</strong>. Dezentrale Technologie mit eingeschaltetem Licht.",
   "epilogue.p3": "Und vor allem: eine Hommage an meinen Sohn Leo, die Inspiration hinter diesem lebendigen Netzwerk.",
-  "epilogue.signature": "— Emmanuel Mellado, Gründer und CTO von Teethlion"
+  "epilogue.signature": "— Emmanuel Mellado, Gründer und CTO von Teethlion",
+  "footer.analytics_notice": "🛡️ Diese Website verwendet <strong class='text-yellow-300'>Cloudflare Web Analytics</strong> ohne Cookies oder personalisiertes Tracking. Nur anonyme Statistiken zur Verbesserung der Nutzererfahrung."
 }
