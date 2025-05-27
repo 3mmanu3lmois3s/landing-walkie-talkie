@@ -87,4 +87,18 @@ function sendTrackingData(section, duration) {
       ...payload,
     });
   }
+  // Fallback si el Service Worker no responde
+  else {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyonJ_L8EMs2Vpt10RAAscqqcikuYISZj0D5x8bdrvgVF2vzQm8-LZyG04Oz3U7Y0Nq/exec",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    )
+      .then((res) => res.text())
+      .then((txt) => console.log("📊 Tracking directo enviado a GAS:", txt))
+      .catch((err) => console.error("🚨 Error al enviar directo a GAS:", err));
+  }
 }
