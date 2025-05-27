@@ -2401,6 +2401,16 @@ document.addEventListener("DOMContentLoaded", () => {
     <ul id="modal-usage" class="list-disc list-inside space-y-2 text-sm text-slate-200"></ul>
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    window.toggleManifesto = function(id) {
+      const panel = document.getElementById(`manifesto-panel-${id}`);
+      if (panel) {
+        panel.classList.toggle("hidden");
+      }
+    };
+  });
+</script>
   </body>
   <footer class="py-8 px-4 bg-slate-900">
   <p class="text-center text-white font-bold">© 2025 Teethlion. Todos los derechos reservados.</p>
