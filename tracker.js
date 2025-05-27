@@ -74,12 +74,14 @@ function sendTrackingData(section, duration) {
     country: geoLocation.country,
   };
 
+  const formBody = new URLSearchParams(payload).toString();
+
   fetch(
     "https://script.google.com/macros/s/AKfycbyonJ_L8EMs2Vpt10RAAscqqcikuYISZj0D5x8bdrvgVF2vzQm8-LZyG04Oz3U7Y0Nq/exec",
     {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formBody,
     }
   )
     .then((res) => res.text())
