@@ -1430,80 +1430,104 @@ Cargando licencia TOL...</pre
         </div>
       </section>
 
-<section id="manifiesto" class="bg-slate-900 text-white px-6 py-12">
-  <div class="max-w-prose mx-auto space-y-10">
-    <h2 class="text-2xl font-bold text-center text-yellow-300" data-i18n="manifesto.title_header">
+<section id="manifiesto" class="min-h-screen bg-slate-900 text-white px-6 py-12">
+  <div class="max-w-3xl mx-auto space-y-8">
+    <h2 class="text-3xl font-bold text-center text-yellow-300" data-i18n="manifesto.title_header">
       📜 Teethlion Manifesto
     </h2>
 
     <div class="space-y-4">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.mission.title">💪 Nuestra Misión</h3>
-      <p class="text-base text-slate-100" data-i18n="manifesto.mission.p1"></p>
-      <p class="text-base text-slate-100" data-i18n="manifesto.mission.p2"></p>
-      <p class="text-base text-slate-100" data-i18n="manifesto.mission.p3"></p>
-    </div>
+      <!-- Acordeón 1 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md focus:outline-none" onclick="toggleManifesto(1)">
+        💪 Nuestra Misión
+      </button>
+      <div id="manifesto-panel-1" class="hidden px-4 text-slate-100 text-sm space-y-2">
+        <p data-i18n="manifesto.mission.p1"></p>
+        <p data-i18n="manifesto.mission.p2"></p>
+        <p data-i18n="manifesto.mission.p3"></p>
+      </div>
 
-    <div class="space-y-3">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.principles.title">🌍 Principios Fundamentales</h3>
-      <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-        <li data-i18n="manifesto.principles.item1"></li>
-        <li data-i18n="manifesto.principles.item2"></li>
-        <li data-i18n="manifesto.principles.item3"></li>
-        <li data-i18n="manifesto.principles.item4"></li>
-      </ul>
-    </div>
+      <!-- Acordeón 2 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md" onclick="toggleManifesto(2)">
+        🌍 Principios Fundamentales
+      </button>
+      <div id="manifesto-panel-2" class="hidden px-4 text-slate-100 text-sm">
+        <ul class="list-disc list-inside space-y-1">
+          <li data-i18n="manifesto.principles.item1"></li>
+          <li data-i18n="manifesto.principles.item2"></li>
+          <li data-i18n="manifesto.principles.item3"></li>
+          <li data-i18n="manifesto.principles.item4"></li>
+        </ul>
+      </div>
 
-    <div class="space-y-3">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.offers.title">✨ Lo que Teethlion ofrece</h3>
-      <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-        <li data-i18n="manifesto.offers.item1"></li>
-        <li data-i18n="manifesto.offers.item2"></li>
-        <li data-i18n="manifesto.offers.item3"></li>
-        <li data-i18n="manifesto.offers.item4"></li>
-      </ul>
-    </div>
+      <!-- Acordeón 3 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md" onclick="toggleManifesto(3)">
+        ✨ Lo que Teethlion ofrece
+      </button>
+      <div id="manifesto-panel-3" class="hidden px-4 text-slate-100 text-sm">
+        <ul class="list-disc list-inside space-y-1">
+          <li data-i18n="manifesto.offers.item1"></li>
+          <li data-i18n="manifesto.offers.item2"></li>
+          <li data-i18n="manifesto.offers.item3"></li>
+          <li data-i18n="manifesto.offers.item4"></li>
+        </ul>
+      </div>
 
-    <div class="space-y-3">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.license.title">📅 Nuestra Licencia (TOL)</h3>
-      <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-        <li data-i18n="manifesto.license.item1"></li>
-        <li data-i18n="manifesto.license.item2"></li>
-        <li data-i18n="manifesto.license.item3"></li>
-      </ul>
-      <p class="mt-2 font-semibold text-slate-200 text-sm" data-i18n="manifesto.license.rates_title"></p>
-      <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-        <li data-i18n="manifesto.license.rate1"></li>
-        <li data-i18n="manifesto.license.rate2"></li>
-      </ul>
-    </div>
+      <!-- Acordeón 4 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md" onclick="toggleManifesto(4)">
+        📅 Nuestra Licencia (TOL)
+      </button>
+      <div id="manifesto-panel-4" class="hidden px-4 text-slate-100 text-sm space-y-2">
+        <ul class="list-disc list-inside space-y-1">
+          <li data-i18n="manifesto.license.item1"></li>
+          <li data-i18n="manifesto.license.item2"></li>
+          <li data-i18n="manifesto.license.item3"></li>
+        </ul>
+        <p class="font-semibold" data-i18n="manifesto.license.rates_title"></p>
+        <ul class="list-disc list-inside space-y-1">
+          <li data-i18n="manifesto.license.rate1"></li>
+          <li data-i18n="manifesto.license.rate2"></li>
+        </ul>
+      </div>
 
-    <div class="space-y-3">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.protection.title">🔒 Protección de Teethlion</h3>
-      <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-        <li data-i18n="manifesto.protection.item1"></li>
-        <li data-i18n="manifesto.protection.item2"></li>
-        <li data-i18n="manifesto.protection.item3"></li>
-      </ul>
-    </div>
+      <!-- Acordeón 5 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md" onclick="toggleManifesto(5)">
+        🔒 Protección de Teethlion
+      </button>
+      <div id="manifesto-panel-5" class="hidden px-4 text-slate-100 text-sm">
+        <ul class="list-disc list-inside space-y-1">
+          <li data-i18n="manifesto.protection.item1"></li>
+          <li data-i18n="manifesto.protection.item2"></li>
+          <li data-i18n="manifesto.protection.item3"></li>
+        </ul>
+      </div>
 
-    <div class="space-y-4">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.dream.title">🚀 Nuestro Sueño</h3>
-      <p class="text-base text-slate-100" data-i18n="manifesto.dream.p1"></p>
-      <p class="text-base text-slate-100" data-i18n="manifesto.dream.p2"></p>
-      <p class="mt-4 font-semibold text-yellow-300" data-i18n="manifesto.dream.welcome"></p>
-    </div>
+      <!-- Acordeón 6 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md" onclick="toggleManifesto(6)">
+        🚀 Nuestro Sueño
+      </button>
+      <div id="manifesto-panel-6" class="hidden px-4 text-slate-100 text-sm space-y-2">
+        <p data-i18n="manifesto.dream.p1"></p>
+        <p data-i18n="manifesto.dream.p2"></p>
+        <p class="text-yellow-300 font-semibold mt-2" data-i18n="manifesto.dream.welcome"></p>
+      </div>
 
-    <div class="space-y-3">
-      <h3 class="text-xl font-semibold text-yellow-300" data-i18n="manifesto.quotes.title">📣 Voces que Resuenan</h3>
-      <ul class="list-disc list-inside italic text-slate-200 space-y-2 text-sm">
-        <li data-i18n="manifesto.quotes.item1"></li>
-        <li data-i18n="manifesto.quotes.item2"></li>
-        <li data-i18n="manifesto.quotes.item3"></li>
-        <li data-i18n="manifesto.quotes.item4"></li>
-      </ul>
+      <!-- Acordeón 7 -->
+      <button class="w-full text-left text-lg font-semibold text-yellow-300 bg-slate-800 px-4 py-3 rounded-md shadow-md" onclick="toggleManifesto(7)">
+        📣 Voces que Resuenan
+      </button>
+      <div id="manifesto-panel-7" class="hidden px-4 italic text-slate-200 text-sm">
+        <ul class="list-disc list-inside space-y-1">
+          <li data-i18n="manifesto.quotes.item1"></li>
+          <li data-i18n="manifesto.quotes.item2"></li>
+          <li data-i18n="manifesto.quotes.item3"></li>
+          <li data-i18n="manifesto.quotes.item4"></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+
 
 
 <section id="epilogo" class="bg-slate-900 text-white px-6 py-16">
