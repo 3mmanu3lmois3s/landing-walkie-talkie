@@ -88,10 +88,3 @@ function sendTrackingData(section, duration) {
     });
   }
 
-  // Fallback si el SW no responde
-  fetch("/track", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-}
