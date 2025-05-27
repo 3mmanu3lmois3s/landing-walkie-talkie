@@ -233,31 +233,21 @@
       🧠 ¿Qué es Teethlion?
     </h2>
 
-    <div class="space-y-6 text-lg text-slate-100">
+    <div class="space-y-6 text-lg text-slate-100 text-justify sm:text-left">
       <p data-i18n="what_is.description">
         Teethlion es un <strong class="text-yellow-300">metaprotocolo de comunicaciones descentralizadas</strong> que permite transmitir voz, video y datos sin depender de servidores centrales. Diseñado para funcionar en cualquier infraestructura —desde redes locales hasta mallas globales—, Teethlion garantiza privacidad, autonomía y resiliencia.
       </p>
 
       <div>
-        <button onclick="toggleAccordion('features-list')" class="w-full text-left text-yellow-300 font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
-          ▶️ Ver funcionalidades principales
+        <button onclick="toggleAccordion('features-list', this)" class="w-full text-left text-yellow-300 font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          ▶️ <span data-i18n="what_is.toggle">Ver funcionalidades principales</span>
         </button>
         <ul id="features-list" class="mt-4 list-disc list-inside space-y-2 hidden transition-all duration-300 ease-in-out">
-          <li data-i18n="what_is.feature1">
-            Comunicación de voz en tiempo real sobre LAN, MAN, WAN y GAN.
-          </li>
-          <li data-i18n="what_is.feature2">
-            Sin necesidad de servidores centrales ni conexión a Internet.
-          </li>
-          <li data-i18n="what_is.feature3">
-            Cifrado avanzado con estándares de seguridad robustos.
-          </li>
-          <li data-i18n="what_is.feature4">
-            Ideal para entornos críticos, emergencias y soberanía digital.
-          </li>
-          <li data-i18n="what_is.feature5">
-            Licencia gratuita para uso personal y educativo; opciones especiales para gobiernos y empresas.
-          </li>
+          <li data-i18n="what_is.feature1">Comunicación de voz en tiempo real sobre LAN, MAN, WAN y GAN.</li>
+          <li data-i18n="what_is.feature2">Sin necesidad de servidores centrales ni conexión a Internet.</li>
+          <li data-i18n="what_is.feature3">Cifrado avanzado con estándares de seguridad robustos.</li>
+          <li data-i18n="what_is.feature4">Ideal para entornos críticos, emergencias y soberanía digital.</li>
+          <li data-i18n="what_is.feature5">Licencia gratuita para uso personal y educativo; opciones especiales para gobiernos y empresas.</li>
         </ul>
       </div>
     </div>
@@ -265,9 +255,14 @@
 </section>
 
 <script>
-  function toggleAccordion(id) {
+  function toggleAccordion(id, btn) {
     const el = document.getElementById(id);
     el.classList.toggle("hidden");
+    if (btn.textContent.includes("▶️")) {
+      btn.innerHTML = "🔽 <span>" + btn.querySelector("span").textContent + "</span>";
+    } else {
+      btn.innerHTML = "▶️ <span>" + btn.querySelector("span").textContent + "</span>";
+    }
   }
 </script>
 
