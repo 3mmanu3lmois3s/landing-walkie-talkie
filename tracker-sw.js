@@ -1,3 +1,10 @@
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+});
+self.addEventListener("activate", (event) => {
+  clients.claim();
+});
+
 self.addEventListener("message", async (event) => {
   if (event.data?.action !== "track") return;
 
@@ -14,8 +21,8 @@ self.addEventListener("message", async (event) => {
     );
 
     const text = await response.text();
-    console.log("📊 Tracking enviado a GAS:", text);
+    console.log("📊 Tracking reenviado a GAS desde SW:", text);
   } catch (err) {
-    console.error("🚨 Error al enviar a GAS:", err);
+    console.error("🚨 Error en SW al reenviar a GAS:", err);
   }
 });
