@@ -574,10 +574,22 @@
   "shine.education.desc": "Redes educativas autónomas.",
   "shine.education.modal_title": "Educación alternativa y redes privadas",
   "shine.education.modal_desc": "Facilita la creación de entornos educativos sin internet: campamentos científicos, zonas rurales, escuelas móviles.",
+  "architecture.transition.title": "🔁 Evolución Arquitectónica",
+  "architecture.transition.description": "Teethlion representa una evolución clara en el diseño de redes descentralizadas: desde la filosofía OPOP hasta llegar a OTOP, cada etapa aporta mayor autonomía, resiliencia y adaptabilidad.",
+
+  "architecture.transition.step1": "OPOP → One Peer, One Purpose",
+  "architecture.transition.step2": "OMOM → One Mesh, One Mission",
+  "architecture.transition.step3": "OTOP → One Thread, One Planet",
+
+  "architecture.transition.glossary_title": "📖 Glosario de Términos",
+  "architecture.transition.opop": "OPOP: Cada nodo tiene una función específica. Red funcional, pero limitada por roles fijos.",
+  "architecture.transition.omom": "OMOM: Los nodos colaboran como una malla con propósito común. Más resiliencia y adaptabilidad.",
+  "architecture.transition.otop": "OTOP: Toda la red actúa como una conciencia compartida. Alta sincronización global y evolución simbiótica.",
   "epilogue.title": "🌱 Epílogo",
   "epilogue.p1": "El nombre <strong>Teethlion</strong> nació de una convergencia de significados. Inicialmente inspirado por la flor diente de león —cuyas semillas vuelan como señales inalámbricas interconectadas en red—, y por el rugido de un león que se expande como ondas de voz sobre una malla global.",
   "epilogue.p2": "Teethlion también representa una fusión simbólica: <strong>tech</strong> + <strong>ETH</strong> + <strong>lion</strong>. Tecnología descentralizada con luz encendida.",
   "epilogue.p3": "Y sobre todo, un tributo a mi hijo Leo, la inspiración que dio origen a esta red viva.",
   "epilogue.signature": "— Emmanuel Mellado, Fundador y CTO de Teethlion",
-  "footer.analytics_notice": "🛡️ Este sitio utiliza <strong class='text-yellow-300'>Cloudflare Web Analytics</strong> sin cookies, ni rastreo personalizado. Solo estadísticas anónimas para mejorar la experiencia."
+  "footer.analytics_notice": "🛡️ Este sitio utiliza <strong class='text-yellow-300'>Cloudflare Web Analytics</strong> sin cookies, ni rastreo personalizado. Solo estadísticas anónimas para mejorar la experiencia.",
+  "footer.copyright": "© 2025 Teethlion. Todos los derechos reservados."
 }

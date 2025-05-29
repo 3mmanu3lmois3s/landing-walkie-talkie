@@ -569,10 +569,22 @@
   "shine.education.desc": "Offline educational networks.",
   "shine.education.modal_title": "Alternative Education & Private Networks",
   "shine.education.modal_desc": "Enables learning in internet-less settings: scientific camps, rural areas, or mobile classrooms.",
+  "architecture.transition.title": "🔁 Architectural Evolution",
+  "architecture.transition.description": "Teethlion shows a clear evolution in decentralized network design: from OPOP to OTOP, each phase brings more autonomy, resilience, and adaptability.",
+
+  "architecture.transition.step1": "OPOP → One Peer, One Purpose",
+  "architecture.transition.step2": "OMOM → One Mesh, One Mission",
+  "architecture.transition.step3": "OTOP → One Thread, One Planet",
+
+  "architecture.transition.glossary_title": "📖 Glossary of Terms",
+  "architecture.transition.opop": "OPOP: Each node has a specific function. Functional but limited by fixed roles.",
+  "architecture.transition.omom": "OMOM: Nodes collaborate as a mesh with a shared mission. Greater adaptability.",
+  "architecture.transition.otop": "OTOP: The whole network acts as a shared consciousness. High global synchronization and symbiotic evolution.",
   "epilogue.title": "🌱 Epilogue",
   "epilogue.p1": "The name <strong>Teethlion</strong> was born from a convergence of meanings. Initially inspired by the dandelion —whose seeds travel like wireless signals through interconnected networks— and by the roar of a lion spreading like waves of voice across a global mesh.",
   "epilogue.p2": "Teethlion also symbolizes a fusion: <strong>tech</strong> + <strong>ETH</strong> + <strong>lion</strong>. Decentralized technology with its light on.",
   "epilogue.p3": "And above all, a tribute to my son Leo, the inspiration behind this living network.",
   "epilogue.signature": "— Emmanuel Mellado, Founder and CTO of Teethlion",
-  "footer.analytics_notice": "🛡️ This site uses <strong class='text-yellow-300'>Cloudflare Web Analytics</strong> with no cookies or personalized tracking. Only anonymous stats to improve user experience."
+  "footer.analytics_notice": "🛡️ This site uses <strong class='text-yellow-300'>Cloudflare Web Analytics</strong> with no cookies or personalized tracking. Only anonymous stats to improve user experience.",
+  "footer.copyright": "© 2025 Teethlion. All rights reserved."
 }
