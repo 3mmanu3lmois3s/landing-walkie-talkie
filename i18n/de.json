@@ -45,6 +45,9 @@
   "nav.contacto": "Kontakt",
   "nav.cto": "CTO",
   "nav.metodologia": "Methode",
+  "contact.satellite_message": "Ich bin daran interessiert, eine größere Spende zu tätigen oder mit Ihrem Projekt zusammenzuarbeiten, indem ich einen eigenen Satelliten einsetze oder den Zugang zu meinem/n Satelliten oder Relay-Knoten für das Teethlion-Netzwerk ermögliche.",
+  "contact.satellite_phone_prompt": "Meine Telefonnummer ist:",
+  "contact.expand_message": "Hallo, wir sind daran interessiert, Teethlion in unserer Gemeinde oder einer Gemeinde unserer Wahl zu finanzieren. Es wird Unterstützung für N Knoten in einem Umkreis von N Kilometern benötigt, und wir wünschen uns Ihre Unterstützung und/oder Infrastruktur. Wir übernehmen die Kosten für Lizenzen, Projekt und Infrastruktur.",
 
   "licensing_general.title": "Lizenzierung",
   "licensing_general.p1": "Kostenlos für den privaten und pädagogischen Gebrauch (bis zu 5 Geräte im selben LAN). Für Schulen mit mehr als 30 Geräten oder Institutionen ist eine Lizenz erforderlich. Die Lizenz enthält zusätzliche Funktionen, die in der kostenlosen Version nicht vorhanden sind.",

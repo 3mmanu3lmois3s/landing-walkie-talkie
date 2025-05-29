@@ -51,6 +51,9 @@
   "nav.instancias": "Instancias",
   "nav.cto": "CTO",
   "nav.metodologia": "Metodología",
+  "contact.satellite_message": "Estoy interesado en hacer una gran donación o en colaborar con su proyecto desplegando un satélite propio o permitiendo el acceso a mi(s) satélite(s) / o nodos relay a la red Teethlion.",
+  "contact.satellite_phone_prompt": "Mi número de contacto es:",
+  "contact.expand_message": "Hola, estamos interesados en financiar Teethlion en nuestra comunidad o en una comunidad de nuestro interés. Se requiere soporte para N nodos en un área de un radio de N kilómetros y nos gustaría que nos brinden el soporte y/o la infraestructura para lograrlo. Aportaremos el pago de las licencias y el costo del proyecto y de la infraestructura.",
 
   "licensing_general.title": "Licenciamiento",
   "licensing_general.p1": "Gratis para uso personal y educativo (hasta 5 dispositivos en la misma red LAN). Para escuelas con más de 30 dispositivos o instituciones, se requiere licencia. La licencia incluye funcionalidades adicionales no presentes en la versión libre.",
