@@ -459,7 +459,7 @@
   "cto.title": "T-Man (Schöpfer von Teethlion)",
   "cto.description": "Technischer Leiter und Hauptarchitekt von Teethlion",
   "cto.motto": "Dezentrale Technologie für alle",
-  "cto.tagline": "T-Man: Ein T-Profil, das Netzwerke für alle schafft · <a href='#opop'>Zur Methodik</a>",
+  "cto.tagline": "T-Man: Ein T-förmiges Profil (technisch und interdisziplinär), das Netzwerke für alle schafft · <a href=\"#opop\">Methodik ansehen</a>",
   "cto.built_with": "Erstellt mit Go, libp2p und Herz",
   "footer": {
     "phrases": [
