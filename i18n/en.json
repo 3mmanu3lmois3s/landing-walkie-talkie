@@ -466,9 +466,10 @@
   "contribute.donation_10": "Donate €10",
   "contribute.donation_25": "Donate €25",
   "contribute.card_donation": "Card Donation",
-  "cto.title": "Creator",
-  "cto.description": "Lead engineer and chief architect of Teethlion",
+  "cto.title": "T-Man (Creator of Teethlion)",
+  "cto.description": "Technical leader and principal architect of Teethlion",
   "cto.motto": "Decentralized technology for everyone",
+  "cto.tagline": "T-Man: A T-shaped profile creating networks for all · <a href='#opop'>See methodology</a>",
   "cto.built_with": "Built with Go, libp2p and heart",
   "footer": {
     "phrases": [

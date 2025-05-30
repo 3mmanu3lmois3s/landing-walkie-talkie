@@ -456,9 +456,10 @@
   "contribute.donation_10": "Spende €10",
   "contribute.donation_25": "Spende €25",
   "contribute.card_donation": "Kartenspende",
-  "cto.title": "Schöpfer",
+  "cto.title": "T-Man (Schöpfer von Teethlion)",
   "cto.description": "Technischer Leiter und Hauptarchitekt von Teethlion",
   "cto.motto": "Dezentrale Technologie für alle",
+  "cto.tagline": "T-Man: Ein T-Profil, das Netzwerke für alle schafft · <a href='#opop'>Zur Methodik</a>",
   "cto.built_with": "Erstellt mit Go, libp2p und Herz",
   "footer": {
     "phrases": [

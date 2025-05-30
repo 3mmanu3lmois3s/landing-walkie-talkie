@@ -6,9 +6,9 @@
 <meta http-equiv="Content-Security-Policy"
   content="
     default-src 'self' http://localhost:* ws://localhost:*;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://static.cloudflareinsights.com http://localhost:*;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net/npm/aos@2.3.4/ http://localhost:*;
     style-src  'self' 'unsafe-inline' https://cdn.tailwindcss.com;
-    img-src    'self' data: https://www.transparenttextures.com http://localhost:* https://www.paypalobjects.com https://stripe.com;
+    img-src    'self' data: https://www.transparenttextures.com http://localhost:* https://www.paypalobjects.com https://cdn.jsdelivr.net/npm/aos@2.3.4/ https://stripe.com;
     connect-src 'self' https://formsubmit.co http://localhost:* ws://localhost:*;
 "
 />
@@ -1737,16 +1737,22 @@ Cargando licencia TOL...</pre
         </div>
       </section>
 
-<section id="cto" class="max-w-4xl mx-auto px-6 py-20 text-center font-[Inter]">
-  <h2 class="text-3xl sm:text-4xl font-semibold tracking-wide text-white mb-8" data-i18n="cto.title">
-    Creador
+<section id="cto" class="max-w-4xl mx-auto px-6 py-20 text-center font-[Inter]" data-aos="fade-up">
+  <!-- Título principal con sombra -->
+  <h2 class="text-3xl sm:text-4xl font-semibold tracking-wide text-white mb-2 text-glow" data-i18n="cto.title_main">
+    T-Man
   </h2>
+  <!-- Subtítulo -->
+  <p class="text-base sm:text-lg text-slate-400 mb-6" data-i18n="cto.title_sub">
+    Creador de Teethlion
+  </p>
 
+  <!-- Tarjeta con contenido -->
   <div class="flex flex-col items-center bg-slate-800/60 backdrop-blur-md p-6 rounded-xl shadow-lg ring-1 ring-slate-600 ring-offset-2 ring-offset-black">
     <!-- Foto -->
     <img
       src="img/EmmanuelMellado_gif.gif"
-      alt="Emmanuel Mellado - CTO"
+      alt="Emmanuel Mellado - Creador de Teethlion"
       class="w-40 h-40 rounded-full object-cover border-4 border-yellow-400 shadow mb-4"
     />
 
@@ -1755,14 +1761,19 @@ Cargando licencia TOL...</pre
       Emmanuel Mellado
     </h3>
 
-    <!-- Descripción del rol -->
+    <!-- Rol -->
     <p class="text-base sm:text-lg text-slate-300 mb-2" data-i18n="cto.description">
       Líder técnico y arquitecto principal de Teethlion
     </p>
 
     <!-- Lema -->
-    <p class="text-sm italic text-slate-400 mb-4" data-i18n="cto.motto">
+    <p class="text-sm italic text-slate-400 mb-2" data-i18n="cto.motto">
       Tecnología descentralizada para todos
+    </p>
+
+    <!-- Línea narrativa -->
+    <p class="text-xs text-slate-400 mb-4" data-i18n-html="cto.tagline">
+      T-Man: Un perfil en T que crea redes para todos · <a href="#opop" class="underline hover:text-yellow-300 transition font-medium">Ver metodología</a>
     </p>
 
     <!-- Redes sociales -->
@@ -1778,12 +1789,27 @@ Cargando licencia TOL...</pre
       </a>
     </div>
 
-    <!-- Texto adicional tipo easter egg -->
+    <!-- Pie técnico -->
     <p class="text-xs text-slate-500 mt-6 italic" data-i18n="cto.built_with">
       Construido con Go, libp2p y corazón
     </p>
   </div>
 </section>
+
+<!-- Estilo adicional para sombra -->
+<style>
+  .text-glow {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+</style>
+
+<!-- AOS (Animate On Scroll) JS + CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+
+
 
 
 
