@@ -404,7 +404,7 @@
   "downloads.android": "📱 Android",
   "downloads.ios": "📱 iOS",
   "downloads.embedded": "⚙️ Eingebettet",
-  "downloads.enterprise_question": Benötigen Sie SaaS-Integration oder Unterstützung für eingebettete Geräte vor dem offiziellen Start??",
+  "downloads.enterprise_question": "Benötigen Sie SaaS-Integration oder Unterstützung für eingebettete Geräte vor dem offiziellen Start?",
   "downloads.note": "* Multiplattform-Version kommt bald. Einige Funktionen können je nach Betriebssystem variieren.",
   "downloads.help_link": "Weitere Details finden Sie in der Dokumentation.",
   "contact.name_label": "Name",
