@@ -417,11 +417,11 @@
   "contact.message_label": "Message",
   "contact.message_help": "Max. 1000 characters",
 
-  "downloads.subtitle": "Currently in development — downloads will be available in Q4 2025.",
+  "downloads.subtitle": "Currently under development � downloads will be available by mid-2026.",
   "downloads.android": "📱 Android",
   "downloads.ios": "📱 iOS",
   "downloads.embedded": "⚙️ Embedded",
-  "downloads.enterprise_question": "Need SaaS integration or support for embedded devices before Q4 2025?",
+  "downloads.enterprise_question": "Need SaaS integration or embedded device support before launch?",
   "enterprise.title": "💼 Enterprises & Governments: Cost, Savings & Sovereignty",
   "enterprise.scenario.title": "📊 Business Use Case",
   "enterprise.scenario.desc": "A company with 300 employees chooses Teethlion for internal communications instead of MS Teams, Zoom or Slack. They already have an internal LAN network.",
